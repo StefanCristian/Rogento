@@ -4,19 +4,18 @@
 
 EAPI=3
 
+PYTHON_DEPEND="2"
+
 inherit distutils
 
-
 DESCRIPTION="Python bindings for libsmbclient"
-HOMEPAGE="http://pypi.python.org/"
-SRC_URI="http://pypi.python.org/packages/source/p/pysmbc/${P}.tar.bz2#md5=019dbb3bc6ee217f7389a2330cda9fe0"
+HOMEPAGE="https://fedorahosted.org/pysmbc"
+SRC_URI="http://cyberelk.net/tim/data/${PN}/${P}.tar.bz2"
 
-LICENSE="GPLv2+"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-src_compile() {
-    distutils_src_compile
-    # ...
+pkg_setup() {
+	python_set_active_version 2
 }
-
