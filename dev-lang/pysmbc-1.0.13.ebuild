@@ -4,7 +4,7 @@
 
 EAPI=3
 
-inherit distutils python
+inherit distutils
 
 
 DESCRIPTION="Python bindings for libsmbclient"
