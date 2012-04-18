@@ -4,11 +4,15 @@
 
 EAPI=4
 
-inherit unpacker multilib
+inherit unpacker multilib versionator
+
+MY_PN="LinuxTycoon"
+MY_PV=$(replace_version_separator 2 '-')
+MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="Lunduke made Linux Tycoon"
 HOMEPAGE="http://lunduke.com/?page_id=2646"
-SRC_URI="http://www.lunduke.com/linuxtycoon/${PN}.tar.gz -> ${P}.tar.gz"
+SRC_URI="http://www.lunduke.com/linuxtycoon/${MY_PN}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
