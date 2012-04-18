@@ -1,6 +1,6 @@
 <layman>
 <overlay contact="stefan.cristian@best.eu.org" type="git" src="git://github.com/BlackNoxis/Rogento.git" name="Rogento">
-<link>https://github.com/BlackNoxis/Rogento</link>
+<link>https://BlackNoxis@github.com/BlackNoxis/Rogento.git</link>
 <description>
 Romanian server, administration, enterprise oriented ebuilds. Pre-alpha.
 </description>
