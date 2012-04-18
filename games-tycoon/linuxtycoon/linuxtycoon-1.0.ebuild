@@ -24,3 +24,14 @@ RDEPEND="
           x11-libs/pixman"
 
 DEPEND=""
+
+S="${WORKDIR}"
+
+src_install() {
+
+dobin    "${S}/LinuxTycoon/LinuxTycoon"
+dolib.so "${S}/LinuxTycoon/LinuxTycoon Libs/libRBXML.so"
+dolib.so "${S}/LinuxTycoon/LinuxTycoon Libs/libRBAppearancePak.so"
+doins    "${S}/LinuxTycoon/LinuxTycoon.png"
+
+}
