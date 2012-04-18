@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "repositories.dtd">
+<repositories xmlns="" version="1.0">
+  <repo quality="experimental" status="unofficial">
+      <name>Rogento</name>
+          <description>Romanian server, administration, enterprise oriented
+          ebuilds. Pre-alpha.</description>
+              <homepage>https://github.com/BlackNoxis/Rogento</homepage>
+                  <owner type="project">
+                        <email>stefan.cristian@best.eu.org</email>
+                              <name>Steven Cristian</name>
+                                  </owner>
+                                      <source
+                                      type="git">git://github.com/BlackNoxis/Rogento.git</source>
+                                          </repo>
+                                            </repositories>
