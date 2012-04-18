@@ -8,7 +8,7 @@ inherit unpacker
 
 DESCRIPTION="Super-useful stream editor (sed)"
 HOMEPAGE="https://minus.com/pages/tools"
-SRC_URI="http://blog.minus.com/updates/${P}_amd64.deb"
+SRC_URI="http://blog.minus.com/updates/${PN}_${ARCH}.deb -> ${P}_${ARCH}.deb"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -16,5 +16,5 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=""
-DEPEND="qt
-        qjson"
+DEPEND="dev-libs/qt-core
+        dev-libs/qjson"
