@@ -8,7 +8,7 @@ inherit unpacker multilib
 
 DESCRIPTION="Lunduke made Linux Tycoon"
 HOMEPAGE="http://lunduke.com/?page_id=2646"
-SRC_URI="http://www.lunduke.com/linuxtycoon/${P}.tar.gz -> ${PF}.tar.gz"
+SRC_URI="http://www.lunduke.com/linuxtycoon/${PN}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
