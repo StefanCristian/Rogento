@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-inherit gnome2-utils
+inherit unpacker gnome2-utils
 
 DESCRIPTION="Gnome-shell-extension-weather for Gnome3.2 by Simon04"
 WEATHER="https://github.com/simon04/gnome-shell-extension-weather"
@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86"
 EXTENSIONS="/usr/share/gnome-shell/extensions"
 SCHEMAS="/usr/share/glib-2.0/schemas"
 DESKTOPS="/usr/share/applications"
-MY_DIR="${WORKDIR}/${PN}"
+S="${WORKDIR}"
 
 COMMON_DEPEND="
         >=dev-libs/glib-2.26
@@ -36,26 +36,9 @@ DEPEND="${COMMON_DEPEND}
         >=dev-util/intltool-0.26
         gnome-base/gnome-common"
 
-
-src_unpack()  {
-	mkdir ${MY_DIR}
-}
-
-src_configure() {
-        :
-}
-
-src_compile()   {
-
-		cd ${MY_DIR}/gnome-shell-extension-weather
-	        ./autogen.sh --prefix=/usr
-	        emake
-}
-
-
 src_install()   {
 
-		cd ${MY_DIR}/gnome-shell-extension-weather
+		cd ${S}/gnome-shell-extension-weather-0.0_p20111110
 
 	        mv weather-extension-configurator{.py,}
         	dobin weather-extension-configurator
