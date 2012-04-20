@@ -25,13 +25,13 @@ RDEPEND="
 
 DEPEND=""
 
-S="${WORKDIR}"
+S="${WORKDIR}/LinuxTycoon"
 
 src_install() {
 
-dobin    "${S}/LinuxTycoon/LinuxTycoon"
-dolib.so "${S}/LinuxTycoon/LinuxTycoon Libs/libRBXML.so"
-dolib.so "${S}/LinuxTycoon/LinuxTycoon Libs/libRBAppearancePak.so"
-doins    "${S}/LinuxTycoon/LinuxTycoon.png"
+dobin    "${S}/LinuxTycoon"
+#dolib.so "${S}/LinuxTycoon Libs/libRBXML.so"
+#dolib.so "${S}/LinuxTycoon Libs/libRBAppearancePak.so"
+#insinto  "${S}/LinuxTycoon.png"
 
 }
