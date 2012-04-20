@@ -13,7 +13,7 @@ HOMEPAGE="${WEATHER}"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
+IUSE=" "
 KEYWORDS="~amd64 ~x86"
 
 EXTENSIONS="/usr/share/gnome-shell/extensions"
