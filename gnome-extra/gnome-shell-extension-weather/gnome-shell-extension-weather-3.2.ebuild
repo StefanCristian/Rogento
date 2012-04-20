@@ -12,7 +12,7 @@ HOMEPAGE="${WEATHER}"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="weather system-monitor mediasplayers icon-manager pidgin"
+IUSE="weather system-monitor"
 KEYWORDS="~amd64 ~x86"
 
 EXTENSIONS="/usr/share/gnome-shell/extensions"
@@ -24,7 +24,7 @@ COMMON_DEPEND="
         >=dev-libs/glib-2.26
         >=gnome-base/gnome-desktop"
 RDEPEND="${COMMON_DEPEND}
-        gnome-base/gnome-desktop:3
+        gnome-base/gnome-desktop:3.2
         media-libs/clutter:1.0
         net-libs/telepathy-glib
         x11-libs/gtk+:3
