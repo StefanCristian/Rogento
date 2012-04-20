@@ -8,7 +8,7 @@ inherit vcs-snapshot gnome2-utils
 
 DESCRIPTION="Gnome Shell Extension Weather plugin for Gnome3"
 HOMEPAGE="https://github.com/simon04/gnome-shell-extension-weather.git"
-SRC_URI="https://github.com/simon04/${PN}/tarball/v${PV} -> ${P}.tar.gz"
+SRC_URI="http://192.168.2.3:8080/${PN}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -28,6 +28,8 @@ DEPEND="${COMMON_DEPEND}
         >=dev-util/pkgconfig-0.22
         >=dev-util/intltool-0.26
         gnome-base/gnome-common"
+
+S="${WORKDIR}"
 
 src_install() {
 
