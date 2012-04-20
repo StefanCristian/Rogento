@@ -24,7 +24,7 @@ COMMON_DEPEND="
         >=dev-libs/glib-2.26
         >=gnome-base/gnome-desktop"
 RDEPEND="${COMMON_DEPEND}
-        gnome-base/gnome-desktop:3.2
+        gnome-base/gnome-desktop
         media-libs/clutter:1.0
         net-libs/telepathy-glib
         x11-libs/gtk+:3
