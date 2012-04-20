@@ -12,7 +12,7 @@ HOMEPAGE="${WEATHER}"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="weather system-monitor"
+IUSE="weather"
 KEYWORDS="~amd64 ~x86"
 
 EXTENSIONS="/usr/share/gnome-shell/extensions"
