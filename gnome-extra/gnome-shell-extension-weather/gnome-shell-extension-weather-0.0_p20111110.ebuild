@@ -8,7 +8,7 @@ inherit gnome2-utils
 
 DESCRIPTION="Gnome-shell-extension-weather for Gnome3.2 by Simon04"
 WEATHER="https://github.com/simon04/gnome-shell-extension-weather"
-SRC_URI="mirror://sabayon/${CATEGORY}/${PN}/{P}.tar.gz"
+SRC_URI="mirror://sabayon/${CATEGORY}/${PN}/${P}.tar.gz"
 HOMEPAGE="${WEATHER}"
 
 LICENSE="GPL-3"
