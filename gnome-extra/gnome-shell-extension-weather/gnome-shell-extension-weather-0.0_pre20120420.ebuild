@@ -4,7 +4,7 @@
 
 EAPI=4
 
-inherit vcs-snapshot gnome2-utils
+inherit vcs-snapshot gnome2-utils unpacker
 
 DESCRIPTION="Gnome Shell Extension Weather plugin for Gnome3"
 HOMEPAGE="https://github.com/simon04/gnome-shell-extension-weather.git"
