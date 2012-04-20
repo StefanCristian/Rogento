@@ -47,7 +47,7 @@ src_configure() {
 
 src_compile()   {
 
-		cd /gnome-shell-extension-weather
+		cd gnome-shell-extension-weather
 	        ./autogen.sh --prefix=/usr
 	        emake
 }
