@@ -44,3 +44,39 @@ src_unpack()  {
 src_configure() {
         :
 }
+
+src_compile()   {
+
+		cd gnome-shell-extension-weather
+	        ./autogen.sh --prefix=/usr
+	        emake
+}
+
+
+src_install()   {
+
+		cd ${MY_DIR}/gnome-shell-extension-weather
+
+	        mv weather-extension-configurator{.py,}
+        	dobin weather-extension-configurator
+
+		insinto ${DESKTOPS}
+        	doins weather-extension-configurator.desktop
+
+	        einstall
+
+	        rm ${D}/${SCHEMAS}/gschemas.compiled
+
+}
+
+pkg_preinst() {
+        gnome2_schemas_savelist
+}
+
+pkg_postinst() {
+        gnome2_schemas_update
+}
+
+pkg_postrm() {
+        gnome2_schemas_update --uninstall
+}
