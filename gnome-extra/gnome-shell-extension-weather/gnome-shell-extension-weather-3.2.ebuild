@@ -79,48 +79,6 @@ src_install()   {
 	        rm ${D}/${SCHEMAS}/gschemas.compiled
 	fi
 
-	if use system-monitor; then
-		cd ${MY_DIR}/gnome-shell-system-monitor-applet
-		
-		insinto ${EXTENSIONS}
-		doins -r system-monitor@paradoxxx.zero.gmail.com
-
-		insinto ${SCHEMAS}
-		doins org.gnome.shell.extensions.system-monitor.gschema.xml
-
-		mv system-monitor-applet-config{.py,}
-		dobin system-monitor-applet-config
-
-		insinto ${DESKTOPS}
-		doins system-monitor-applet-config.desktop
-	fi
-
-	if use mediasplayers; then
-		cd ${MY_DIR}/Gnome-shell-extension-Mediasplayers
-
-		mv ./mediasplayers@ycdref/mediasplayers-settings.py ./
-		mv ./mediasplayers@ycdref/org.gnome.shell.extensions.mediasplayers.gschema.xml ./
-	
-		mv mediasplayers-settings{.py,}
-		dobin mediasplayers-settings
-
-		insinto ${SCHEMAS}
-		doins org.gnome.shell.extensions.mediasplayers.gschema.xml
-
-		insinto ${EXTENSIONS}
-		doins -r mediasplayers@ycdref
-	fi
-
-	if use icon-manager; then
-		cd ${MY_DIR}/gnome-shell-ext-icon-manager
-
-		insinto ${EXTENSIONS}
-		doins -r icon-manager@krajniak.info
-
-		insinto ${SCHEMAS}
-		doins org.gnome.shell.extensions.icon-manager.gschema.xml
-	fi
-
 }
 
 pkg_preinst() {
