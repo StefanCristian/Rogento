@@ -1,18 +1,19 @@
-# Copyright 1999-2011 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v3
 # $Header: $
 
 EAPI="4"
 
 inherit gnome2-utils
 
-DESCRIPTION="Gnome-shell-exteion-weather for Gnome3.2 by Simon04"
+DESCRIPTION="Gnome-shell-extension-weather for Gnome3.2 by Simon04"
 WEATHER="https://github.com/simon04/gnome-shell-extension-weather"
+SRC_URI="mirror://sabayon/${CATEGORY}/${PN}/{P}.tar.gz"
 HOMEPAGE="${WEATHER}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0"
-IUSE="weather"
+IUSE=""
 KEYWORDS="~amd64 ~x86"
 
 EXTENSIONS="/usr/share/gnome-shell/extensions"
@@ -40,32 +41,20 @@ src_unpack()  {
 	mkdir ${MY_DIR}
 }
 
-src_prepare() {
-
-	if use weather; then
-		git clone -b gnome3.2 ${WEATHER}
-	fi
-       
-}
-
 src_configure() {
         :
 }
 
 src_compile()   {
 
-	if use weather; then
 		cd ${MY_DIR}/gnome-shell-extension-weather
 	        ./autogen.sh --prefix=/usr
 	        emake
-	fi
-
 }
 
 
 src_install()   {
 
-	if use weather; then
 		cd ${MY_DIR}/gnome-shell-extension-weather
 
 	        mv weather-extension-configurator{.py,}
@@ -77,7 +66,6 @@ src_install()   {
 	        einstall
 
 	        rm ${D}/${SCHEMAS}/gschemas.compiled
-	fi
 
 }
 
