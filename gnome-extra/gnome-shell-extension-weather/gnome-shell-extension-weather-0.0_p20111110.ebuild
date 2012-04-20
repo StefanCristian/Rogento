@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86"
 EXTENSIONS="/usr/share/gnome-shell/extensions"
 SCHEMAS="/usr/share/glib-2.0/schemas"
 DESKTOPS="/usr/share/applications"
-MY_DIR="${WORKDIR}/${PF}"
+MY_DIR="${WORKDIR}/${PN}"
 
 COMMON_DEPEND="
         >=dev-libs/glib-2.26
@@ -47,7 +47,7 @@ src_configure() {
 
 src_compile()   {
 
-		cd gnome-shell-extension-weather
+		cd ${MY_DIR}/gnome-shell-extension-weather
 	        ./autogen.sh --prefix=/usr
 	        emake
 }
