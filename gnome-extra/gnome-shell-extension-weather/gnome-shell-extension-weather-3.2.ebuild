@@ -22,7 +22,7 @@ MY_DIR="${WORKDIR}/${PF}"
 
 COMMON_DEPEND="
         >=dev-libs/glib-2.26
-        >=gnome-base/gnome-desktop"
+        >=gnome-base/gnome-desktop-3.2.1"
 RDEPEND="${COMMON_DEPEND}
         gnome-base/gnome-desktop
         media-libs/clutter:1.0
