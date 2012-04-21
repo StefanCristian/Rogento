@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-inherit unpacker gnome2-utils
+inherit unpacker gnome2-utils python
 
 DESCRIPTION="An extension for displaying weather notifications in GNOME Shell."
 HOMEPAGE="https://github.com/simon04/gnome-shell-extension-weather"
@@ -37,34 +37,19 @@ DEPEND="${COMMON_DEPEND}
         gnome-base/gnome-common" 
 
 src_compile() {
-        cd ${S}
-        ./autogen.sh --prefix=/usr
-        emake
-}
- 
-src_install() {
+	cd ${S}
+	./autogen.sh --prefix=/usr
+	emake
 
-       cd "${S}"
+	mv weather-extension-configurator{.py,}
+        dobin weather-extension-configurator
 
-       mv weather-extension-configurator{.py,}
-       dobin weather-extension-configurator   
+        doins weather-extension-configurator.desktop
 
-       insinto "${DESKTOPS}"
-       doins "${S}/weather-extension-configurator.desktop"
-
-       emake   
-
-       rm "${D}/${SCHEMAS}/gschemas.compiled"
-}
- 
-pkg_preinst() {
-        gnome2_schemas_savelist
-}
- 
-pkg_postinst() {
-        gnome2_schemas_update
+	einstall
 }
 
-pkg_postrm() {
-        gnome2_schemas_update --uninstall
+pkg_setup() {
+    python_set_active_version 2
+    python_pkg_setup
 }
