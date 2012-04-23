@@ -1,143 +1,111 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="3"
+EAPI=3
+
+WX_GTK_VER="2.8"
 
 inherit eutils wxwidgets games
 
-MY_P="0ad-r${PV}-alpha"
-S="${WORKDIR}/${MY_P}"
+MY_PV="r${PV%_*}-alpha"
+MY_P=${PN}-${MY_PV}
 
-DESCRIPTION="0 A.D. is a free, real-time strategy game currently under development by Wildfire Games."
+DESCRIPTION="A free, real-time strategy game"
 HOMEPAGE="http://wildfiregames.com/0ad/"
-SRC_URI="mirror://sourceforge/zero-ad/${MY_P}-unix-build.tar.xz
-	mirror://sourceforge/zero-ad/${MY_P}-unix-data.tar.xz"
+SRC_URI="http://releases.wildfiregames.com/${MY_P}-unix-build.tar.xz"
 
-LICENSE="GPL-2 CCPL-Attribution-ShareAlike-3.0"
+LICENSE="GPL-2 LGPL-2.1 MIT CCPL-Attribution-ShareAlike-3.0 as-is"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="debug editor nvtt pch test fam devil"
+KEYWORDS="~amd64"
+IUSE="+audio +editor fam +nvtt pch test"
 
-RDEPEND=">=dev-lang/spidermonkey-1.8.5
+RDEPEND="
+	>=dev-lang/spidermonkey-1.8.5
 	dev-libs/boost
 	dev-libs/libxml2
-	media-libs/devil
-	media-libs/openal
-	media-libs/libogg
-	media-libs/libpng
-	media-libs/libsdl[X,joystick]
-	media-libs/libvorbis
+	~games-strategy/0ad-data-${PV}
+	media-libs/libpng:0
+	media-libs/libsdl[X,audio?,opengl,video]
 	net-libs/enet:1.3
 	net-misc/curl
 	sys-libs/zlib
 	virtual/jpeg
 	virtual/opengl
+	audio? ( media-libs/libogg
+		media-libs/libvorbis
+		media-libs/openal )
+	editor? ( x11-libs/wxGTK:2.8[X] )
 	fam? ( virtual/fam )
-	editor? ( x11-libs/wxGTK:2.8 )
-	nvtt? ( dev-util/nvidia-texture-tools )"
-
+	nvtt? ( dev-util/nvidia-texture-tools )
+	"
 DEPEND="${RDEPEND}
-	app-arch/zip
-	dev-lang/nasm
-	dev-util/cmake"
+	dev-util/pkgconfig
+	test? ( dev-lang/perl )"
 
-RESTRICT="strip mirror"
+S=${WORKDIR}/${MY_P}
 
-dir=${GAMES_PREFIX_OPT}/${PN}
+src_prepare() {
+	# respect flags for 3rd party fcollada
+	epatch "${FILESDIR}"/11339_alpha9-fcollada-makefile.patch
+}
 
-pkg_setup() {
-	games_pkg_setup
-	if use editor ; then
-		WX_GTK_VER=2.8 need-wxwidgets unicode
-	fi
+src_configure() {
+	cd build/workspaces || die
+
+	# custom configure script
+	local myconf
+	use nvtt || myconf="--without-nvtt"
+	use fam || myconf="${myconf} --without-fam"
+	use pch || myconf="${myconf} --without-pch"
+	use test || myconf="${myconf} --without-tests"
+	use audio || myconf="${myconf} --without-audio"
+
+	# don't use bundled sources
+	./update-workspaces.sh \
+		--with-system-nvtt \
+		--with-system-enet \
+		--with-system-mozjs185 \
+		$(use_enable editor atlas) \
+		--bindir="${GAMES_BINDIR}" \
+		--libdir="$(games_get_libdir)"/${PN} \
+		--datadir="${GAMES_DATADIR}"/${PN} \
+		${myconf} || die
 }
 
 src_compile() {
-	UPDATE_ARGS="--with-system-enet --with-system-mozjs185"
+	cd build/workspaces/gcc || die
 
-#	if ! use pch ; then
-#		UPDATE_ARGS="${UPDATE_ARGS}  --without-pch"
-#	fi
-
-	if ! use fam ; then
-		UPDATE_ARGS="${UPDATE_ARGS}  --without-fam"
-	fi
-	
-	if ! use editor ; then
-		UPDATE_ARGS="${UPDATE_ARGS} --disable-atlas"
-	fi
-
-	if use nvtt ; then
-		UPDATE_ARGS="${UPDATE_ARGS} --with-system-nvtt"
-	fi
-
-	cd "${S}/build/workspaces"
-	einfo "Running update-workspaces.sh with ${UPDATE_ARGS}"
-	./update-workspaces.sh ${UPDATE_ARGS} || die "update-workspaces.sh failed"
-	cd gcc
-
-	TARGETS="pyrogenesis Collada"
-	if use test ; then
-		TARGETS="${TARGETS} test"
-	fi
-	if use editor ; then
-		TARGETS="${TARGETS} AtlasUI"
-	fi
-	if use debug ; then
-		CONFIG=Debug
-	else
-		CONFIG=Release
-	fi
-	CONFIG=${CONFIG} emake ${TARGETS} || die "Can't build"
+	emake CONFIG=Release verbose=1 || die
 }
 
 src_test() {
-	cd "${S}/binaries/system"
-	if use debug ; then
-		./test_dbg || die "Tests failed"
+	cd binaries/system || die
+
+	if use nvtt ; then
+		./test || die "test phase failed"
 	else
-		./test || die "Tests failed"
+		ewarn "Skipping tests because USE nvtt is disabled"
 	fi
 }
 
 src_install() {
-	cd "${S}"/binaries
-	insinto "${dir}"
-	doins -r data || die "doins -r failed"
+	# bin
+	dogamesbin binaries/system/pyrogenesis || die
 
-	insinto "${dir}"/system
-
-	#we install build-in nvtt
-	if use !nvtt ; then
-		doins "${S}"/binaries/system/libnvcore.so || die "doins failed"
-		doins "${S}"/binaries/system/libnvimage.so || die "doins failed"
-		doins "${S}"/binaries/system/libnvmath.so || die "doins failed"
-		doins "${S}"/binaries/system/libnvtt.so || die "doins failed"
+	# libs
+	exeinto "$(games_get_libdir)"/${PN}
+	doexe binaries/system/libCollada.so || die
+	if use editor ; then
+		doexe binaries/system/libAtlasUI.so || die
 	fi
 
-	if use debug ; then
-#		doins "${S}"/binaries/system/libmozjs185-ps-debug.so.1.0 || die "doins failed"
-		doins "${S}"/binaries/system/libCollada_dbg.so || die "doins failed"
-		if use editor ; then
-			doins "${S}"/binaries/system/libAtlasUI_dbg.so || die "doins failed"
-		fi
-		EXE_NAME=pyrogenesis_dbg
-	else
-#		doins "${S}"/binaries/system/libmozjs185-ps-release.so.1.0 || die "doins failed"
-		doins "${S}"/binaries/system/libCollada.so || die "doins failed"
-		if use editor ; then
-			doins "${S}"/binaries/system/libAtlasUI.so || die "doins failed"
-		fi
-		EXE_NAME=pyrogenesis
-	fi
+	# other
+	dodoc binaries/system/readme.txt || die
+	doicon build/resources/${PN}.png || die
+	games_make_wrapper ${PN} "${GAMES_BINDIR}/pyrogenesis"
+	make_desktop_entry ${PN} ${PN} ${PN}
 
-	exeinto "${dir}"/system
-	doexe "${S}"/binaries/system/${EXE_NAME} || die "doexe failed"
-
-	games_make_wrapper ${PN} ./system/${EXE_NAME} ${dir}
-	doicon "${S}"/build/resources/0ad.png
-	make_desktop_entry "${dir}"/system/${EXE_NAME} "0 A.D."
-
+	# permissions
 	prepgamesdirs
 }
