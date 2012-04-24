@@ -53,6 +53,11 @@ pkg_setup() {
 	fi
 }
 
+src_prepare() {
+	cd "${S}" || die
+	epatch "${FILESDIR}"/r11339_noCUDAdep.diff
+}
+
 src_compile() {
 	UPDATE_ARGS="--with-system-enet --with-system-mozjs185"
 
@@ -69,6 +74,8 @@ src_compile() {
 	fi
 
 	if use nvtt ; then
+		UPDATE_ARGS="${UPDATE_ARGS} --with-system-nvtt"
+	else
 		UPDATE_ARGS="${UPDATE_ARGS} --without-nvtt"
 	fi
 
