@@ -8,8 +8,8 @@ inherit multilib xfconf
 
 DESCRIPTION="A plugin that listens DBus messages and displays received messages"
 HOMEPAGE="http://packages.qa.debian.org/x/xfce4-messenger-plugin.html"
-SRC_URI="mirror://debian/pool/main/x/${PN}/${PN}_${PV}.orig.tar.gz
-	mirror://debian/pool/main/x/${PN}/${PN}_${PV}-5.debian.tar.gz"
+SRC_URI="https://launchpad.net/ubuntu/+archive/primary/+files/${PN}_${PV}.orig.tar.gz
+	https://launchpad.net/ubuntu/+archive/primary/+files/${PN}_${PV}-5.debian.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -25,7 +25,7 @@ RDEPEND="dev-libs/dbus-glib
 	>=xfce-base/xfce4-panel-4.8"
 DEPEND="${RDEPEND}
 	dev-util/intltool
-	dev-util/pkgconfig"
+	virtual/pkgconfig"
 
 pkg_setup() {
 	XFCONF=(
