@@ -61,9 +61,9 @@ src_prepare() {
 src_compile() {
 	UPDATE_ARGS="--with-system-enet --with-system-mozjs185"
 
-#	if ! use pch ; then
-#		UPDATE_ARGS="${UPDATE_ARGS}  --without-pch"
-#	fi
+	if ! use pch ; then
+		UPDATE_ARGS="${UPDATE_ARGS}  --without-pch"
+	fi
 
 	if ! use fam ; then
 		UPDATE_ARGS="${UPDATE_ARGS}  --without-fam"
