@@ -42,7 +42,6 @@ src_prepare() {
 
 src_install() {
 	xfconf_src_install
-
 	exeinto /usr/share/doc/${PF}/scripts
 	doexe scripts/xfce-messenger-logtail
 }
