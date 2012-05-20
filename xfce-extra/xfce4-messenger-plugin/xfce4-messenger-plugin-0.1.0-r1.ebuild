@@ -9,7 +9,7 @@ inherit multilib xfconf
 DESCRIPTION="A plugin that listens DBus messages and displays received messages"
 HOMEPAGE="http://packages.qa.debian.org/x/xfce4-messenger-plugin.html"
 SRC_URI="https://launchpad.net/ubuntu/+archive/primary/+files/${PN}_${PV}.orig.tar.gz
-	https://launchpad.net/ubuntu/+archive/primary/+files/${PN}_${PV}-5.debian.tar.gz"
+	https://launchpad.net/ubuntu/+archive/primary/+files/${PN}_${PV}-5build2.debian.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
