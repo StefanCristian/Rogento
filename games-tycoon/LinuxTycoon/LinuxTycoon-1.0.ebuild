@@ -19,20 +19,14 @@ SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 
 RDEPEND="x11-libs/pango
-	media-libs/libpng
-	x11-libs/pixman"
+	media-libs/libpng:2
+	x11-libs/pixman
 	amd64? ( 
-		app-emulation/emul-linux-x86-gtklibs 
-		app-emulation/emul-linux-x86-baselibs
-		)	
+	app-emulation/emul-linux-x86-gtklibs 
+	app-emulation/emul-linux-x86-baselibs	)"	
 DEPEND=""
 
 S="${WORKDIR}"
-
-src_prepare() {
-	dodir "/opt/${MY_PN}" || die
-	dodir "/opt/${MY_PN}/${MY_PN} Libs" || die
-}
 
 src_install() {
 	insinto "/opt/${MY_PN}" || die "Couldn't ins into dir"
