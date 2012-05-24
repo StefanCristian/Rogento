@@ -26,13 +26,11 @@ DEPEND=""
 S="${WORKDIR}"
 
 src_prepare() {
-	dodir "/opt/${MY_PN}"
-	dodir "/opt/${MY_PN}/${MY_PN} Libs"
+	dodir "/opt/${MY_PN}" || die
+	dodir "/opt/${MY_PN}/${MY_PN} Libs" || die
 }
 
 src_install() {
-	cd "${S}"
-
 	insinto "/opt/${MY_PN}" || die "Couldn't ins into dir"
 	doins "${S}/LinuxTycoon/LinuxTycoon" || die "Couldn't copy to bin folder"
 	fperms 700 "/opt/LinuxTycoon/LinuxTycoon" || die "Failed to change permission"
