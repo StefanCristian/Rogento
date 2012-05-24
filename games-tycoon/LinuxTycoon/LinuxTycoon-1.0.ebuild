@@ -22,8 +22,8 @@ RDEPEND="x11-libs/pango
 	media-libs/libpng:2
 	x11-libs/pixman
 	amd64? ( 
-	app-emulation/emul-linux-x86-gtklibs 
-	app-emulation/emul-linux-x86-baselibs	)"	
+		app-emulation/emul-linux-x86-gtklibs 
+		app-emulation/emul-linux-x86-baselibs	)"	
 DEPEND=""
 
 S="${WORKDIR}"
