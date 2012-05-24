@@ -17,7 +17,6 @@ SRC_URI="http://www.lunduke.com/linuxtycoon/${MY_PN}.tar.gz -> ${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="amd64"
 
 RDEPEND="x11-libs/pango
 	media-libs/libpng
