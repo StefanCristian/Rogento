@@ -16,11 +16,16 @@ SRC_URI="http://www.lunduke.com/linuxtycoon/${MY_PN}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="-* ~amd64 ~x86"
+IUSE="amd64"
 
 RDEPEND="x11-libs/pango
 	media-libs/libpng
 	x11-libs/pixman"
+	amd64? ( 
+		app-emulation/emul-linux-x86-gtklibs 
+		app-emulation/emul-linux-x86-baselibs
+		)	
 DEPEND=""
 
 S="${WORKDIR}"
