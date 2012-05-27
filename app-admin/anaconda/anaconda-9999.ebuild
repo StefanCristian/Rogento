@@ -1,4 +1,4 @@
-# Copyright 2004-2010 Sabayon
+# Copyright 2004-2012 Rogentos
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -19,7 +19,7 @@ LSELINUX_VER="2.0.94"
 LSELINUX_SRC_URI="http://userspace.selinuxproject.org/releases/20100525/devel/libselinux-${LSELINUX_VER}.tar.gz"
 
 DESCRIPTION="Rogentos Redhat Anaconda Installer Port"
-HOMEPAGE="http://gitweb.sabayon.org/?p=anaconda.git;a=summary"
+HOMEPAGE="http://gitweb.sabayon.org/?p=anaconda.git"
 if [ "${PV}" = "9999" ]; then
 	SRC_URI="${AUDIT_SRC_URI} ${LSELINUX_SRC_URI}"
 	KEYWORDS=""
