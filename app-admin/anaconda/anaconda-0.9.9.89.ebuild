@@ -20,13 +20,13 @@ LSELINUX_SRC_URI="http://userspace.selinuxproject.org/releases/20100525/devel/li
 
 DESCRIPTION="Sabayon Redhat Anaconda Installer Port"
 HOMEPAGE="http://gitweb.sabayon.org/?p=anaconda.git;a=summary"
-#if [ "${PV}" = "9999" ]; then
-#	SRC_URI="${AUDIT_SRC_URI} ${LSELINUX_SRC_URI}"
-#	KEYWORDS=""
-#else
-#	SRC_URI="mirror://sabayon/${CATEGORY}/${PN}-${PVR}.tar.bz2 ${AUDIT_SRC_URI} ${LSELINUX_SRC_URI}"
-#	KEYWORDS="~amd64 ~x86"
-#fi
+if [ "${PV}" = "9999" ]; then
+	SRC_URI="${AUDIT_SRC_URI} ${LSELINUX_SRC_URI}"
+	KEYWORDS=""
+else
+	SRC_URI="mirror://sabayon/${CATEGORY}/${PN}-${PVR}.tar.bz2 ${AUDIT_SRC_URI} ${LSELINUX_SRC_URI}"
+	KEYWORDS="~amd64 ~x86"
+fi
 S="${WORKDIR}"/${PN}-${PVR}
 AUDIT_S="${WORKDIR}/audit-${AUDIT_VER}"
 LSELINUX_S="${WORKDIR}/libselinux-${LSELINUX_VER}"
