@@ -65,8 +65,8 @@ src_install() {
 	insinto /usr/share/X11/xorg.conf.d
 	doins "${FILESDIR}/${PV}/xorg.conf.d/90-synaptics.conf"
 
-	dodir /usr/share/rogentos-tools/xorg.conf.d
-	insinto /usr/share/rogentos-tools/xorg.conf.d
+	dodir /usr/share/rogentoslive-tools/xorg.conf.d
+	insinto /usr/share/rogentoslive-tools/xorg.conf.d
 	# fglrx <12.2 Xv workaround, enabled at runtime
 	doins "${FILESDIR}/${PV}/xorg.conf.d/90-fglrx-12.1-and-older-workaround.conf"
 
