@@ -202,14 +202,14 @@ sabayon_is_live_install() {
 	return 1
 }
 
-#sabayon_is_mce() {
-	#local _is_mce=$(cat /proc/cmdline | grep sabayonmce)
-	#if [ -n "${_is_mce}" ]; then
-		#return 0
-	#else
-		#return 1
-	#fi
-#}
+sabayon_is_mce() {
+	local _is_mce=$(cat /proc/cmdline | grep sabayonmce)
+	if [ -n "${_is_mce}" ]; then
+		return 0
+	else
+		return 1
+	fi
+}
 
 sabayon_is_normal_boot() {
 	if ! sabayon_is_mce && ! sabayon_is_live_install; then
