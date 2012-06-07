@@ -18,6 +18,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 
+RESTRICT="fetch strip"
+
 RDEPEND="x11-libs/pango
 	media-libs/libpng:2
 	x11-libs/pixman
