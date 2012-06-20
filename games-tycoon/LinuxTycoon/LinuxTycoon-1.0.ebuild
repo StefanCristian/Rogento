@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2012 Rogentos Team
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI=2
 
-inherit unpacker multilib versionator
+inherit unpacker multilib versionator eutils
 
 MY_PN="LinuxTycoon"
 MY_PV=$(replace_version_separator 2 '-')
