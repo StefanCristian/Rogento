@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Rogentos Team
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -29,17 +29,3 @@ RDEPEND="x11-libs/pango
 DEPEND=""
 
 S="${WORKDIR}"
-
-src_install() {
-	insinto "/opt/${MY_PN}" || die "Couldn't ins into dir"
-	doins "${S}/LinuxTycoon/LinuxTycoon" || die "Couldn't copy to bin folder"
-	fperms 700 "/opt/LinuxTycoon/LinuxTycoon" || die "Failed to change permission"
-	doins "${S}/LinuxTycoon/LinuxTycoon.png" || die
-
-	insinto "/opt/${MY_PN}/${MY_PN} Libs" || die "couldn't dir into dir"
-	doins "${S}/${MY_PN}/${MY_PN} Libs/libRBXML.so" || die
-	doins "${S}/${MY_PN}/${MY_PN} Libs/libRBAppearancePak.so" || die
-
-	cd "/opt/${MY_PN}"
-	dosym "/opt/${MY_PN}/LinuxTycoon" /usr/bin/LinuxTycoon || die
-}
