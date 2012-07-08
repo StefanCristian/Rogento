@@ -9,7 +9,7 @@ inherit base mount-boot
 
 DESCRIPTION="Rogentos GRUB2 Images"
 HOMEPAGE="http://www.rogentos.ro"
-SRC_URI="http://dl.dropbox.com/u/1338709/x11-themes/${PN}/${PN}-${PVR}.tar.xz"
+SRC_URI="http://dl.dropbox.com/u/1338709/${CATEGORY}/${PN}/${PN}-${PVR}.tar.xz"
 LICENSE="CCPL-Attribution-ShareAlike-3.0"
 SLOT="0"
 
@@ -17,10 +17,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 RDEPEND=""
 
-S="${WORKDIR}/${PN}"
+S="${WORKDIR}"
 
 src_install () {
-	cd "${S}/images"
 	dodir /usr/share/grub
 	insinto /usr/share/grub
 	doins default-splash.png
