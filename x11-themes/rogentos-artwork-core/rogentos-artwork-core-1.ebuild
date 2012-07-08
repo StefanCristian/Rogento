@@ -1,6 +1,8 @@
 # Copyright 1999-2012 Sabayon Promotion
+# Copyright 2012 Rogentos Linux
 # Distributed under the terms of the GNU General Public License v2
-#
+# Original Authors Sabayon Team
+# Maintainer BlackNoxis <stefan.cristian at rogentos.ro>
 
 EAPI=4
 inherit eutils mount-boot sabayon-artwork
@@ -46,5 +48,5 @@ pkg_postinst() {
 	update_sabayon_kernel_initramfs_splash
 
 	einfo "Please report bugs or glitches to"
-	einfo "bugs.sabayon.org"
+	einfo "BlackNoxis"
 }
