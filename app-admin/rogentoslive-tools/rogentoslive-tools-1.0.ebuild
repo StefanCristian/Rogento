@@ -1,10 +1,13 @@
 # Copyright 2004-2012 Sabayon
+# Copyright 2012 Rogentos
 # Distributed under the terms of the GNU General Public License v2
+# Original Authors Sabayon Team
+# Maintainer BlackNoxis <stefan.cristian at rogentos.ro>
 
 inherit eutils
 
 DESCRIPTION="Rogentos Live tools for autoconfiguration of the system"
-HOMEPAGE="http://www.rogentos.ro"
+HOMEPAGE="http://www.rogentos.ro/"
 
 SLOT="0"
 LICENSE="GPL-2"
