@@ -61,8 +61,8 @@ src_install() {
 	dodir /etc/rogentos
 	insinto /etc/rogentos
 
-	#insinto /etc/X11
-	#doins xorg.conf.sabayon
+	insinto /etc/X11
+	doins xorg.conf.rogentos
 
 	dodir /usr/share/X11/xorg.conf.d
 	insinto /usr/share/X11/xorg.conf.d
