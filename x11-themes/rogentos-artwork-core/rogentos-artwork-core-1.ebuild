@@ -5,7 +5,7 @@
 # Maintainer BlackNoxis <stefan.cristian at rogentos.ro>
 
 EAPI=4
-inherit eutils mount-boot sabayon-artwork
+inherit eutils mount-boot rogentos-artwork
 
 DESCRIPTION="Offical Rogentos Linux Core Artwork"
 HOMEPAGE="http://www.rogentos.ro"
