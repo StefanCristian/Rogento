@@ -132,13 +132,13 @@ KERN_INITRAMFS_SEARCH_NAME="${KERN_INITRAMFS_SEARCH_NAME:-initramfs-genkernel*${
 # Disable deblobbing feature
 K_DEBLOB_AVAILABLE=0
 
-inherit eutils kernel-2 sabayon-artwork mount-boot linux-info
+inherit eutils kernel-2 rogentos-artwork mount-boot linux-info
 
 # from kernel-2 eclass
 detect_version
 detect_arch
 
-DESCRIPTION="Sabayon Linux kernel functions and phases"
+DESCRIPTION="Rogentos Linux kernel functions and phases"
 
 
 K_LONGTERM_URL_STR=""
@@ -279,7 +279,7 @@ else
 		sys-devel/make
 		>=sys-kernel/genkernel-3.4.16-r1
 		arm? ( dev-embedded/u-boot-tools )
-		splash? ( x11-themes/sabayon-artwork-core )
+		splash? ( x11-themes/rogentos-artwork-core )
 		dracut? ( sys-kernel/dracut )"
 	# FIXME: when grub-legacy will be removed, remove sys-boot/grub-handler
 	RDEPEND="arm? ( >=app-admin/eselect-uimage-0.1.1 )
@@ -413,7 +413,7 @@ _kernel_src_compile() {
 	cd "${S}" || die
 	GKARGS="--no-save-config --disklabel"
 	use dracut && GKARGS="${GKARGS} --dracut"
-	use splash && GKARGS="${GKARGS} --splash=sabayon"
+	use splash && GKARGS="${GKARGS} --splash=rogentos"
 	use dmraid && GKARGS="${GKARGS} --dmraid"
 	use iscsi && GKARGS="${GKARGS} --iscsi"
 	use mdadm && GKARGS="${GKARGS} --mdadm"
