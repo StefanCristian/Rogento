@@ -38,6 +38,7 @@ src_unpack() {
 	cp "${FILESDIR}"/${PV}/sabutil . -p
 	cp "${FILESDIR}"/${PV}/livespawn . -p
 	cp "${FILESDIR}"/${PV}/cdeject . -p
+	cp "${FILESDIR}"/${PV}/xorg.conf.rogentos . -p
 }
 
 src_install() {
