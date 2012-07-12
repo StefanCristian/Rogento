@@ -35,7 +35,7 @@ runtime_linking_proprietary_drivers() {
 buggy_fglrx_xv_fixup_code() {
 	# This is a workaround for xv being broken
 	# on fglrx <12.2, disable Xv in xorg.conf.d
-	local workaround_file=/usr/share/sabayonlive-tools/xorg.conf.d/90-fglrx-12.1-and-older-workaround.conf
+	local workaround_file=/usr/share/rogentoslive-tools/xorg.conf.d/90-fglrx-12.1-and-older-workaround.conf
 	if [ -f "${workaround_file}" ]; then
 		is_fglrx=$(/bin/lsmod | grep ^fglrx)
 		if [ -n "${is_fglrx}" ]; then
