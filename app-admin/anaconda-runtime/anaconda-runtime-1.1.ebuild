@@ -14,7 +14,7 @@ SLOT="0"
 DEPEND=""
 RDEPEND="app-admin/system-config-date
 	app-admin/system-config-users
-	>=app-admin/rogentoslive-tools-2.3
+	>=app-admin/rogentoslive-tools-1.0
 	app-text/xmlto
 	dev-libs/elfutils
 	dev-libs/libnl
