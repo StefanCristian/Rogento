@@ -21,7 +21,7 @@ function menu
 	cat /etc/sabayon-release
 	echo ""
         echo "Current Edition:"
-	cat /etc/sabayon-edition
+	cat /etc/rogentos-edition
         echo
         echo "Pick a choice from menu below:"
 
