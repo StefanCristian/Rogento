@@ -27,6 +27,7 @@ src_install () {
 
 	dosym /usr/share/backgrounds/kgdm.png \
 		/usr/share/lxdm/themes/Rogentos/kgdm.png
+
 	insinto /etc/lxdm/ || die "Cannot insinto folder"
-	doins "${S}"/lxdm.conf /etc/lxdm/lxdm.conf || die "Could not copy lxdm.conf"
+	doins "${S}"/lxdm.conf /etc/lxdm/ || die "Could not copy lxdm.conf"
 }
