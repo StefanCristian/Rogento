@@ -20,4 +20,12 @@ src_install () {
 	cp "${S}"/* "${D}"/etc/ -Ra
 	chown root:root "${D}"/etc/skel -R
 
+	insinto /etc/bash/ || die "Failed to insinto"
+	doins "${S}"/skel/.bash/bashrc /etc/bash/ || die "Cannot copy bashrc"
+
+	insinto /etc/grub.d/ || die "Failed to insinto"
+	doins "${S}"/skel/.grub.d/10_linux /etc/grub.d/ || die "Cannot copy 10 linux"
+
+	insinto /etc/default/ || die "Failed to insinto"
+	doins "${S}"/skel/.default/grub /etc/default/grub || die "Cannot copy grub"
 }
