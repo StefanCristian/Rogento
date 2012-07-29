@@ -25,7 +25,7 @@ src_install () {
 	insinto /usr/share/lxdm/themes/Rogentos || die "Cannot insinto"
 	doins Rogentos/* || die "Cannot doins"
 
-	dosym /usr/share/backgrounds/kgdm.png \
+	dosym /usr/share/backgrounds/rogentoslinux.png \
 		/usr/share/lxdm/themes/Rogentos/kgdm.png
 
 	insinto /etc/lxdm/ || die "Cannot insinto folder"
