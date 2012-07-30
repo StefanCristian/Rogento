@@ -8,7 +8,7 @@ DESCRIPTION="Plugin for thunar that adds context-menu items for dropbox."
 HOMEPAGE="http://www.softwarebakery.com/maato/thunar-dropbox.html"
 SRC_URI="http://www.softwarebakery.com/maato/files/${PN}/${PN}-${PV}.tar.bz2"
 
-inherit eutils python gnome2-utils fdo-mime
+inherit eutils python gnome2-utils
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -18,7 +18,8 @@ IUSE=""
 DEPEND="dev-util/pkgconfig
 	>=dev-lang/python-2.7"
 
-RDEPEND="xfce-base/thunar"
+RDEPEND="xfce-base/thunar
+	net-misc/dropbox"
 
 S="${WORKDIR}"/${PN}-${PV}
 
