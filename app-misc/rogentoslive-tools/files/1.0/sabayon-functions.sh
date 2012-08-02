@@ -144,7 +144,7 @@ sabayon_setup_gui_installer() {
 	fi
 	echo "[Desktop]" > "${dmrc_file}"
 	echo "Session=fluxbox" >> "${dmrc_file}"
-	chown rogentosuser "${dmrc_file}"
+	chown rogentos "${dmrc_file}"
 	sed -i "/installer --fullscreen/ s/^# //" "${flux_startup_file}"
 	if [ -x "/usr/libexec/gdm-set-default-session" ]; then
 		# oh my fucking glorious god, this
