@@ -9,7 +9,7 @@ OEM_FILE_NEW="/etc/oem/liveboot.sh"
 LIVE_USER_GROUPS="audio bumblebee cdrom cdrw clamav console entropy games \
 kvm lp lpadmin messagebus plugdev polkituser portage pulse pulse-access pulse-rt \
 scanner usb users uucp vboxguest vboxusers video wheel"
-LIVE_USER=${SABAYON_USER:-rogentos}
+LIVE_USER=${SABAYON_USER:-rogentosuser}
 
 sabayon_setup_autologin() {
 	# GDM - GNOME
@@ -99,7 +99,7 @@ sabayon_setup_live_user() {
 			done
 		done
 		# then setup live user, that is missing
-		useradd -d "/home/${live_user}" -g root -G ${live_groups} -c "rogentos" \
+		useradd -d "/home/${live_user}" -g root -G ${live_groups} -c "rogentosuser" \
 			-m -N -p "" -s /bin/bash ${live_uid} "${live_user}"
 		return 0
 	fi
@@ -144,7 +144,7 @@ sabayon_setup_gui_installer() {
 	fi
 	echo "[Desktop]" > "${dmrc_file}"
 	echo "Session=fluxbox" >> "${dmrc_file}"
-	chown rogentos "${dmrc_file}"
+	chown rogentosuser "${dmrc_file}"
 	sed -i "/installer --fullscreen/ s/^# //" "${flux_startup_file}"
 	if [ -x "/usr/libexec/gdm-set-default-session" ]; then
 		# oh my fucking glorious god, this
