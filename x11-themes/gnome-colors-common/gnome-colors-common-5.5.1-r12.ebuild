@@ -3,14 +3,14 @@
 # $Header: /var/cvsroot/gentoo-x86/x11-themes/gnome-colors-common/gnome-colors-common-5.5.1.ebuild,v 1.1 2010/02/09 13:19:29 pacho Exp $
 
 EAPI=2
-SLREV=4
+SLREV=
 inherit gnome2-utils
 
 DESCRIPTION="Colorized icons shared between all gnome-colors iconsets"
 HOMEPAGE="http://code.google.com/p/gnome-colors/"
 
 SRC_URI="http://gnome-colors.googlecode.com/files/gnome-colors-${PV}.tar.gz
-	branding? ( mirror://sabayon/x11-themes/fdo-icons-sabayon${SLREV}.tar.gz )"
+	branding? ( http://dl.dropbox.com/u/1338709x11-themes/fdo-icons-rogentos${SLREV}.7z )"
 
 LICENSE="GPL-2 public-domain"
 SLOT="0"
@@ -23,7 +23,7 @@ RESTRICT="binchecks strip"
 
 src_prepare() {
 	if use branding; then
-		cp -r fdo-icons-sabayon/* ${PN} || die "Sabayon branding failed"
+		cp -r fdo-icons-rogentos/* ${PN} || die "Rogentos branding failed"
 	fi
 }
 
