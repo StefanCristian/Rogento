@@ -22,8 +22,8 @@ SRC_URI="
 	bindist? ( ${SRC_URI//${PV}/${MY_PV}} )
 "
 
-SLREV=4
-SRC_URI="${SRC_URI} mirror://sabayon/x11-themes/fdo-icons-sabayon${SLREV}.tar.gz"
+SLREV=
+SRC_URI="${SRC_URI} http://dl.dropbox.com/u/1338709/x11-themes/fdo-icons-rogentos${SLREV}.7z"
 
 LICENSE="LGPL-3"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
@@ -36,6 +36,6 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	kde4-base_src_prepare
-	cp -r "${WORKDIR}"/fdo-icons-sabayon/* "${S}" || die
-	# cp -r ../fdo-icons-sabayon/* ../${P} || die
+	cp -r "${WORKDIR}"/fdo-icons-rogentos/* "${S}" || die
+	# cp -r ../fdo-icons-rogentos/* ../${P} || die
 }
