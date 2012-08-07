@@ -53,6 +53,10 @@ src_install() {
 			fi
 		done
 	fi
+
+	if "[ -f /usr/bin/rsvg ]"; then
+		dosym /usr/bin/rsvg-convert /usr/bin/rsvg || die
+	fi
 }
 
 pkg_preinst() {	gnome2_icon_savelist; }
