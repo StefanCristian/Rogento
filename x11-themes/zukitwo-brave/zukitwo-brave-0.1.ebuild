@@ -13,17 +13,18 @@ SLOT="0"
 KEYWORDS="~arm ~amd64 ~x86"
 IUSE="gtk3 gtk2 gnome-shell unity cinnamon xfwm4"
 
-RDEPEND="gtk3? ( x11-themes/gtk3-engines-unico )
+RDEPEND="gtk3? ( x11-themes/gtk-engines-unico )
 	>=x11-themes/gtk-engines-murrine-0.98.1.1
 	x11-themes/gtk-engines"
 DEPEND=""
 
-S="${WORKDIR}"/${PN}/
+Z="Zukitwo-Brave"
+S="${WORKDIR}"/${Z}/
 THEME="/usr/share/themes"
 
 src_install() {
-	dodir ${THEME}/${PN} || die
-	insinto ${THEME}/${PN} || die
+	dodir ${THEME}/${Z} || die
+	insinto ${THEME}/${Z} || die
 	doins "${S}"/index.theme || die
 
 	if use gtk3; then
