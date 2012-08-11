@@ -4,8 +4,6 @@
 
 EAPI=4
 
-inherit base eutils gnome2-utils
-
 DESCRIPTION="Zukitwo-Brave Rogentos theme"
 HOMEPAGE="http://rogentos.ro"
 SRC_URI="http://dl.dropbox.com/u/1338709/${CATEGORY}/${PN}.tar.gz"
@@ -27,50 +25,38 @@ src_install() {
 	doins "${S}"/index.theme || die
 
 	if use gtk3; then
-		doins -r "${S}"/gtk-3.0/ ${THEME}/${PN}/ || die "Cannot copy gtk3"
+		doins -r "${S}"/gtk-3.0 || die "Cannot copy gtk3"
 	else
 	ewarn "Gtk3 Files weren't copied"
 	fi
 
 	if use gtk2; then
-		doins -r "${S}"/gtk-2.0/ ${THEME}/${PN}/ || die "Cannot copy gtk2"
+		doins -r "${S}"/gtk-2.0/ || die "Cannot copy gtk2"
 	else
 	ewarn "Gtk2 Files were not copied"
 	fi
 
 	if use gnome-shell; then
-		doins -r "${S}"/gnome-shell ${THEME}/${PN}/ || die "Cannot copy gnome-shell"
+		doins -r "${S}"/gnome-shell || die "Cannot copy gnome-shell"
 	else
 	ewarn "Gnome-shell Files were not copied"
 	fi
 
 	if use cinnamon; then
-		doins -r "${S}"/cinnamon ${THEME}/${PN}/ || die "Cannot copy cinnamon"
+		doins -r "${S}"/cinnamon || die "Cannot copy cinnamon"
 	else
 	ewarn "Cinnamon Files were not copied"
 	fi
 
 	if use unity; then
-		doins -r "${S}"/unity ${THEME}/${PN} || die "Cannot copy unity"
+		doins -r "${S}"/unity || die "Cannot copy unity"
 	else
 	ewarn "Unity Files were not copied"
 	fi
 
 	if use xfwm4; then
-		doins -r "${S}"/xfwm4 ${THEME}/${PN} || die "Cannot copy xfwm"
+		doins -r "${S}"/xfwm4 || die "Cannot copy xfwm"
 	else
 	ewarn "Xfwm Files were not copied"
         fi
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
 }
