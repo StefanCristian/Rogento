@@ -27,6 +27,14 @@ DEPEND="${RDEPEND}
 
 RESTRICT="binchecks strip"
 
+src_prepare() {
+        if [ -f "/usr/bin/rsvg" ]; then
+                dosym /usr/bin/rsvg-convert /usr/bin/rsvg || die
+        else
+        echo "There is no rsvg support installed"
+        fi
+}
+
 src_configure() {
 	econf \
 		$(use_enable png png-creation) \
@@ -37,12 +45,6 @@ src_install() {
 	addwrite /root/.gnome2
 	emake DESTDIR="${D}" install || die
 	dodoc AUTHORS ChangeLog README
-
-        if "[ -f /usr/bin/rsvg ]"; then
-                dosym /usr/bin/rsvg-convert /usr/bin/rsvg || die
-        else
-        echo "There is no rsvg support installed"
-        fi
 
 	if use branding; then
 		# replace tango icon start-here.{png,svg} with Rogentos ones
