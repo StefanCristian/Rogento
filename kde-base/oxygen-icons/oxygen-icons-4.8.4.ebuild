@@ -22,8 +22,8 @@ SRC_URI="
 	bindist? ( ${SRC_URI//${PV}/${MY_PV}} )
 "
 
-SLREV=
-SRC_URI="${SRC_URI} http://dl.dropbox.com/u/1338709/x11-themes/fdo-icons-rogentos${SLREV}.tar.xz"
+SLREV=1
+SRC_URI="${SRC_URI} http://dl.dropbox.com/u/1338709/x11-themes/fdo-icons-rogentos${SLREV}.tar.gz"
 
 LICENSE="LGPL-3"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
