@@ -38,6 +38,12 @@ src_install() {
 	emake DESTDIR="${D}" install || die
 	dodoc AUTHORS ChangeLog README
 
+        if "[ -f /usr/bin/rsvg ]"; then
+                dosym /usr/bin/rsvg-convert /usr/bin/rsvg || die
+        else
+        echo "There is no rsvg support installed"
+        fi
+
 	if use branding; then
 		# replace tango icon start-here.{png,svg} with Rogentos ones
 		for dir in "${D}"/usr/share/icons/Tango/*/places; do
@@ -52,12 +58,6 @@ src_install() {
 					"${dir}/start-here.png" || die
 			fi
 		done
-	fi
-
-	if "[ -f /usr/bin/rsvg ]"; then
-		dosym /usr/bin/rsvg-convert /usr/bin/rsvg || die
-	else
-	echo "There is no rsvg support installed"
 	fi
 }
 
