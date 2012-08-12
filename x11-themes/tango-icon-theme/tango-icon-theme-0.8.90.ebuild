@@ -3,13 +3,13 @@
 # $Header: /var/cvsroot/gentoo-x86/x11-themes/tango-icon-theme/tango-icon-theme-0.8.90.ebuild,v 1.10 2010/07/08 02:01:01 ssuominen Exp $
 
 EAPI=2
-SLREV=
+SLREV=1
 inherit gnome2-utils
 
 DESCRIPTION="SVG and PNG icon theme from the Tango project"
 HOMEPAGE="http://tango.freedesktop.org"
 SRC_URI="http://tango.freedesktop.org/releases/${P}.tar.gz
-	branding? ( http://dl.dropbox.com/u/1338709/x11-themes/fdo-icons-rogentos${SLREV}.tar.xz )"
+	branding? ( http://dl.dropbox.com/u/1338709/x11-themes/fdo-icons-rogentos${SLREV}.tar.gz )"
 
 LICENSE="public-domain"
 SLOT="0"
@@ -39,7 +39,7 @@ src_install() {
 	dodoc AUTHORS ChangeLog README
 
 	if use branding; then
-		# replace tango icon start-here.{png,svg} with Sabayon ones
+		# replace tango icon start-here.{png,svg} with Rogentos ones
 		for dir in "${D}"/usr/share/icons/Tango/*/places; do
 			base_dir=$(dirname "${dir}")
 			icon_dir=$(basename "${base_dir}")
@@ -59,6 +59,14 @@ src_install() {
 	fi
 }
 
-pkg_preinst() {	gnome2_icon_savelist; }
-pkg_postinst() { gnome2_icon_cache_update; }
-pkg_postrm() { gnome2_icon_cache_update; }
+pkg_preinst() {
+	gnome2_icon_savelist; 
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update;
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update;
+}
