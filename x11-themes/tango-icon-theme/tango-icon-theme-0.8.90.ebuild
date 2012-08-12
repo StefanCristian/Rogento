@@ -56,6 +56,8 @@ src_install() {
 
 	if "[ -f /usr/bin/rsvg ]"; then
 		dosym /usr/bin/rsvg-convert /usr/bin/rsvg || die
+	else
+	echo "There is no rsvg support installed"
 	fi
 }
 
