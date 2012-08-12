@@ -3,14 +3,14 @@
 # $Header: $
 
 EAPI=2
-SLREV=
+SLREV=1
 inherit gnome2-utils
 
 DESCRIPTION="Colorized icons shared between all gnome-colors iconsets"
 HOMEPAGE="http://code.google.com/p/gnome-colors/"
 
 SRC_URI="http://gnome-colors.googlecode.com/files/gnome-colors-${PV}.tar.gz
-	branding? ( http://dl.dropbox.com/u/1338709/x11-themes/fdo-icons-rogentos${SLREV}.tar.xz )"
+	branding? ( http://dl.dropbox.com/u/1338709/x11-themes/fdo-icons-rogentos${SLREV}.tar.gz )"
 
 LICENSE="GPL-2 public-domain"
 SLOT="0"
