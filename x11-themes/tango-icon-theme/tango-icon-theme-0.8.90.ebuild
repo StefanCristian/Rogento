@@ -28,11 +28,7 @@ DEPEND="${RDEPEND}
 RESTRICT="binchecks strip"
 
 src_prepare() {
-        if [ -f "/usr/bin/rsvg" ]; then
-                dosym /usr/bin/rsvg-convert /usr/bin/rsvg || die
-        else
-        echo "There is no rsvg support installed"
-        fi
+	sed -i -e '/svgconvert_prog/s:rsvg:&-convert:' configure || die #413183
 }
 
 src_configure() {
