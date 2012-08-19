@@ -9,7 +9,7 @@ inherit base mount-boot
 
 DESCRIPTION="Rogentos GRUB2 Images"
 HOMEPAGE="http://www.rogentos.ro"
-SRC_URI="http://dl.dropbox.com/u/1338709/${CATEGORY}/${PN}/${PN}-${PVR}.tar.xz"
+SRC_URI="http://dl.dropbox.com/u/1338709/${CATEGORY}/${PN}/${PN}-${PVR}.tar.gz"
 LICENSE="CCPL-Attribution-ShareAlike-3.0"
 SLOT="0"
 
