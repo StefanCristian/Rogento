@@ -56,7 +56,7 @@ src_prepare(){
 
 src_install () {
 
-	local PKT_HOME="/opt/pt/"
+	local PKT_HOME="/opt/pt/${PN}-${PV}/"
 
 	dodir "${PKT_HOME}"
 	cp -R "${S}/"   "${D}${PKT_HOME}"  || die "Install failed!"
