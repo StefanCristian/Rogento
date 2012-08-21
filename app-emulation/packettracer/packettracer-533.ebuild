@@ -56,10 +56,10 @@ src_prepare(){
 
 src_install () {
 
-	local PKT_HOME="/opt/pt/${PN}-${PV}/"
+	local PKT_HOME="/opt/pt/"
 
 	dodir "${PKT_HOME}"
-	cp -R "${S}/"   "${D}${PKT_HOME}"  || die "Install failed!"
+	cp -R "${S}"/*   "${D}${PKT_HOME}"  || die "Install failed!"
 
 	doicon "${S}/${PN}-${PV}/art/"{app,pka,pkt,pkz}.{ico,png}
 
