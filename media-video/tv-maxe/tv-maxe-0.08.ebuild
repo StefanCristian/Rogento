@@ -4,6 +4,8 @@
 
 EAPI=3
 
+inherit eutils
+
 DESCRIPTION="Program to view free channels"
 HOMEPAGE="http://code.google.com/p/tv-maxe"
 SRC_URI="http://tv-maxe.googlecode.com/files/${PN}-${PV}.tar.gz"
@@ -35,4 +37,7 @@ src_install() {
 	fperms 755 /usr/share/${PN}/${PN} || die "Errors on permission giving"
 	fperms 755 /usr/share/${PN} || die "Errors on permission folder giving"
 	dosym /usr/share/${PN}/${PN} /usr/bin/${PN} || die "Not too many symbolic links"
+	make_desktop_entry tv-maxe TV-maxe \
+		"/usr/share/tv-maxe/tvmaxe_mini.png" \
+		Video
 }
