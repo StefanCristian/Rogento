@@ -20,9 +20,9 @@ DEPEND=""
 S="${WORKDIR}"
 
 src_install() {
-	cd "${S}"
-	install -D -m755 awemenugen.sh "${PN}"/opt/${PN}/awemenugen.sh
-	install -D -m755 awemenugen.sh "${PN}"/usr/bin/awemenugen
-	install -D -m644 awemenugen.jar "${PN}"/opt/${PN}/awemenugen.jar
-	install -D -m644 lib/freemarker.jar "${PN}"/opt/${PN}/lib/freemarker.jar
+	cd "${S}" || die
+	install -D -m755 awemenugen.sh "${PN}"/opt/${PN}/awemenugen.sh || die
+	install -D -m755 awemenugen.sh "${PN}"/usr/bin/awemenugen || die
+	install -D -m644 awemenugen.jar "${PN}"/opt/${PN}/awemenugen.jar || die
+	install -D -m644 lib/freemarker.jar "${PN}"/opt/${PN}/lib/freemarker.jar || die
 }
