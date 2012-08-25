@@ -9,7 +9,7 @@ inherit eutils mount-boot rogentos-artwork
 
 DESCRIPTION="Offical Rogentos Linux Core Artwork"
 HOMEPAGE="http://www.rogentos.ro"
-SRC_URI="http://dl.dropbox.com/u/1338709/${CATEGORY}/${PN}/${PN}-${PVR}.tar.xz"
+SRC_URI="http://pkg2.rogentos.ro/~noxis/distro/${CATEGORY}/${PN}/${PN}-${PVR}.tar.xz"
 
 LICENSE="CCPL-Attribution-ShareAlike-3.0"
 SLOT="0"
