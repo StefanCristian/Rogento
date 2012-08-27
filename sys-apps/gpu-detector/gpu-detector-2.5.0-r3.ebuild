@@ -11,7 +11,7 @@ SLOT="0"
 KEYWORDS="x86 amd64 ppc"
 IUSE=""
 
-RDEPEND="app-misc/rongetoslive-tools"
+RDEPEND="app-misc/rogentoslive-tools"
 DEPEND=""
 
 src_unpack () {
