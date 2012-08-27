@@ -98,8 +98,8 @@ function xorg_regen
 {
     is_root || return
 
-    if [[ ! -f "/etc/X11/xorg.conf.sabayon" ]]; then
-        cat > /etc/X11/xorg.conf.sabayon <<EOF
+    if [[ ! -f "/etc/X11/xorg.conf.rogentos" ]]; then
+        cat > /etc/X11/xorg.conf.rogentos <<EOF
 Section "Module"
     SubSection  "extmod"
        Option    "omit xfree86-dga"
