@@ -6,7 +6,8 @@ EAPI=4
 
 DESCRIPTION="Zukitwo-Brave Rogentos theme"
 HOMEPAGE="http://rogentos.ro"
-SRC_URI="http://dl.dropbox.com/u/1338709/${CATEGORY}/${PN}.tar.gz"
+SRC_URI="http://pkg2.rogentos.ro/~noxis/distro/${CATEGORY}/${PN}.tar.gz
+	http://pkg.rogentos.ro/~rogentos/distro/${CATEGORY}/${PN}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

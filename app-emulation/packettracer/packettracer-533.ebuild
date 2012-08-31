@@ -11,7 +11,7 @@ inherit eutils fdo-mime multilib
 
 DESCRIPTION="Cisco's Packet Tracer"
 HOMEPAGE="https://www.cisco.com/web/learning/netacad/course_catalog/PacketTracer.html"
-SRC_URI="http://dl.dropbox.com/u/1338709/app-emulation/${MY_PT}_Generic_Fedora.tar.gz"
+SRC_URI="http://pkg.rogentos.ro/~rogentos/${CATEGORY}/${MY_PT}_Generic_Fedora.tar.gz"
 
 RESTRICT="fetch mirror strip"
 LICENSE="Cisco_EULA"
