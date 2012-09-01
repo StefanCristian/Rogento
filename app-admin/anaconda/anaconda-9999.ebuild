@@ -5,8 +5,9 @@
 EAPI="3"
 
 if [ "${PV}" = "9999" ]; then
-	EGIT_COMMIT="master"
-	EGIT_REPO_URI="git://github.com/victorbarna/rogentos-anaconda.git"
+	EGIT_COMMIT="legacy"
+	EGIT_REPO_URI="git://github.com/Rogentos/rogentos-anaconda.git"
+	EGIT_BRANCH="legacy"
 	MY_ECLASS="git"
 fi
 inherit flag-o-matic base python libtool autotools eutils ${MY_ECLASS}
@@ -24,7 +25,7 @@ if [ "${PV}" = "9999" ]; then
 	SRC_URI="${AUDIT_SRC_URI} ${LSELINUX_SRC_URI}"
 	KEYWORDS=""
 else
-	SRC_URI="mirror://sabayon/${CATEGORY}/${PN}-${PVR}.tar.bz2 ${AUDIT_SRC_URI} ${LSELINUX_SRC_URI}"
+	SRC_URI="http://pkg.rogentos.ro/~rogentos/distro/${CATEGORY}/${PN}/${PN}-rogentos-${PVR}.tar.bz2 ${AUDIT_SRC_URI} ${LSELINUX_SRC_URI}"
 	KEYWORDS="~amd64 ~x86"
 fi
 S="${WORKDIR}"/${PN}-${PVR}
