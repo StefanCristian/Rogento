@@ -11,7 +11,7 @@ depend() {
 start() {
 
 	SABAYON_USER="sabayonmce"
-	source /sbin/sabayon-functions.sh
+	source /sbin/rogentos-functions.sh
 
 	if sabayon_is_mce; then
 

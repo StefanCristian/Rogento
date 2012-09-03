@@ -23,7 +23,7 @@ gpus_same() {
 }
 
 start() {
-    . /sbin/sabayon-functions.sh
+    . /sbin/rogentos-functions.sh
     local do_redetect
     do_redetect=$(cat /proc/cmdline | grep "gpudetect")
 

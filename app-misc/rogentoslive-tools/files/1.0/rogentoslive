@@ -2,7 +2,7 @@
 # Copyright 2004-2009 Fabio Erculiani
 # Distributed under the terms of the GNU General Public License v2 
 
-. /sbin/sabayon-functions.sh
+. /sbin/rogentos-functions.sh
 
 depend() {
 	after x-setup

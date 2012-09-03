@@ -9,7 +9,7 @@ depend() {
 
 start() {
 
-	source /sbin/sabayon-functions.sh
+	source /sbin/rogentos-functions.sh
 
         if sabayon_is_gui_install; then
                 ebegin "Rogentos Linux GUI Installer service"
