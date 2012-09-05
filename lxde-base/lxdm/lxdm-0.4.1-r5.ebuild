@@ -36,7 +36,7 @@ src_prepare() {
 	# Backported, drop it when 0.4.2
 	epatch "${FILESDIR}/${P}-git-fix-null-pointer-deref.patch"
 	# Rogentos specific theme patch
-	epatch "${FILESDIR}/${P}-rogentos-1-theme.patch"
+	epatch "${FILESDIR}/rogentos-${PN}-1.patch"
 	# Fix sessions with arguments, see:
 	# http://lists.sabayon.org/pipermail/devel/2012-January/007582.html
 	epatch "${FILESDIR}/${P}-fix-session-args.patch"

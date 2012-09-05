@@ -2,7 +2,7 @@
 +++ lxdm-0.4.0/data/lxdm.conf.in
 @@ -27,7 +27,7 @@ greeter=@FULL_LIBEXECDIR@/lxdm-greeter-gtk
  gtk_theme=Clearlooks
- 
+
  ## background of the greeter
 -bg=/usr/share/backgrounds/default.png
 +bg=/usr/share/lxdm/themes/Rogentos/kgdm.png
@@ -14,7 +14,7 @@
  
  ## the theme of greeter
 -theme=Industrial
-+theme=Sabayon
++theme=Rogentos
  
  [input]
  
