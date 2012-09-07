@@ -5,9 +5,8 @@
 EAPI="3"
 
 if [ "${PV}" = "9999" ]; then
-	EGIT_COMMIT="legacy"
+	EGIT_COMMIT="master"
 	EGIT_REPO_URI="git://github.com/Rogentos/rogentos-anaconda.git"
-	EGIT_BRANCH="legacy"
 	MY_ECLASS="git"
 fi
 inherit flag-o-matic base python libtool autotools eutils ${MY_ECLASS}

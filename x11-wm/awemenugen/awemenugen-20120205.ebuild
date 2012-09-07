@@ -6,7 +6,7 @@ EAPI=3
 
 inherit eutils
 
-DESCRIPTION="Lunduke made Linux Tycoon"
+DESCRIPTION="X11 WM Menu"
 HOMEPAGE=""
 SRC_URI="mirror://sourceforge/project/${PN}/${P}.tar.gz"
 
@@ -17,12 +17,20 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND=""
 DEPEND=""
 
-S="${WORKDIR}"
+S="${WORKDIR}/${PN}"
 
 src_install() {
 	cd "${S}" || die
-	install -D -m755 awemenugen.sh "${PN}"/opt/${PN}/awemenugen.sh || die
-	install -D -m755 awemenugen.sh "${PN}"/usr/bin/awemenugen || die
-	install -D -m644 awemenugen.jar "${PN}"/opt/${PN}/awemenugen.jar || die
-	install -D -m644 lib/freemarker.jar "${PN}"/opt/${PN}/lib/freemarker.jar || die
+	insinto /opt/${PN}/ || die
+	doins "${S}"/${PN}.sh || die
+	fperms 755 ${PN}.sh || die
+	doins "${S}"/${PN}.jar || die
+	fperms 644 ${PN}.jar || die
+
+	insinto /opt/${PN}/lib/ || die
+	doins "${S}"/lib/freemarker.jar || die
+	fperms 644 lib/freemarker.jar || die
+
+	insinto /usr/bin/ || die
+	newbin "${S}"/awemenugen.sh awemenugen || die
 }

@@ -22,4 +22,5 @@ S="${WORKDIR}"
 src_install() {
 	insinto /sbin || die
 	doins ${PN} || die
+	fperms 755 ${PN} || die
 }

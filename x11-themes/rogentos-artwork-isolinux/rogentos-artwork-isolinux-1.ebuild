@@ -22,7 +22,7 @@ RDEPEND=""
 S="${WORKDIR}"
 
 src_install () {
-	dodir /usr/share/backgrounds/isolinux
-	insinto /usr/share/backgrounds/isolinux
-	doins back.jpg
+	dodir /usr/share/backgrounds/isolinux || die
+	insinto /usr/share/backgrounds/isolinux || die
+	doins back.jpg || die
 }
