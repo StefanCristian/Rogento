@@ -229,6 +229,9 @@ src_prepare() {
 	# but rather init_opts=single
 	epatch "${FILESDIR}"/${PN}-2.00-genkernel-initramfs-single.patch
 
+	# Rogentos patch for customization
+	epatch "${FILESDIR}"/${P}-rogentos-patch.patch	
+
 	if [[ ${PV} != 9999 ]]; then
 		epatch "${FILESDIR}/${P}-parallel-make.patch" #424231
 		epatch "${FILESDIR}/${P}-no-gets.patch" #424703
