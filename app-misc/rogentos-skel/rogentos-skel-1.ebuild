@@ -23,9 +23,9 @@ src_install () {
 	insinto /etc/bash/ || die "Failed to insinto"
 	doins "${S}"/skel/.bash/bashrc /etc/bash/ || die "Cannot copy bashrc"
 
-	insinto /etc/grub.d/ || die "Failed to insinto"
-	doins "${S}"/skel/.grub.d/10_linux /etc/grub.d/ || die "Cannot copy 10 linux"
-	fperms 755 /etc/grub.d/10_linux || die "Cannot change perm"
+	#insinto /etc/grub.d/ || die "Failed to insinto"
+	#doins "${S}"/skel/.grub.d/10_linux /etc/grub.d/ || die "Cannot copy 10 linux"
+	#fperms 755 /etc/grub.d/10_linux || die "Cannot change perm"
 
 	insinto /etc/default/ || die "Failed to insinto"
 	doins "${S}"/skel/.default/grub /etc/default/ || die "Cannot copy grub"
