@@ -10,7 +10,7 @@
 # their associated values. 
 
 GRUB_DEFAULT=saved
-GRUB_DISTRIBUTOR="Sabayon"
+GRUB_DISTRIBUTOR="Rogentos"
 
 GRUB_HIDDEN_TIMEOUT=0
 GRUB_HIDDEN_TIMEOUT_QUIET=true
