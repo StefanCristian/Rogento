@@ -36,7 +36,10 @@ src_unpack () {
 src_install () {
 	insinto /etc
 	doins rogentos-release
-	dosym /etc/rogentos-release /etc/rogentos-release
+	dosym /etc/rogentos-release /etc/system-release
+	# Adding sabayon anti-fork bomb
+        insinto /etc/security/limits.d
+        doins "${FILESDIR}/00-sabayon-anti-fork-bomb.conf"
 }
 
 pkg_postinst() {
