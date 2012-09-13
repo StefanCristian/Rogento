@@ -22,8 +22,6 @@ src_install() {
 	cd "${S}"
 	dodir /usr/bin/${PN} || die "Error. Could not create directory."
 	insinto /usr/bin/${PN} || die "Error. Could not set install path."
-	doins  "${S}"/${PN}-${PV}/* || die " Error. Could not install."
-	doins "${S}"/${PN}-${PV}/".subscrieri" || die "MERGI IN PULA MEA"
+	doins -r  "${S}"/${PN}-${PV}/* || die " Error. Could not install."
 	fperms 755 /usr/bin/${PN}/${PN} || die "Error. Permissions not set."
-	#fperms 666 /usr/bin/".subscrieri" || die "Error. Permissions not set."
 }
