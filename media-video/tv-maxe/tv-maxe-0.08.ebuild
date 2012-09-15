@@ -20,7 +20,8 @@ RDEPEND="dev-python/imaging
 	virtual/ffmpeg
 	dev-python/python-virtkey
 	dev-python/pygtk
-	dev-lang/python"
+	dev-lang/python
+	net-p2p/sopcast-bin"
 DEPEND=""
 
 S="${WORKDIR}"
