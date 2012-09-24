@@ -55,8 +55,8 @@ QA_TEXTRELS_x86="
 QA_TEXTRELS_x86_fbsd="boot/modules/nvidia.ko
 	usr/lib/opengl/nvidia/lib/libGL.so.1
 	usr/lib/libnvidia-glcore.so.1
+	usr/lib/libvdpau_nvidia.so.1
 	usr/lib/libnvidia-cfg.so.1
-	usr/lib/libnvidia-ml.so.1
 	usr/lib/opengl/nvidia/extensions/libglx.so.1
 	usr/lib/xorg/modules/drivers/nvidia_drv.so"
 
@@ -340,9 +340,6 @@ src_install() {
 	exeinto /opt/bin/
 	doexe ${NV_EXEC}/nvidia-xconfig || die
 	doexe ${NV_EXEC}/nvidia-debugdump || die
-	if use gtk; then
-		doexe ${NV_EXEC}/nvidia-settings || die
-	fi
 	doexe ${NV_EXEC}/nvidia-bug-report.sh || die
 	if use kernel_linux; then
 		doexe ${NV_EXEC}/nvidia-smi || die

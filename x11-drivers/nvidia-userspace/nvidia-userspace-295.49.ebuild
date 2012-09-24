@@ -340,9 +340,6 @@ src_install() {
 	exeinto /opt/bin/
 	doexe ${NV_EXEC}/nvidia-xconfig || die
 	doexe ${NV_EXEC}/nvidia-debugdump || die
-	if use gtk; then
-		doexe ${NV_EXEC}/nvidia-settings || die
-	fi
 	doexe ${NV_EXEC}/nvidia-bug-report.sh || die
 	if use kernel_linux; then
 		doexe ${NV_EXEC}/nvidia-smi || die
