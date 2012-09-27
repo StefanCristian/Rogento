@@ -139,6 +139,8 @@ sabayon_setup_gui_installer() {
 	local dmrc_file="/home/${LIVE_USER}/.dmrc"
 	local flux_dir="/home/${LIVE_USER}/.fluxbox"
 	local flux_startup_file="${flux_dir}/startup"
+	chown ${LIVE_USER} "${dmrc_file}"
+	chown ${LIVE_USER} "/home/${LIVE_USER}/.fluxbox
 	if [ ! -d "${flux_dir}" ]; then
 		mkdir "${flux_dir}" && chown "${LIVE_USER}" "${flux_dir}"
 	fi
@@ -152,6 +154,8 @@ sabayon_setup_gui_installer() {
 		# cross fingers
 		/usr/libexec/gdm-set-default-session fluxbox
 	fi
+        chown ${LIVE_USER} "${dmrc_file}"
+        chown ${LIVE_USER} "/home/${LIVE_USER}/.fluxbox
 }
 
 # This function reads /etc/skel/.dmrc and properly
