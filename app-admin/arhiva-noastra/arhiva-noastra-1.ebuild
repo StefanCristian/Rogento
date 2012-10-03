@@ -29,8 +29,8 @@ src_prepare() {
 
 src_install() {
 	if use configurare ; then
-		dodir /home/$USER/ || die #Creaza director
-		insinto /home/$USER/ || die #Intra in director
+		dodir /home/$USER/test || die #Creaza director
+		insinto /home/$USER/test || die #Intra in director
 		doins creation.sh || die #Copiaza in directorul creat
 	fi
 
