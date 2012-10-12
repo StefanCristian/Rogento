@@ -1,12 +1,12 @@
-# Copyright 2004-2010 Sabayon
+# Copyright 2004-2012 Rogentos
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI="3"
 
-if [ "${PV}" = "9999" ]; then
+if [ "${PV}" = "0.1" ]; then
 	EGIT_COMMIT="master"
-	EGIT_REPO_URI="git://github.com/victorbarna/rogentos-anaconda.git"
+	EGIT_REPO_URI="git://github.com/nightsh/rogentos-anaconda.git"
 	MY_ECLASS="git"
 fi
 inherit flag-o-matic base python libtool autotools eutils ${MY_ECLASS}
@@ -18,13 +18,13 @@ SEPOL_VER="2.0"
 LSELINUX_VER="2.0.94"
 LSELINUX_SRC_URI="http://userspace.selinuxproject.org/releases/20100525/devel/libselinux-${LSELINUX_VER}.tar.gz"
 
-DESCRIPTION="Sabayon Redhat Anaconda Installer Port"
-HOMEPAGE="http://gitweb.sabayon.org/?p=anaconda.git;a=summary"
-if [ "${PV}" = "9999" ]; then
+DESCRIPTION="Rogentos Redhat Anaconda Installer Port"
+HOMEPAGE="http://rogentos.ro/"
+if [ "${PV}" = "0.1" ]; then
 	SRC_URI="${AUDIT_SRC_URI} ${LSELINUX_SRC_URI}"
 	KEYWORDS=""
 else
-	SRC_URI="mirror://sabayon/${CATEGORY}/${PN}-${PVR}.tar.bz2 ${AUDIT_SRC_URI} ${LSELINUX_SRC_URI}"
+	SRC_URI="http://pkg.rogentos.ro/~rogentos/distro/${CATEGORY}/${PN}/${PN}-rogentos-${PVR}.tar.bz2 ${AUDIT_SRC_URI} ${LSELINUX_SRC_URI}"
 	KEYWORDS="~amd64 ~x86"
 fi
 S="${WORKDIR}"/${PN}-${PVR}
@@ -33,7 +33,7 @@ LSELINUX_S="${WORKDIR}/libselinux-${LSELINUX_VER}"
 
 LICENSE="GPL-2 public-domain"
 SLOT="0"
-IUSE="+ipv6 +nfs ldap"
+IUSE="-ipv6 +nfs ldap"
 RESTRICT="nomirror"
 
 AUDIT_DEPEND="dev-lang/swig"
@@ -59,7 +59,7 @@ RDEPEND="${COMMON_DEPEND} ${AUDIT_RDEPEND}
 #   x11-libs/pango
 
 src_unpack() {
-	if [ "${PV}" = "9999" ]; then
+	if [ "${PV}" = "0.1" ]; then
 		git_src_unpack
 		base_src_unpack
 	else
@@ -166,7 +166,7 @@ src_compile() {
 		pywrap || die
 
         # add compatibility aliases to swig wrapper
-        cat "${FILESDIR}/compat.py" >> "${LSELINUX_S}/src/selinux.py" || die
+#        cat "${FILESDIR}/compat.py" >> "${LSELINUX_S}/src/selinux.py" || die
 
 }
 
