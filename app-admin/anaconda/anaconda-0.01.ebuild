@@ -5,9 +5,7 @@
 EAPI="3"
 
 if [ "${PV}" = "0.01" ]; then
-	EGIT_MASTER="legacy"
-	EGIT_BRANCH="${EGIT_MASTER}"
-	EGIT_COMMIT="${EGIT_BRANCH}"
+	EGIT_COMMIT="legacy"
 	EGIT_REPO_URI="git@github.com:Rogentos/rogentos-anaconda.git"
 	MY_ECLASS="git-2"
 fi
