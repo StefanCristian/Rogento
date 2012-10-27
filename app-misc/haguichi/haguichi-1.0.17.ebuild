@@ -40,11 +40,11 @@ src_compile() {
 src_install() {
 	cd /usr/lib64/
 	dodir ${PN} || die
-	doins "${S}"/bin/Release/haguichi ${PN} || die
-        doins "${S}"/bin/Release/Haguichi.exe ${PN} || die
+	doins "${S}"/bin/Release/haguichi || die
+        doins "${S}"/bin/Release/Haguichi.exe || die
 
 	cd /usr/share/icons || die
-	doins "${S}"/bin/Release/icons/*
+	doins "${S}"/bin/Release/icons/* || die
 
 	cd /usr/share/applications || die
 	doins "${S}"/bin/Release/applications/Haguichi || die
