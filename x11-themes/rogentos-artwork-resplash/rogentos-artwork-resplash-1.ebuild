@@ -22,9 +22,9 @@ S="${WORKDIR}/${PN}"
 
 pkg_config() {
         exec equo mask elementary-icon-themes@sabayonlinux.org || die
+	exec equo mask elementary-icon-themes@sabayon-limbo || die
+	equo mask elementary-icon-themes@sabayonlinux.org || die
         ewarn "This is ONLY for Sabayon-derived linux users" || die
-        eecho "=x11-themes/elementary-icon-theme-2.7.1@sabayonlinux.org
-        =x11-themes/elementary-icon-theme-2.7.1@sabayon-limbo" /etc/entropy/packages/package.mask || die
 
         # mount boot first
         mount-boot_mount_boot_partition
