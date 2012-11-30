@@ -6,8 +6,8 @@ EAPI=4
 
 DESCRIPTION="Kogaion elementary icons"
 HOMEPAGE="https://github.com/bionel/kogaion-src"
-SRC_URI="https://dl.dropbox.com/u/51887609/kogaion-src/${CATEGORY}/${PN}/${PN}-${PVR}.tar.gz"
-
+SRC_URI="http://pkg.rogentos.ro/~rogentos/${CATEGORY}/${PN}/${PN}-${PVR}.tar.gz
+	http://pkg2.rogentos.ro/~noxis/${CATEGORY}/${PN}/${PN}-${PVR}.tar.gz"
 LICENSE="GPL"
 SLOT="0"
 KEYWORDS="~arm ~amd64 ~x86"
