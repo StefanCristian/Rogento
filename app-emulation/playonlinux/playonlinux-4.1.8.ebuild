@@ -24,6 +24,7 @@ RDEPEND="app-emulation/wine
 	app-arch/p7zip
 	app-arch/unzip
 	app-crypt/gnupg
+	net-analyzer/netcat6
 	dev-python/wxpython:2.8
 	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )
 	net-misc/wget
