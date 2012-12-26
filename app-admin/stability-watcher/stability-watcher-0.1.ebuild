@@ -16,15 +16,12 @@ IUSE=""
 RDEPEND="x11-themes/rogentos-artwork-core"
 DEPEND="${RDEPEND}"
 
-S="${WORKDIR}/${PN}"
+S="${WORKDIR}"
 
-pkg_config() {
-	cd "${S}" || die
-	touch sw.sh || die
-	echo "We are watching you" >> sw.sh|| die
-	sed -i 's/watching/serving/g' sw.sh || die
-	einfo "For bugs report to"
-	einfo "BlackNoxis"
+src_install() {
+        ewarn "This is available for only Entropy package manager" || die
+        insinto /etc/entropy/packages/
+        doins "${S}"/03-rogentos-common.mask
 }
 
 pkg_postinst() {

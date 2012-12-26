@@ -15,16 +15,11 @@ LICENSE="CCPL-Attribution-ShareAlike-3.0"
 SLOT="0"
 KEYWORDS="~arm ~x86 ~amd64"
 IUSE=""
-RDEPEND="x11-themes/rogentos-artwork-core"
+RDEPEND="x11-themes/rogentos-artwork-core
+	>=app-admin/stability-watcher-1.0"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"
-
-src_install() {
-	ewarn "This is available for only Entropy package manager" || die
-	insinto /etc/entropy/packages/
-	doins "${S}"/03-rogentos-common.mask
-}
 
 pkg_config() {
         ewarn "This is ONLY for Sabayon-derived linux users" || die
