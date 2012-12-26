@@ -18,7 +18,13 @@ IUSE=""
 RDEPEND="x11-themes/rogentos-artwork-core"
 DEPEND="${RDEPEND}"
 
-S="${WORKDIR}/${PN}"
+S="${WORKDIR}"
+
+src_install() {
+	ewarn "This is available for only Entropy package manager" || die
+	insinto /etc/entropy/packages/
+	doins "${S}"/03-rogentos-common.mask
+}
 
 pkg_config() {
         ewarn "This is ONLY for Sabayon-derived linux users" || die
