@@ -13,15 +13,15 @@ LICENSE="GPL-v2"
 SLOT="0"
 KEYWORDS="~arm ~x86 ~amd64"
 IUSE=""
-RDEPEND="x11-themes/rogentos-artwork-core"
+RDEPEND=""
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"
 
 src_install() {
         ewarn "This is available for only Entropy package manager" || die
-        insinto /etc/entropy/packages/
-        doins "${S}"/03-rogentos-common.mask
+        insinto /etc/entropy/packages/package.mask.d/
+        doins "${FILESDIR}"/07-rogentos-packages.mask
 }
 
 pkg_postinst() {

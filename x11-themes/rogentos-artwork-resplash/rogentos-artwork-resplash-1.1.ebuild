@@ -17,14 +17,11 @@ KEYWORDS="~arm ~x86 ~amd64"
 IUSE=""
 RDEPEND="x11-themes/rogentos-artwork-core
 	>=app-admin/stability-watcher-1.0
-	x11-themes/rogentos-artwork-core
         app-misc/rogentos-version  
         x11-themes/rogentos-artwork-isolinux  
-        app-misc/rogentoslive-tools    
         app-admin/kernel-schimbare   
         x11-themes/zukitwo-brave      
         x11-themes/rogentos-artwork-grub    
-        x11-themes/rogentos-artwork-lxde    
         app-misc/rogentos-skel 
         sys-apps/gpu-detector"
 DEPEND="${RDEPEND}"
