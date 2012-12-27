@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~arm ~x86 ~amd64"
 IUSE=""
 RDEPEND="x11-themes/rogentos-artwork-core
-	>=app-admin/stability-watcher-1.0
+	>=app-admin/stability-watcher-0.1
         app-misc/rogentos-version  
         x11-themes/rogentos-artwork-isolinux  
         app-admin/kernel-schimbare   
