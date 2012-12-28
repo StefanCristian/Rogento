@@ -11,7 +11,7 @@
 >=app-misc/sabayon-skel-9@sabayon-weekly
 
 >=sys-boot/grub-2.00@sabayon-limbo
->=sys-boot/grub-2.00@sabayonlinux.rg
+>=sys-boot/grub-2.00@sabayonlinux.org
 >=sys-boot/grub-2.00@sabayon-weekly
 
 >=kde-base/oxygen-icons-4.9.2@sabayon-weekly
@@ -35,7 +35,7 @@
 >=lxde-base/lxdm-0.4.1-r5@sabayon-limbo
 
 >=sys-boot/grub-2.00@sabayon-limbo
->=sys-boot/grub-2.00@sabayonlinux.rg
+>=sys-boot/grub-2.00@sabayonlinux.org
 >=sys-boot/grub-2.00@sabayon-weekly
 
 >=kde-base/oxygen-icons-4.9.2@sabayon-weekly
