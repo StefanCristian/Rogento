@@ -16,6 +16,7 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="!app-misc/livecd-tools
+	!app-misc/sabayonlive-tools
 	app-admin/eselect-opengl
 	dev-util/dialog
 	sys-apps/gawk
