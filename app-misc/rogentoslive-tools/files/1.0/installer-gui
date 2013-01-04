@@ -5,6 +5,7 @@
 depend() {
     before xdm      
     after rogentos
+    need dbus
 }
 
 start() {
