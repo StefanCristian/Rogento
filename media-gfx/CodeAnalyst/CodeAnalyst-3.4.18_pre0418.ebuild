@@ -26,7 +26,7 @@ src_configure() {
         econf \
 		$(use_enable debug) \
 		$(use_enable optimization) \
-		$(use_enable X)
+		$(use_with X)
 }
 
 src_install() {
