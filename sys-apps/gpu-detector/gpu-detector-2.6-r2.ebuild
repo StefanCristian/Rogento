@@ -9,7 +9,8 @@ SLOT="0"
 KEYWORDS="x86 amd64 ppc"
 IUSE=""
 
-RDEPEND=">=app-misc/rogentoslive-tools-1.0"
+RDEPEND=">=app-misc/rogentoslive-tools-1.0
+	!>sys-apps/gpu-detector-2.6"
 DEPEND=""
 
 src_unpack () {
