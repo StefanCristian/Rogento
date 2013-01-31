@@ -48,7 +48,7 @@ make_args() {
 		MAKE_ARGS="${MAKE_ARGS} OS=FreeBSD"
 		brand="FreeBSD"
 	fi
-	export BRANDING="Sabayon ${brand}"
+	export BRANDING="Rogentos ${brand}"
 }
 
 pkg_setup() {
@@ -68,7 +68,7 @@ src_unpack() {
 	sed -i "/^DIR/s:/openrc:/${PF}:" doc/Makefile #241342
 	sed -i '/^CFLAGS+=.*_CC_FLAGS_SH/d' mk/cc.mk #289264
 
-	# Sabayon custom config
+	# Rogentos custom config
 	epatch "${FILESDIR}/${PN}-sabayon-config.patch"
 	epatch "${FILESDIR}/${PN}-enable-interactive.patch"
 	epatch "${FILESDIR}"/${PN}-0.5.3-disable_warns_until_migrated.patch

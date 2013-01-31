@@ -25,11 +25,15 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-  S="${S}/liteidex"
+  S="${WORKDIR}/liteidex"
   qt4-r2_src_prepare
 }
 
 src_install() {
+	insinto "${S}"
+
+	exec make_tools.sh
+
   # Go Tools
   go install -ldflags "-s" -v src/tools/goastview
   go install -ldflags "-s" -v src/tools/godocview

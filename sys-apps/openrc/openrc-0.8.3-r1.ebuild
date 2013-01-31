@@ -49,7 +49,7 @@ make_args() {
 	if use selinux; then
 			MAKE_ARGS="${MAKE_ARGS} MKSELINUX=yes"
 	fi
-	export BRANDING="Sabayon ${brand}"
+	export BRANDING="Rogentos ${brand}"
 }
 
 pkg_setup() {
@@ -73,7 +73,7 @@ src_prepare() {
 	# Allow user patches to be applied without modifying the ebuild
 	epatch_user
 
-	# Sabayon custom config
+	# Rogentos custom config
 	epatch "${FILESDIR}/${PN}-sabayon-config.patch"
 	epatch "${FILESDIR}/${PN}-enable-interactive.patch"
 	epatch "${FILESDIR}"/${PN}-0.5.3-disable_warns_until_migrated.patch
@@ -146,7 +146,7 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/openrc.logrotate openrc
 
-	# Sabayon customization, do not bug user with annoying updates (for now)
+	# Rogentos customization, do not bug user with annoying updates (for now)
 	mv "${D}"/etc/conf.d/keymaps "${D}"/etc/conf.d/keymaps.example || \
 		die "cannot move keymaps"
 	mv "${D}"/etc/conf.d/hwclock "${D}"/etc/conf.d/hwclock.example || \
@@ -182,7 +182,7 @@ add_boot_init_mit_config() {
 }
 
 pkg_preinst() {
-	# Sabayon customization, still protect conf files from being removed
+	# Rogentos customization, still protect conf files from being removed
 	# as no longer owned by package
 	for conf_file in "${ROOT}/etc/conf.d/keymaps" "${ROOT}/etc/conf.d/hwclock"; do
 		if [ -e "${conf_file}" ]; then
@@ -364,7 +364,7 @@ migrate_from_baselayout_1() {
 }
 
 pkg_postinst() {
-	# Sabayon customization, do not bug user with tedious, useless config file updates
+	# Rogentos customization, do not bug user with tedious, useless config file updates
 	for conf_file in "${ROOT}/etc/conf.d/keymaps" "${ROOT}/etc/conf.d/hwclock"; do
 		if [ -e "${conf_file}.ebuild_preserved" ]; then
 			cp -p "${conf_file}.ebuild_preserved" "${conf_file}" # don't die

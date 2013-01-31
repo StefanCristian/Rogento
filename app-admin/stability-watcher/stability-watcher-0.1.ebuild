@@ -13,7 +13,7 @@ LICENSE="GPL-v2"
 SLOT="0"
 KEYWORDS="~arm ~x86 ~amd64"
 IUSE=""
-RDEPEND=""
+RDEPEND="sys-apps/openrc"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"

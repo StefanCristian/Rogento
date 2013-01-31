@@ -51,7 +51,7 @@ make_args() {
 	if use selinux; then
 			MAKE_ARGS="${MAKE_ARGS} MKSELINUX=yes"
 	fi
-	export BRANDING="Sabayon ${brand}"
+	export BRANDING="Rogentos ${brand}"
 }
 
 pkg_setup() {
@@ -73,7 +73,7 @@ src_unpack() {
 	# Allow user patches to be applied without modifying the ebuild
 	epatch_user
 
-	# Sabayon custom config
+	# Rogentos custom config
 	epatch "${FILESDIR}/${PN}-sabayon-config.patch"
 	epatch "${FILESDIR}/${PN}-enable-interactive.patch"
 	epatch "${FILESDIR}"/${PN}-0.5.3-disable_warns_until_migrated.patch
