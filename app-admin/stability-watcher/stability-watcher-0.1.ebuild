@@ -22,8 +22,8 @@ src_install() {
         ewarn "This is available for only Entropy package manager" || die
         insinto /etc/entropy/packages/package.mask.d/
         doins "${FILESDIR}"/07-rogentos-packages.mask || die
-	insinto /etc/entropy/repositories.conf.d/
-	doins "${FILESDIR}"/entropy_sabayonlinux.org || die
+	#insinto /etc/entropy/repositories.conf.d/
+	#doins "${FILESDIR}"/entropy_sabayonlinux.org || die
 }
 
 pkg_postinst() {
