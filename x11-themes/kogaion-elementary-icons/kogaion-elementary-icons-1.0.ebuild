@@ -22,6 +22,6 @@ S="${WORKDIR}"
 
 src_install() {
 	insinto ${DEST} || die
-	doins -r ${S}/Kogaion-elementary || die
-	doins -r ${S}/Kogaion-elementary-dark || die
+	doins -r "${S}"/Kogaion-elementary || die
+	doins -r "${S}"/Kogaion-elementary-dark || die
 }

@@ -6,8 +6,8 @@ EAPI=4
 
 DESCRIPTION="Kogaion light GTK/XFWM theme"
 HOMEPAGE="http://rogentos.ro/"
-SRC_URI="https://pk2.rogentos.ro/~rogentos/distro/${CATEGORY}/${PN}/${PN}-${PVR}.tar.gz
-	http://pkg.rogentos.ro/~noxis/distro/${CATEGORY}/${PN}/${PN}-${PVR}.tar.gz"
+SRC_URI="https://pk2.rogentos.ro/~noxis/distro/${CATEGORY}/${PN}/${PN}-${PVR}.tar.gz
+	http://pkg.rogentos.ro/~rogentos/distro/${CATEGORY}/${PN}/${PN}-${PVR}.tar.gz"
 
 LICENSE="GPL"
 SLOT="0"
