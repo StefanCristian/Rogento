@@ -10,7 +10,8 @@ inherit base
 
 DESCRIPTION="Kogaion LXDE Artwork"
 HOMEPAGE="http://www.rogentos.ro"
-SRC_URI="http://pkg2.rogentos.ro/~noxis/distro/${CATEGORY}/${PN}/${PN}-${PVR}.tar.gz"
+SRC_URI="http://pkg2.rogentos.ro/~noxis/distro/${CATEGORY}/${PN}/${PN}-${PVR}.tar.gz
+	http://pkg.rogentos.ro/~rogentos/distro/${CATEGORY}/${PN}/${PN}-${PVR}.tar.gz"
 LICENSE="CCPL-Attribution-ShareAlike-3.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
