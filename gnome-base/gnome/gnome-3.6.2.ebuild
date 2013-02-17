@@ -14,15 +14,15 @@ SLOT="2.0" # Cannot be installed at the same time as gnome-2
 # double check none of the deps are still masked !
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
-IUSE="accessibility +bluetooth +cdr cups +extras +fallback"
+IUSE="accessibility +bluetooth +cdr cups +extras +fallback gnome-core-apps gnome-core-libs"
 
 S=${WORKDIR}
 
 # TODO: check accessibility completeness
 # GDM-3.0 integrates very nicely with GNOME Shell
 RDEPEND="
-	>=gnome-base/gnome-core-libs-${PV}[cups?]
-	>=gnome-base/gnome-core-apps-${PV}[cups?,bluetooth?,cdr?]
+	gnome-core-libs? ( >=gnome-base/gnome-core-libs-${PV}[cups?] )
+	gnome-core-apps? ( >=gnome-base/gnome-core-apps-${PV}[cups?,bluetooth?,cdr?] )
 
 	>=gnome-base/gdm-${PV}
 
