@@ -26,6 +26,9 @@ src_install () {
 	insinto /usr/share/lxdm/themes/Kogaion || die "Cannot insinto"
 	doins Kogaion/* || die "Cannot doins"
 
+        dosym /usr/share/backgrounds/Kogaion-1.5.png \
+                /usr/share/lxdm/themes/Rogentos/kgdm.png
+
 	insinto /etc/lxdm/ || die "Cannot insinto folder"
 	doins "${S}"/lxdm.conf /etc/lxdm/ || die "Could not copy lxdm.conf"
 }
