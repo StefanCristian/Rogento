@@ -21,7 +21,12 @@ RDEPEND="dev-python/imaging
 	dev-python/python-virtkey
 	dev-python/pygtk
 	dev-lang/python
-	net-p2p/sopcast-bin"
+	media-tv/sopcast-player
+	media-video/rtmpdump
+	dev-python/sqlite3dbm
+	dev-python/gst-python 
+	media-libs/gst-plugins-good 
+	media-plugins/gst-plugins-meta"
 DEPEND=""
 
 S="${WORKDIR}"
