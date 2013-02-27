@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-messenger-plugin/xfce4-messenger-plugin-0.1.0.ebuild,v 1.3 2012/04/09 21:20:55 ssuominen Exp $
 
-EAPI="3"
+EAPI=5
 EAUTORECONF=yes
 inherit multilib xfconf
 
