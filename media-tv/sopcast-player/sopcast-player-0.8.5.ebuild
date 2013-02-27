@@ -19,7 +19,6 @@ DEPEND="dev-util/debhelper
 		dev-python/pygtk
 		dev-python/pygobject
 		dev-python/setuptools
-		dev-python/sqlite3dbm
 		dev-util/desktop-file-utils
 		x11-themes/hicolor-icon-theme
 		dev-util/wxglade
