@@ -30,11 +30,9 @@ DEPEND="dev-util/debhelper
 		media-video/vlc"
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${MY_P}
-
 src_install() {
-	exeinto /opt/${PN}
-	newexe sp-sc-auth ${PN} || die "newexe failed"
-	dosym /opt/${PN}/${PN} /usr/bin/${PN}
-	dodoc Readme || die "dodoc failed"
+	cd "${WORKDIR}"
+	cp -R * "${D}/"
+	elog "contact@sopcast.com"
+	echo
 }
