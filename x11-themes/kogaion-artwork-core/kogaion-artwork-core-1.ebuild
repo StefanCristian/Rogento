@@ -39,6 +39,11 @@ src_install() {
 	insinto /usr/share/backgrounds
 	doins *.png *.jpg
 	#newins rogentoslinux.png rogentos-nvidia.png
+
+	# Backdrop functionality for Xfce
+	dodir /usr/share/xfce4/backdrops
+	insinto /usr/share/xfce4/backdrops
+	doins *.png *.jpg
 }
 
 pkg_postinst() {
