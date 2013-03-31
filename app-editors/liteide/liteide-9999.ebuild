@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="4"
+EAPI="5"
 
 inherit qt4-r2 git-2
 
@@ -17,53 +17,54 @@ IUSE="debug"
 
 DEPEND="
 	dev-lang/go
-	x11-libs/qt-gui
-	x11-libs/qt-dbus
-	x11-libs/qt-webkit
+	dev-qt/qtgui
+	dev-qt/qtdbus
+	dev-qt/qtwebkit
 "
 
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-  S="${WORKDIR}/liteidex"
-  qt4-r2_src_prepare
+	S="${WORKDIR}"/"${PN}"-"${PV}"/liteidex
+	dodir /opt/
+	dodir /opt/${PN}
+	dodir /opt/${PN}/bin
+	dodir /opt/${PN}/share/${PN}
+	dodir /opt/${PN}/lib/${PN}/plugins
+	qt4-r2_src_prepare
 }
 
 src_install() {
-	insinto "${S}"
+	insinto /opt/${PN}/
+	doins -r "${S}"/*
 
-	exec make_tools.sh
+	insinto /opt/${PN}/
+	export GOPATH=$(pwd)
 
-  # Go Tools
-  go install -ldflags "-s" -v src/tools/goastview
-  go install -ldflags "-s" -v src/tools/godocview
-  go install -ldflags "-s" -v src/tools/goexec
-  go install -ldflags "-s" -v src/tools/goapi
+	go install -v -ldflags "-s -r ." liteidex
+	go install -v -ldflags -s tools/goastview
+	go install -v -ldflags -s tools/godocview
+	go install -v -ldflags -s tools/goexec
+	go install -v -ldflags -s tools/goapi
 
-  # Licence & Readme
-  dodoc LICENSE.LGPL LGPL_EXCEPTION.TXT ../README.md
+	dodoc LICENSE.LGPL LGPL_EXCEPTION.TXT ../README.md
 
-  # Binaries
-  dobin bin/* liteide/bin/*
+	insinto /opt/${PN}/bin
+	doins "${S}"/bin/*
 
-  # QT Libraries
-  dodir /usr/lib/liteide
-  insinto /usr/lib/liteide
-  doins /usr/lib/libQtCore.so* 
-  doins /usr/lib/libQtXml.so*
-  doins /usr/lib/libQtNetwork.so*
-  doins /usr/lib/libQtGui.so*
-  doins /usr/lib/libQtDBus.so*
-  doins /usr/lib/libQtWebKit.so*
+	insinto /opt/${PN}/bin
+	doins "${S}"/${PN}/bin/*
 
-  # Plugins
-  dodir /usr/lib/liteide/plugins
-  insinto /usr/lib/liteide/plugins
-  doins liteide/lib/liteide/plugins/*.so
+	insinto /opt/${PN}/lib/
+	doins "${S}"/${PN}/lib/${PN}/*
 
-  # Documentation
-  dodir /usr/share/liteide
-  insinto /usr/share/liteide
-  doins -r deploy/* os_deploy/linux/*
+	insinto /opt/${PN}/lib/${PN}/plugins/
+	doins "${S}"/${PN}/lib/${PN}/plugins/*.so
+
+	insinto /opt/${PN}/share/${PN}/
+	doins -r "${S}"/deploy/*
+	doins -r "${S}"/os_deploy/*
+
+	fperms u+x /opt/${PN}/bin/liteide*
+	fperms u+x /opt/${PN}/bin/go*
 }
-
