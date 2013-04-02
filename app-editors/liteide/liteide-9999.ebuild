@@ -25,20 +25,24 @@ dev-qt/qtwebkit
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-  S="${WORKDIR}/liteide-9999/liteidex"
-  qt4-r2_src_prepare
+	
+	S="${WORKDIR}"/"${PN}"-"${PV}"/liteidex
+	dodir /opt/
+	dodir /opt/${PN}
+	dodir /opt/${PN}/bin
+	dodir /opt/${PN}/share/${PN}
+	dodir /opt/${PN}/lib/${PN}
+	dodir /opt/${PN}/lib/${PN}/plugins
+	qt4-r2_src_prepare
 }
 
 src_install() {
-        dodir /opt/liteide
-	insinto /opt/liteide
-        export GOPATH=$(pwd)
-	
 
-	doins ${S}/src/tools/goastview
-	doins ${S}/src/tools/godocview
-	doins ${S}/src/tools/goexec
-	doins ${S}/src/tools/goapi
+	# insinto /opt/${PN}/
+	# doins -r "${S}"/*
+
+	export GOPATH=$(pwd)
+	
 
 	# Go Tools
 	go install -ldflags "-s" -v tools/goastview
@@ -50,23 +54,22 @@ src_install() {
 	dodoc LICENSE.LGPL LGPL_EXCEPTION.TXT ../README.md
 		
 	# Binaries
-	dobin ${S}/bin/* /opt/liteide/bin/*
-		  
+	insinto /opt/${PN}/bin
+	doins "${S}"/bin/*		  
 		
 	# Plugins
-	dodir /opt/liteide/lib/liteide/plugins
-	insinto /opt/liteide/lib/liteide/plugins
-	doins ${S}/liteide/lib/liteide/plugins/*.so
+	insinto /opt/${PN}/lib/${PN}/plugins/
+	doins "${S}"/${PN}/lib/${PN}/plugins/*.so
 		
 	# Documentation
-	dodir /opt/liteide/share/liteide
-	insinto /otp/liteide/share/liteide
-	doins -r ${S}/deploy/* ${S}/os_deploy/linux/*
+	insinto /opt/${PN}/share/${PN}/
+	doins -r "${S}"/deploy/*
+	doins -r "${S}"/os_deploy/*
+
 	
 	# QT Libraries
 	addread /usr/lib64/qt4/
-	dodir /opt/liteide/lib/liteide
-	insinto /opt/liteide/lib/liteide
+	insinto /opt/${PN}/lib/${PN}
 	doins /usr/lib64/qt4/libQtCore.so*
 	doins /usr/lib64/qt4/libQtXml.so*
 	doins /usr/lib64/qt4/libQtNetwork.so*
