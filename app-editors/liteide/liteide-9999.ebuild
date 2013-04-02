@@ -76,5 +76,8 @@ src_install() {
 	doins /usr/lib64/qt4/libQtGui.so*
 	doins /usr/lib64/qt4/libQtDBus.so*
 	doins /usr/lib64/qt4/libQtWebKit.so*
+
+	fperms u+x /opt/${PN}/bin/liteide*
+	fperms u+x /opt/${PN}/bin/go*
 	  	
 }
