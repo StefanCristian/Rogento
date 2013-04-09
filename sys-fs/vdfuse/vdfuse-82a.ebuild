@@ -11,7 +11,8 @@ VB_P="VirtualBox-${VB_V}"
 
 DESCRIPTION="Fuse module to open a VBox supported VD image file and mount it."
 HOMEPAGE="https://forums.virtualbox.org/viewtopic.php?f=26&t=33355"
-SRC_URI="https://dl.dropbox.com/u/51887609/kogaion-src/sys-fs/vdfuse/${PN}-v${PV}.tar.bz2"
+SRC_URI="http://pkg.rogentos.ro/~rogentos/distro/${CATEGORY}/${PN}/${PN}-v${PV}.tar.bz2
+	http://pkg3.rogentos.ro/~noxis/distro/${CATEGORY}/${PN}/${PN}-v${PV}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
