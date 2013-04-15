@@ -18,7 +18,7 @@ IUSE="debug gtk3 nls pam"
 
 RDEPEND="sys-auth/consolekit
 	x11-libs/libxcb
-	>=x11-themes/rogentos-artwork-lxde-1
+	>=x11-themes/kogaion-artwork-lxde-1
 	gtk3? ( x11-libs/gtk+:3 )
 	!gtk3? ( x11-libs/gtk+:2 )
 	nls? ( sys-devel/gettext )
