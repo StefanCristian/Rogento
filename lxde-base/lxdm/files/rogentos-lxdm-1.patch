@@ -13,7 +13,7 @@
  
  ## background of the greeter
 -bg=/usr/share/backgrounds/default.png
-+bg=/usr/share/lxdm/themes/Rogentos/kgdm.png
++bg=/usr/share/lxdm/themes/Kogaion/kogaion.png
  
  ## if show bottom pane
  bottom_pane=1
@@ -22,7 +22,7 @@
  
  ## the theme of greeter
 -theme=Industrial
-+theme=Rogentos
++theme=Kogaion
  
  [input]
  
