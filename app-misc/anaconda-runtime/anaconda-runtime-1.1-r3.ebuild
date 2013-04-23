@@ -1,4 +1,4 @@
-# Copyright 2004-2012 Rogentos
+# Copyright 2004-2010 Sabayon
 # Distributed under the terms of the GNU General Public License v2
 # $
 
@@ -14,13 +14,14 @@ SLOT="0"
 DEPEND=""
 RDEPEND="app-admin/system-config-date
 	app-admin/system-config-users
-	>=app-misc/rogentoslive-tools-1.0
+	>=app-misc/rogentoslive-tools-2.1.1
+	>=app-misc/rogentos-version-5-r1
 	app-text/xmlto
 	dev-libs/elfutils
 	dev-libs/libnl
 	dev-libs/libxml2[python]
 	dev-python/pyblock
-	dev-python/python-cryptsetup
+	>=dev-python/python-cryptsetup-0.1.4
 	dev-python/python-meh
 	dev-python/python-nss
 	dev-python/python-report
@@ -31,7 +32,6 @@ RDEPEND="app-admin/system-config-date
 	net-misc/fcoe-utils
 	>=net-misc/networkmanager-0.7.2
 	sys-apps/dmidecode
-	sys-apps/language-configuration-helpers
 	>=sys-boot/grub-1.98
 	sys-boot/makebootfat
 	sys-fs/btrfs-progs
