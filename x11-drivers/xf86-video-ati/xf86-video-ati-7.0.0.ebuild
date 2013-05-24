@@ -5,30 +5,24 @@
 EAPI=4
 
 XORG_DRI=always
-XORG_EAUTORECONF=yes
 inherit xorg-2
 
 DESCRIPTION="ATI video driver"
 
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
-IUSE=""
+KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86"
+IUSE="glamor udev"
 
-RDEPEND=">=x11-libs/libdrm-2.4.36[video_cards_radeon]"
+RDEPEND=">=x11-libs/libdrm-2.4.36[video_cards_radeon]
+	glamor? ( x11-libs/glamor )
+	udev? ( sys-fs/udev )"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	# disable XAA to allow building against >=xorg-server-1.12.99.902, bug #428094
-	sed -i '/USE_XAA, 1/d' configure.ac || die
-	xorg-2_src_prepare
-}
-
-pkg_setup() {
-	xorg-2_pkg_setup
+src_configure() {
 	XORG_CONFIGURE_OPTIONS=(
-		--enable-dri
-		--enable-kms
-		--enable-exa
+		$(use_enable glamor)
+		$(use_enable udev)
 	)
+	xorg-2_src_configure
 }
 
 pkg_preinst() {
