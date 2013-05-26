@@ -50,7 +50,7 @@ REQUIRED_USE="grub_platforms_qemu? ( truetype )"
 
 # os-prober: Used on runtime to detect other OSes
 # xorriso (dev-libs/libisoburn): Used on runtime for mkrescue
-# sbsigntool is Sabayon and RogentOS specific
+# sbsigntool is Sabayon and Rogentos specific
 RDEPEND="
 	app-crypt/sbsigntool
 	x11-themes/rogentos-artwork-grub
@@ -177,7 +177,7 @@ grub_src_configure() {
 			;;
 	esac
 
-	# Sabayon and RogentOS: backward compatibility, do not change --with-grubdir
+	# Sabayon and Rogentos: backward compatibility, do not change --with-grubdir
 	ECONF_SOURCE="${S}" \
 	econf \
 		--htmldir="${EPREFIX}/usr/share/doc/${PF}/html" \
@@ -354,7 +354,7 @@ EOF
 }
 
 pkg_postinst() {
-	# install RogentOS splash here, cannot touch boot/grub inside
+	# install Rogentos splash here, cannot touch boot/grub inside
 	# src_install
 	cp "${ROOT}/usr/share/grub/default-splash.png" "${ROOT}boot/grub/default-splash.png" || \
 		ewarn "cannot install default splash file!"

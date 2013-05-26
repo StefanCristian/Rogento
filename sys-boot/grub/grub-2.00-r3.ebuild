@@ -50,7 +50,7 @@ REQUIRED_USE="grub_platforms_qemu? ( truetype )"
 
 # os-prober: Used on runtime to detect other OSes
 # xorriso (dev-libs/libisoburn): Used on runtime for mkrescue
-# sbsigntool is Sabayon and Argent OS specific
+# sbsigntool is Sabayon and Rogentos specific
 RDEPEND="
 	app-crypt/sbsigntool
 	x11-themes/rogentos-artwork-grub
@@ -86,7 +86,7 @@ DEPEND="${RDEPEND}
 "
 RDEPEND+="
 	grub_platforms_efi-32? ( sys-boot/efibootmgr )
-	grub_platforms_efi-64? ( app-crypt/shim-signed sys-boot/efibootmgr )
+	grub_platforms_efi-64? ( sys-boot/efibootmgr )
 "
 if [[ -n ${DO_AUTORECONF} ]] ; then
 	DEPEND+=" >=sys-devel/autogen-5.10"
@@ -177,7 +177,7 @@ grub_src_configure() {
 			;;
 	esac
 
-	# Sabayon and Argent : backward compatibility, do not change --with-grubdir
+	# Sabayon and Rogentos: backward compatibility, do not change --with-grubdir
 	ECONF_SOURCE="${S}" \
 	econf \
 		--htmldir="${EPREFIX}/usr/share/doc/${PF}/html" \
@@ -342,7 +342,7 @@ src_install() {
 
 	# TODO: still needed?
 	cat <<-EOF >> "${ED}"/lib*/grub/grub-mkconfig_lib
-	GRUB_DISTRIBUTOR="Sabayon"
+	GRUB_DISTRIBUTOR="Rogentos"
 EOF
 
 	insinto /etc/default
@@ -354,7 +354,7 @@ EOF
 }
 
 pkg_postinst() {
-	# install RogentOS and Argent splash here, cannot touch boot/grub inside
+	# install Rogentos splash here, cannot touch boot/grub inside
 	# src_install
 	cp "${ROOT}/usr/share/grub/default-splash.png" "${ROOT}boot/grub/default-splash.png" || \
 		ewarn "cannot install default splash file!"
