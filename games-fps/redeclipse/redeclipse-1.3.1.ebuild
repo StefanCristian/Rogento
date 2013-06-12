@@ -35,6 +35,7 @@ src_prepare() {
 	# Respect GAMES_DATADIR
 	sed -i -e "s:\(addpackagedir(\"\)data:\1${GAMES_DATADIR}/${PN}/data:" \
 		src/engine/server.cpp || die "sed failed"
+	echo "\n ${GAMES_DATADIR} \n This is the variabile"
 
 	# Unbundle enet
 	sed -i \
@@ -57,6 +58,10 @@ src_compile() {
 
 src_install() {
 	newgamesbin src/reserver ${PN}-server || die
+	dodir ${GAMES_DATADIR}/${PN}/ || die "Was not able to create the directory"
+	insinto ${GAMES_DATADIR}/${PN}/ || die "There is no such directory or file"
+	doins -r "${S}"/data || die "Cannot copy the directory: Not existent"
+
 	dodoc readme.txt
 	if ! use dedicated ; then
 		newgamesbin src/reclient ${PN} || die
