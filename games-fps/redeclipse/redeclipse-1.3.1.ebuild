@@ -32,12 +32,12 @@ S="${WORKDIR}"/${P}
 src_prepare() {
 	cd "${S}" || die
 	sed -i -e "s:\(addpackagedir(\"\)data:\1${GAMES_DATADIR}/${PN}/data:" \
-		src/engine/server.cpp || die "sed failed"
+		src/engine/server.cpp || die "Sed failed"
 
 	sed -i \
 		-e "s:\(client\)\: libenet:\1\::" \
 		-e   "s:\(server\)\: libenet:\1\::" \
-		src/Makefile || die "sed failed"
+		src/Makefile || die "Sed failed"
 
 	sed -i "/STRIP=strip/d" src/Makefile || die
 }
@@ -47,19 +47,19 @@ src_compile() {
 	if ! use dedicated ; then
 		emake CXXFLAGS="${CXXFLAGS}" client server || die
 	else
-		emake CXXFLAGS="${CXXFLAGS}" server
+		emake CXXFLAGS="${CXXFLAGS}" server || die
 	fi
 }
 
 src_install() {
 	newgamesbin src/reserver ${PN}-server || die
-	dodir ${GAMES_DATADIR}/${PN}/ || die 
-	insinto ${GAMES_DATADIR}/${PN}/ || die
+	dodir "${GAMES_DATADIR}"/${PN}/ || die 
+	insinto "${GAMES_DATADIR}"/${PN}/ || die
 	doins -r "${S}"/data || die
 
 	dodoc readme.txt
 	if ! use dedicated ; then
-		newgamesbin src/reclient ${PN} || die
+		newgamesbin src/reclient "${PN}" || die
 	fi
 	prepgamesdirs
 }
