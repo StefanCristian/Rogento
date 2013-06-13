@@ -39,11 +39,11 @@ src_prepare() {
 		-e   "s:\(server\)\: libenet:\1\::" \
 		src/Makefile || die "Sed failed"
 
-	sed -i "/STRIP=strip/d" src/Makefile || die
+	sed -i "/STRIP=strip/d" src/Makefile || die "Sed failed"
 }
 
 src_compile() {
-	cd src
+	cd src || die
 	if ! use dedicated ; then
 		emake CXXFLAGS="${CXXFLAGS}" client server || die
 	else
