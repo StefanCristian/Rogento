@@ -140,10 +140,8 @@ src_compile() {
 }
 
 src_install() {
-	insinto "/lib/modules/${KV_FULL}/updates/"
-	echo "Files are: $(ls -la)"
 	insinto "/lib/modules/${KV_FULL}/updates/drivers/net/ethernet/atheros/alx/"
-	echo "Files are: $(ls -la)"
+	echo "Files are: $(ls -la /lib/modules/${KV_FULL}/updates/drivers/net/ethernet/)"
 	doins "alx.ko"
 
 	dosbin scripts/athenable scripts/b43load scripts/iwl-enable \
