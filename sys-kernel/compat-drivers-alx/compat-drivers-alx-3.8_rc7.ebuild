@@ -140,9 +140,16 @@ src_compile() {
 }
 
 src_install() {
-	insinto "/lib/modules/${KV_FULL}/updates/drivers/net/ethernet/atheros/alx/"
-	echo "Files are: $(ls -la /lib/modules/${KV_FULL}/updates/drivers/net/ethernet/)"
-	doins "alx.ko"
+	echo "The Kernel dir: ${KERNEL_DIR}"
+	echo "The Destination dir: ${DESTDIR}"
+	echo "The Kernel: ${KV_FULL}"
+	insinto "${DESTDIR}"/lib/modules/"${KV_FULL}"
+	echo "The path is: ${DESTDIR}"/lib/modules/"${KV_FULL}"
+	echo "Showing some path: $(ls -la)"
+	echo "Show if there is updates directories: $(ls -la ./updates)"
+	insinto "/lib/modules/${KV_FULL}/updates/"
+	echo "Files are: $(ls -la /lib/modules/${KV_FULL}/updates/drivers/net/ethernet/atheros)"
+	doins "./drivers/net/ethernet/atheros/alx/alx.ko"
 
 	dosbin scripts/athenable scripts/b43load scripts/iwl-enable \
 		scripts/madwifi-unload scripts/athload scripts/iwl-load \
