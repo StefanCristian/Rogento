@@ -141,8 +141,9 @@ src_compile() {
 
 src_install() {
 	insinto "/lib/modules/${KV_FULL}/updates/"
-	doins -r "/lib/modules/${KV_FULL}/updates/drivers/net/ethernet/atheros/alx/alx.ko"
 	echo "Files are: $(ls -la)"
+	insinto "/lib/modules/${KV_FULL}/updates/drivers/net/ethernet/atheros/alx/"
+	doins "/lib/modules/${KV_FULL}/updates/drivers/net/ethernet/atheros/alx/alx.ko"
 
 	dosbin scripts/athenable scripts/b43load scripts/iwl-enable \
 		scripts/madwifi-unload scripts/athload scripts/iwl-load \
