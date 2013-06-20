@@ -147,7 +147,7 @@ src_install() {
 	echo "The path is: ${DESTDIR}"/lib/modules/"${KV_FULL}"
 	echo "Showing some path: $(ls -la)"
 	echo "Show if there is updates directories: $(ls -la ./updates)"
-	insinto "/lib/modules/${KV_FULL}/updates/"
+	insinto "/lib/modules/${KV_FULL}/updates/drivers/net/ethernet/atheros/alx/"
 	echo "Files are: $(ls -la /lib/modules/${KV_FULL}/updates/drivers/net/ethernet/atheros)"
 	doins "./drivers/net/ethernet/atheros/alx/alx.ko"
 
