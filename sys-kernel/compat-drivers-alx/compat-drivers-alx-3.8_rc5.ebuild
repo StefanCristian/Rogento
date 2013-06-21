@@ -132,10 +132,10 @@ src_compile() {
 }
 
 src_install() {
-	for file in $(find -name \*.ko); do
-		insinto "/lib/modules/${KV_FULL}/updates/$(dirname ${file})"
-		doins "${file}"
-	done
+        insinto "${DESTDIR}"/lib/modules/"${KV_FULL}"
+        insinto "/lib/modules/${KV_FULL}/updates/drivers/net/ethernet/atheros/alx/"
+        doins "./drivers/net/ethernet/atheros/alx/alx.ko"
+
 	dosbin scripts/athenable scripts/b43load scripts/iwl-enable \
 		scripts/madwifi-unload scripts/athload scripts/iwl-load \
 		scripts/b43enable scripts/unload.sh
