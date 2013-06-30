@@ -1,10 +1,10 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI="2"
 
-inherit eutils autotools
+inherit eutils autotools systemd
 
 DESCRIPTION="LXDE Display Manager"
 HOMEPAGE="http://lxde.org"
@@ -35,8 +35,8 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}-pam_console-disable.patch"
 	# Backported, drop it when 0.4.2
 	epatch "${FILESDIR}/${P}-git-fix-null-pointer-deref.patch"
-	# Rogentos specific theme patch
-	epatch "${FILESDIR}/rogentos-${PN}-1.patch"
+	# RogentOS specific theme patch
+	epatch "${FILESDIR}/${P}-rogentos-1-theme.patch"
 	# Fix sessions with arguments, see:
 	# http://lists.sabayon.org/pipermail/devel/2012-January/007582.html
 	epatch "${FILESDIR}/${P}-fix-session-args.patch"
@@ -47,6 +47,12 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-missing-pam-defines.patch
 
 	epatch "${FILESDIR}"/${P}-fix-event-check-bug.patch
+
+	# Also see #422495
+	epatch "${FILESDIR}"/${P}-pam-use-system-local-login.patch
+
+	# See https://bugs.launchpad.net/ubuntu/+source/lxdm/+bug/922363
+	epatch "${FILESDIR}/${P}-fix-pam-100-cpu.patch"
 
 	# this replaces the bootstrap/autogen script in most packages
 	eautoreconf
@@ -71,6 +77,8 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" install || die
 	dodoc AUTHORS README TODO || die
+
+	systemd_dounit "${FILESDIR}/lxdm.service"
 }
 
 pkg_postinst() {
