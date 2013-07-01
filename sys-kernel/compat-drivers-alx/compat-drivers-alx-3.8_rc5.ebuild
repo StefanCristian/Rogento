@@ -133,8 +133,8 @@ src_compile() {
 
 src_install() {
         insinto "${DESTDIR}"/lib/modules/"${KV_FULL}"
-        insinto "/lib/modules/${KV_FULL}/updates/drivers/net/ethernet/atheros/alx/"
-        doins "./drivers/net/ethernet/atheros/alx/alx.ko"
+        insinto "/lib/modules/${KV_FULL}/updates/drivers/net/ethernet/"
+        doins -r "./drivers/net/ethernet/atheros/"
 
 	dosbin scripts/athenable scripts/b43load scripts/iwl-enable \
 		scripts/madwifi-unload scripts/athload scripts/iwl-load \
