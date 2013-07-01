@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	# Upstream bug, tarball contains pre-made lxdm.conf
-	epatch "${FILESDIR}/${P}-rogentos.conf.patch"
+	epatch "${FILESDIR}/${P}-rogentos-conf.patch"
 	rm "${S}"/data/lxdm.conf || die
 
 	# There is consolekit
