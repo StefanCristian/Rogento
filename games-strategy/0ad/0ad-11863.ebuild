@@ -74,10 +74,10 @@ src_compile() {
 		UPDATE_ARGS="${UPDATE_ARGS} --without-nvtt"
 	fi
 
-	cd "${S}/build/workspaces"
+	insinto "${S}/build/workspaces"
 	einfo "Running update-workspaces.sh with ${UPDATE_ARGS}"
 	./update-workspaces.sh ${UPDATE_ARGS} || die "update-workspaces.sh failed"
-	cd gcc
+	insinto gcc
 
 	TARGETS="pyrogenesis Collada"
 	if use test ; then
@@ -95,7 +95,7 @@ src_compile() {
 }
 
 src_test() {
-	cd "${S}/binaries/system"
+	insinto "${S}/binaries/system"
 	if use debug ; then
 		./test_dbg || die "Tests failed"
 	else
@@ -104,7 +104,7 @@ src_test() {
 }
 
 src_install() {
-	cd "${S}"/binaries
+	insinto "${S}"/binaries
 	insinto "${dir}"
 	doins -r data || die "doins -r failed"
 
