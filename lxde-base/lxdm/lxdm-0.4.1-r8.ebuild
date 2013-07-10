@@ -18,7 +18,7 @@ IUSE="consolekit debug gtk3 nls pam"
 
 RDEPEND="consolekit? ( sys-auth/consolekit )
 	x11-libs/libxcb
-	>=x11-themes/sabayon-artwork-lxde-8-r1
+	>=x11-themes/kogaion-artwork-lxde-1
 	gtk3? ( x11-libs/gtk+:3 )
 	!gtk3? ( x11-libs/gtk+:2 )
 	nls? ( sys-devel/gettext )
@@ -29,6 +29,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	# Upstream bug, tarball contains pre-made lxdm.conf
+	epatch "${FILESDIR}"/"${P}"-rogentos-conf.patch
 	rm "${S}"/data/lxdm.conf || die
 
 	# There is consolekit
@@ -36,7 +37,7 @@ src_prepare() {
 	# Backported, drop it when 0.4.2
 	epatch "${FILESDIR}/${P}-git-fix-null-pointer-deref.patch"
 	# Sabayon specific theme patch
-	epatch "${FILESDIR}/${P}-sabayon-8-theme.patch"
+	epatch "${FILESDIR}/${P}-rogentos-1-theme.patch"
 	# Fix sessions with arguments, see:
 	# http://lists.sabayon.org/pipermail/devel/2012-January/007582.html
 	epatch "${FILESDIR}/${P}-fix-session-args.patch"
