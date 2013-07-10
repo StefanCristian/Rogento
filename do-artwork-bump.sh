@@ -1,4 +1,5 @@
 #!/bin/bash
+# made by Sabayon GNU/Linux Team
 if [ -z "$2" ]; then
 	echo do-artwork-bump.sh OLDVER NEWVER
 	exit
