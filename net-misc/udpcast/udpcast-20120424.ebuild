@@ -18,7 +18,7 @@ IUSE=""
 DEPEND="dev-lang/perl"
 
 src_prepare() {
-	epatch "${FILESDIR}"/iambien-patch.patch
+	epatch "${FILESDIR}"/"${PN}"-define.patch
 	sed -i Makefile.in \
 		-e '/^LDFLAGS +=-s/d' \
 		-e '/^CFLAGS/s: -O6::g' \
