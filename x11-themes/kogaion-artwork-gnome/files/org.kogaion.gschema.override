@@ -5,11 +5,17 @@ show-date=true
 show-weekdate=true
 
 [org.gnome.desktop.background]
-picture-uri='file:///usr/share/backgrounds/rogentoslinux.png'
+picture-uri='file:///usr/share/backgrounds/kogaionlinux.png'
 show-desktop-icons=true
 
 [org.gnome.desktop.interface]
-icon-theme='elementary'
+gtk-theme='Kogaion-light'
+
+[org.gnome.desktop.wm.preferences]
+theme='Kogaion-light'
+
+[org.gnome.desktop.interface]
+icon-theme='Faenza-Kupertino-Light'
 
 [org.gnome.SessionManager]
 show-fallback-warning=false
