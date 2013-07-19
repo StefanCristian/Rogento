@@ -19,7 +19,7 @@ RDEPEND="=x11-themes/kogaion-artwork-core-2
 	x11-themes/faenza-kupertino-icons
 	!x11-themes/sabayon-artwork-gnome"
 
-S="${WORKDIR}/${PN}"
+S="${WORKDIR}/"
 
 src_install() {
 #	dodir /usr/share/themes
