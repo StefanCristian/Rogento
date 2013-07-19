@@ -5,9 +5,9 @@
 # Maintainer BlackNoxis <stefan.cristian at rogentos.ro>
 
 EAPI=4
-inherit eutils mount-boot rogentos-artwork
+inherit eutils mount-boot kogaion-artwork
 
-DESCRIPTION="Offical Rogentos Linux Core Artwork"
+DESCRIPTION="Offical Kogaion Linux Core Artwork"
 HOMEPAGE="http://www.rogentos.ro"
 SRC_URI="http://pkg.rogentos.ro/~rogentos/distro/${CATEGORY}/${PN}/${PN}-${PVR}.tar.gz
 	http://pkg2.rogentos.ro/~noxis/distro/${CATEGORY}/${PN}/${PN}-${PVR}.tar.gz"
@@ -25,8 +25,8 @@ S="${WORKDIR}/${PN}"
 src_install() {
 	# Fbsplash theme
 	cd ${S}/fbsplash
-	dodir /etc/splash/rogentos
-	cp -r ${S}/fbsplash/rogentos/* ${D}/etc/splash/rogentos
+	dodir /etc/splash/kogaion
+	cp -r ${S}/fbsplash/kogaion/* ${D}/etc/splash/kogaion
 
 	# Cursors
 	cd ${S}/mouse/entis/cursors/
