@@ -24,7 +24,7 @@ RDEPEND="!app-misc/livecd-tools
 	sys-apps/pciutils
 	sys-apps/keyboard-configuration-helpers
 	sys-apps/sed
-	app-misc/sabayon-live"
+	!app-misc/sabayon-live"
 
 src_install() {
 	emake DESTDIR="${D}" SYSV_INITDIR="/etc/init.d" \
