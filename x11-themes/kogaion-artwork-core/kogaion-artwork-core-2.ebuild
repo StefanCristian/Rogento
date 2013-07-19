@@ -18,6 +18,7 @@ KEYWORDS="~arm ~x86 ~amd64"
 IUSE=""
 RDEPEND="sys-apps/findutils
 	!<sys-boot/grub-0.97-r22
+	!x11-themes/sabaoyn-artwork-core
 "
 
 S="${WORKDIR}/"
