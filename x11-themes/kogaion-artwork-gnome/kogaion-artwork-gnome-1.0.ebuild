@@ -13,7 +13,7 @@ LICENSE="CCPL-Attribution-ShareAlike-3.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
-RDEPEND=">=x11-themes/kogaion-artwork-core-1
+RDEPEND=">x11-themes/kogaion-artwork-core-2
 	x11-themes/kogaion-light-theme
 	x11-themes/kogaion-dark-theme
 	x11-themes/faenza-kupertino-icons

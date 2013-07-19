@@ -9,8 +9,8 @@ inherit eutils mount-boot kogaion-artwork
 
 DESCRIPTION="Offical Kogaion Linux Core Artwork"
 HOMEPAGE="http://www.rogentos.ro"
-SRC_URI="http://pkg.rogentos.ro/~rogentos/distro/${CATEGORY}/${PN}/${PN}-${PVR}.tar.gz
-	http://pkg2.rogentos.ro/~noxis/distro/${CATEGORY}/${PN}/${PN}-${PVR}.tar.gz"
+SRC_URI="http://pkg.rogentos.ro/~rogentos/distro/${CATEGORY}/${PN}/"${PN}"-${PV}.tar.gz"
+	# http://pkg2.rogentos.ro/~noxis/distro/${CATEGORY}/${PN}/${PN}-${PVR}.tar.gz Temporray suspended repo
 
 LICENSE="CCPL-Attribution-ShareAlike-3.0"
 SLOT="0"
@@ -20,7 +20,7 @@ RDEPEND="sys-apps/findutils
 	!<sys-boot/grub-0.97-r22
 "
 
-S="${WORKDIR}/${PN}"
+S="${WORKDIR}/"
 
 src_install() {
 	# Fbsplash theme
