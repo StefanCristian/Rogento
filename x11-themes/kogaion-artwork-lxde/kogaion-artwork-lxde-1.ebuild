@@ -16,7 +16,7 @@ LICENSE="CCPL-Attribution-ShareAlike-3.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
-RDEPEND="x11-themes/rogentos-artwork-core"
+RDEPEND="x11-themes/kogaion-artwork-core"
 
 S="${WORKDIR}/lxdm"
 
