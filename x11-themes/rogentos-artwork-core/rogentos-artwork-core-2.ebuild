@@ -35,17 +35,19 @@ src_install() {
 	doins -r ./
 
 	# Wallpaper
-	cd "${S}"/backgrounds
+	cd "${S}"/background
 	insinto /usr/share/backgrounds
 	doins *.png *.jpg
 	doins "Circles wide.png" kogaionlinux.png
 	doins "Kogaion fuzzy 2.png" kgdm.png
 	#newins rogentoslinux.png rogentos-nvidia.png
 
-	# Backdrop functionality for Xfce	
+	# Backdrop functionality for Xfce
 	dodir /usr/share/xfce4/backdrops
 	insinto /usr/share/xfce4/backdrops
 	doins *.png *.jpg
+	doins "Circles wide.png" kogaionlinux.png
+	doins "Kogaion fuzzy 2.png" kgdm.png
 
 }
 
