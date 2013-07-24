@@ -48,7 +48,7 @@ update_kernel_initramfs_splash() {
 # Brindusa Stefan Cristian
 update_sabayon_kernel_initramfs_splash() {
 	local splash_name="${GFX_SPLASH_NAME}"
-	local override_splash_file="${ROOT}etc/splash_name"
+	local override_splash_file="${ROOT}etc/${splash_name}"
 	if [ -f "${override_splash_file}" ]; then
 		found_splash_name=$(cat "${override_splash_file}" | cut -d" " -f 1)
 		if [ -d "/etc/splash/${found_splash_name}" ]; then
