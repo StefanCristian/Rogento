@@ -21,7 +21,7 @@ RDEPEND="app-admin/eselect-lightdm
 	>=x11-misc/lightdm-1.2.2
 	x11-themes/gnome-themes-standard
 	x11-themes/gnome-icon-theme
-	x11-themes/kogaion-artwork-core"
+	x11-themes/rogentos-artwork-core"
 
 src_prepare() {
 	# Apply custom Rogentos theme

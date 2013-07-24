@@ -8,13 +8,13 @@ inherit unpacker
 
 DESCRIPTION="Schimba sau actualizeaza nucleul"
 HOMEPAGE="http://rogentos.ro/"
-SRC_URI="http://pkg.rogentos.ro/~rogentos/distro/${CATEGORY}/${PN}/${PN}-${PV}.tar.gz"
+SRC_URI="http://pkg.rogentos.ro/~rogentos/distro/${CATEGORY}/"${PN}"/"${PN}"-"${PV}".tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 
-RDEPEND="x11-themes/kogaion-artwork-core"
+RDEPEND=""
 DEPEND=""
 
 S="${WORKDIR}"
