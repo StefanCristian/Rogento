@@ -35,7 +35,7 @@ src_install() {
 	doins -r ./
 
 	# Wallpaper
-	cd "${S}"/usr/share/backgrounds
+	cd "${S}"/backgrounds
 	insinto /usr/share/backgrounds
 	doins *.png *.jpg
 	doins "Circles wide.png" kogaionlinux.png
