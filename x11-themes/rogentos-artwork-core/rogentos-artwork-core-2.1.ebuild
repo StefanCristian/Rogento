@@ -50,7 +50,7 @@ src_install() {
 	doins "Kogaion_blue_flame_wide.png" kgdm.png
 
 	# Plymouth
-	cd "${S}/plymouth" || die
+	cd "${S}/plymouth/themes" || die
 	insinto /usr/share/plymouth
 	doins bizcom.png
 	insinto /usr/share/plymouth/themes
