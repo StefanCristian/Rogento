@@ -32,6 +32,7 @@ src_install () {
         #dosym /usr/share/lxdm/themes/kogaion.png \
         #        /usr/share/lxdm/themes/Kogaion/kgdm.png
 
+	dodir /etc/lxdm
 	insinto /etc/lxdm/ || die "Cannot insinto folder"
-	doins "${S}"/lxdm.conf /etc/lxdm/ || die "Could not copy lxdm.conf"
+	doins "${S}"/lxdm.conf || die "Could not copy lxdm.conf"
 }
