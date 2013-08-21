@@ -10,8 +10,7 @@ inherit gnome2-utils
 DESCRIPTION="Elementary gnome icon theme"
 HOMEPAGE="https://launchpad.net/elementaryicons"
 SRC_URI="http://launchpad.net/elementaryicons/2.0/${PV}/+download/${P}.tar.gz
-	branding? ( http://pkg.rogentos.ro/~rogentos/${CATEGORY}/fdo-icons-rogentos${SLREV}.tar.gz 
-		http://pkg2.rogentos.ro/~noxis/distro/${CATEGORY}/fdo-icons-rogentos${SLREV}.tar.gz )"
+	http://pkg.rogentos.ro/~rogentos/distro/${CATEGORY}/fdo-icons-rogentos1.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

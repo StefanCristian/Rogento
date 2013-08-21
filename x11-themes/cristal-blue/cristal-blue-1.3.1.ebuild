@@ -9,7 +9,7 @@ HOMEPAGE="http://rogentos.ro"
 SRC_URI="http://pkg2.rogentos.ro/~noxis/distro/${CATEGORY}/${PN}-${PV}.tar.gz
 	http://pkg.rogentos.ro/~rogentos/distro/${CATEGORY}/${PN}-${PV}.tar.gz
 	emerald? ( http://pkg2.rogentos.ro/~noxis/distro/${CATEGORY}/cristal-oxigen-${PV}.emerald )
-	cursor? ( http://pkg2.rogentos.ro/~noxis/distro/${CATEGORY}/cristal-cursor.gz ) "
+	cursor? ( http://pkg3.rogentos.ro/~noxis/distro/${CATEGORY}/cristal-cursor.gz ) "
 
 LICENSE="GPL-3"
 SLOT="0"
