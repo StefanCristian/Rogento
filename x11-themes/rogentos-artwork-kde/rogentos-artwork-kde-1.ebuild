@@ -9,8 +9,8 @@ inherit eutils kde4-base
 
 DESCRIPTION="Rogentos Linux Official KDE Artwork"
 HOMEPAGE="http://rogentos.ro/"
-SRC_URI="http://pkg.rogentos.ro/~rogentos/distro/${CATEGORY}/${PN}.tar.gz
-	http://pkg2.rogentos.ro/~noxis/distro/${CATEGORY}/${PN}.tar.gz"
+SRC_URI="http://pkg.rogentos.ro/~rogentos/distro/${CATEGORY}/${PN}.tar.gz"
+	#http://pkg2.rogentos.ro/~noxis/distro/${CATEGORY}/${PN}.tar.gz"
 LICENSE="CCPL-Attribution-ShareAlike-3.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
