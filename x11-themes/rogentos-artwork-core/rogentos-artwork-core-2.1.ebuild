@@ -38,16 +38,18 @@ src_install() {
 	cd "${S}"/background
 	insinto /usr/share/backgrounds
 	doins *.png *.jpg
-	dosym kogaionlinux.png "Kogaion_tri_flame_wide.png"
-	dosym kgdm.png "Kogaion_blue_flame_wide.png"
+	dosym /usr/share/backgrounds/Kogaion_tri_flame_wide.png /usr/share/backgrounds/kogaionlinux.png || die
+	dosym /usr/share/backgrounds/Kogaion_tri_flame_wide.png /usr/share/backgrounds/kgdm.png || die
 	#newins rogentoslinux.png rogentos-nvidia.png
 
 	# Backdrop functionality for Xfce
 	dodir /usr/share/xfce4/backdrops
 	insinto /usr/share/xfce4/backdrops
 	doins *.png *.jpg
-	dosym kogaionlinux.png "Kogaion_tri_flame_wide.png"
-	dosym kgdm.png "Kogaion_blue_flame_wide.png"
+	dosym /usr/share/xfce4/backdrops/Kogaion_tri_flame_wide.png /usr/share/xfce4/backdrops/kogaionlinux.png || die
+	dosym /usr/share/xfce4/backdrops/Kogaion_blue_flame_wide.png /usr/share/xfce4/backdrops/kgdm.png || die
+	#dosym kogaionlinux.png "Kogaion_tri_flame_wide.png"
+	#dosym kgdm.png "Kogaion_blue_flame_wide.png"
 
 	# Plymouth
 	cd "${S}/plymouth/" || die
