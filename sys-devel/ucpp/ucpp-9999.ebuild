@@ -21,6 +21,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
+		--prefix=/opt/ucpp \
 		--disable-werror \
 		$(use_enable static-libs static)
 }
@@ -29,4 +30,5 @@ src_install() {
 	default
 
 	prune_libtool_files --all
+	die
 }
