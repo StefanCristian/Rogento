@@ -91,8 +91,8 @@ src_install() {
 	doins -r "${S}"/deploy/*
 	doins -r "${S}"/os_deploy/*
 
-	fperms u+x /opt/${PN}/bin/liteide*
-	fperms u+x /opt/${PN}/bin/go*
+	#fperms u+x /opt/${PN}/bin/liteide*
+	#fperms u+x /opt/${PN}/bin/go*
 
 	# QT Libraries
 	addread /usr/lib64/qt4/
@@ -104,6 +104,6 @@ src_install() {
 	doins /usr/lib64/qt4/libQtDBus.so*
 	doins /usr/lib64/qt4/libQtWebKit.so*
 
-	fperms u+x /opt/${PN}/bin/liteide*
-	fperms u+x /opt/${PN}/bin/go*	  	
+	#fperms u+x /opt/${PN}/bin/liteide*
+	#fperms u+x /opt/${PN}/bin/go*	  	
 }

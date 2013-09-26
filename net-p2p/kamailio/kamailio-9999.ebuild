@@ -1,7 +1,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="1"
+EAPI="5"
 
 inherit git-2 autotools
 
@@ -19,9 +19,10 @@ DEPEND="app-pda/libimobiledevice
 	dev-libs/glib:2"
 RDEPEND="${DEPEND}"
 
+S="${WORKDID}"/${PN}
+
 src_unpack() {
 	git-2_src_unpack
-	cd "${S}"
 }
 
 src_install() {
