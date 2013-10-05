@@ -68,7 +68,6 @@ src_install() {
 
 	export GOPATH=$(pwd)
 
-
 	# Go Tools
 	go install -ldflags "-s" -v tools/goastview
 	go install -ldflags "-s" -v tools/godocview
@@ -91,7 +90,6 @@ src_install() {
 	doins -r "${S}"/deploy/*
 	doins -r "${S}"/os_deploy/*
 
-	
 	# QT Libraries
 	addread /usr/lib64/qt4/
 	insinto /opt/${PN}/lib/${PN}
@@ -101,10 +99,9 @@ src_install() {
 	doins /usr/lib64/qt4/libQtGui.so*
 	doins /usr/lib64/qt4/libQtDBus.so*
 	doins /usr/lib64/qt4/libQtWebKit.so*
-	
 
 	fperms u+x /opt/${PN}/bin/liteide
 	fperms u+x /opt/${PN}/bin/goapi
-        fperms u+x /opt/${PN}/bin/goastview 
-        fperms u+x /opt/${PN}/bin/goexec
+	fperms u+x /opt/${PN}/bin/goastview 
+	fperms u+x /opt/${PN}/bin/goexec
 }
