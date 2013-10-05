@@ -6,7 +6,7 @@ EAPI="5"
 inherit git-2 autotools
 
 DESCRIPTION="fuse module for access to iphone and ipod touch without jailbreak"
-HOMEPAGE="http://matt.colyer.name/projects/iphone-linux/"
+HOMEPAGE="http://www.kamailio.org/w/"
 EGIT_REPO_URI="git://git.sip-router.org/kamailio"
 
 LICENSE="GPLv2"
@@ -14,15 +14,14 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
 
-DEPEND="app-pda/libimobiledevice
-	>=sys-fs/fuse-2.7.0
-	dev-libs/glib:2"
+DEPEND=""
 RDEPEND="${DEPEND}"
 
-S="${WORKDID}"/${PN}
+S="${WORKDIR}"
 
 src_unpack() {
 	git-2_src_unpack
+	die
 }
 
 src_install() {

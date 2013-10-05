@@ -6,9 +6,13 @@ EAPI=4
 
 inherit eutils flag-o-matic autotools toolchain-funcs
 
+MY_PN="gsl"
+MY_P="${MY_PN}"-"${PV}"
+
 DESCRIPTION="The GNU Scientific Library"
 HOMEPAGE="http://www.gnu.org/software/gsl/"
-SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
+SRC_URI="mirror://gnu/${MY_PN}/${MY_P}.tar.gz"
+
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -21,6 +25,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=( AUTHORS BUGS ChangeLog NEWS README THANKS TODO )
+
+S="${WORKDIR}"/${MY_P}
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
@@ -52,9 +58,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-cblas.patch
-	eautoreconf
-
+	epatch "${FILESDIR}"/${MY_P}-cblas.patch
+	
 	cp "${FILESDIR}"/eselect.cblas.gsl "${T}"/
 	sed -i -e "s:/usr:${EPREFIX}/usr:" "${T}"/eselect.cblas.gsl || die
 	if [[ ${CHOST} == *-darwin* ]] ; then
@@ -70,12 +75,14 @@ src_configure() {
 	fi
 	econf \
 		--enable-shared \
+		--prefix=/opt/gsl \
+		--sysconfdir=/opt/gsl/etc \
 		$(use_with cblas-external cblas) \
 		$(use_enable static-libs static)
 }
 
 src_install() {
-	default
+	#default
 
 	find "${ED}" -name '*.la' -exec rm -f {} +
 
@@ -86,10 +93,6 @@ src_install() {
 		-e "/^libdir=/s:=:=${EPREFIX}:" \
 		"${FILESDIR}"/cblas.pc.in > cblas.pc \
 		|| die "sed cblas.pc failed"
-	insinto /usr/$(get_libdir)/blas/gsl
-	doins cblas.pc || die "installing cblas.pc failed"
-	eselect cblas add $(get_libdir) "${T}"/eselect.cblas.gsl \
-		${ESELECT_PROF}
 }
 
 pkg_postinst() {
