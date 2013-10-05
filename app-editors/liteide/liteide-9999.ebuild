@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/visualfc/liteide.git"
 LICENSE="LGPL-2.1"
 KEYWORDS=""
 SLOT="0"
-IUSE=""
+IUSE="ordered"
 
 DEPEND="dev-lang/go
 	dev-qt/qtgui
@@ -24,35 +24,33 @@ DEPEND="dev-lang/go
 	dev-qt/qtwebkit"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}"/"${PN}"-"${PV}"/liteidex
+S="${WORKDIR}"/"${PN}"-"${PV}"/
 
 src_prepare() {
-	dodir /opt/
-	dodir /opt/${PN}
-	dodir /opt/${PN}/bin
-	dodir /opt/${PN}/share/${PN}
-	dodir /opt/${PN}/lib/${PN}
-	dodir /opt/${PN}/lib/${PN}/plugins
 	qt4-r2_src_prepare
 }
 
+src_configure() {
+	local conf_release
+	local conf_ordered
+
+	if use ordered ; then
+		conf_ordered="CONFIG+=ordered"
+		conf_release=""
+		else
+		conf_release="CONFIG+=release"
+		conf_ordered=""
+	fi
+
+	cd "${S}"/liteidex/
+	eqmake4 "${S}"/liteidex/liteidex.pro "PREFIX=${EPREFIX}/usr" "LIBDIR=/usr/$(get_libdir)" ${conf_release} ${conf_ordered}
+}
+
 src_install() {
+	cd "${S}"/liteidex/
+	qt4-r2_src_install DESTDIR="${D}"opt/${PN}/ INSTALL_ROOT="${D}"opt/${PN}/ || die
+	
 	export GOPATH=$(pwd)
-
-	insinto /opt/${PN}/bin
-	doins "${S}"/bin/*
-
-	insinto /opt/${PN}/bin
-	doins "${S}"/${PN}/bin/*
-
-	insinto /opt/${PN}/lib/
-	doins "${S}"/${PN}/lib/${PN}/*
-
-	insinto /opt/${PN}/lib/${PN}/plugins/
-	doins "${S}"/${PN}/lib/${PN}/plugins/*.so
-
-	# insinto /opt/${PN}/
-	# doins -r "${S}"/*
 
 	# Go Tools
 	go install -ldflags "-s" -v tools/goastview
@@ -65,29 +63,28 @@ src_install() {
 
 	# Binaries
 	insinto /opt/${PN}/bin
-	doins "${S}"/bin/*
+	doins "${S}"/liteidex/${PN}/bin/*
+	doins "${S}"/liteidex/bin/*
 
 	# Plugins
 	insinto /opt/${PN}/lib/${PN}/plugins/
-	doins "${S}"/${PN}/lib/${PN}/plugins/*.so
+	doins "${S}"/liteidex/${PN}/lib/${PN}/plugins/*.so
 
 	# Documentation
 	insinto /opt/${PN}/share/${PN}/
-	doins -r "${S}"/deploy/*
-	doins -r "${S}"/os_deploy/*
+	doins -r "${S}"/liteidex/deploy/*
+	doins -r "${S}"/liteidex/os_deploy/*
 
 	# QT Libraries
-	addread /usr/lib64/qt4/
+	addread /usr/$(get_libdir)/qt4/
 	insinto /opt/${PN}/lib/${PN}
-	doins /usr/lib64/qt4/libQtCore.so*
-	doins /usr/lib64/qt4/libQtXml.so*
-	doins /usr/lib64/qt4/libQtNetwork.so*
-	doins /usr/lib64/qt4/libQtGui.so*
-	doins /usr/lib64/qt4/libQtDBus.so*
-	doins /usr/lib64/qt4/libQtWebKit.so*
+	doins /usr/$(get_libdir)/qt4/libQtCore.so*
+	doins /usr/$(get_libdir)/qt4/libQtXml.so*
+	doins /usr/$(get_libdir)/qt4/libQtNetwork.so*
+	doins /usr/$(get_libdir)/qt4/libQtGui.so*
+	doins /usr/$(get_libdir)/qt4/libQtDBus.so*
+	doins /usr/$(get_libdir)/qt4/libQtWebKit.so*
 
 	fperms u+x /opt/${PN}/bin/liteide
-	fperms u+x /opt/${PN}/bin/goapi
-	fperms u+x /opt/${PN}/bin/goastview 
-	fperms u+x /opt/${PN}/bin/goexec
+	fperms u+x /opt/${PN}/bin/go*
 }
