@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/visualfc/liteide.git"
 LICENSE="LGPL-2.1"
 KEYWORDS=""
 SLOT="0"
-IUSE="debug"
+IUSE=""
 
 DEPEND="dev-lang/go
 	dev-qt/qtgui
@@ -22,11 +22,11 @@ DEPEND="dev-lang/go
 	dev-qt/qtgui
 	dev-qt/qtdbus
 	dev-qt/qtwebkit"
-
 RDEPEND="${DEPEND}"
 
+S="${WORKDIR}"/"${PN}"-"${PV}"/liteidex
+
 src_prepare() {
-	S="${WORKDIR}"/"${PN}"-"${PV}"/liteidex
 	dodir /opt/
 	dodir /opt/${PN}
 	dodir /opt/${PN}/bin
@@ -37,19 +37,7 @@ src_prepare() {
 }
 
 src_install() {
-	insinto /opt/${PN}/
-	doins -r "${S}"/*
-
-	insinto /opt/${PN}/
 	export GOPATH=$(pwd)
-
-	go install -v -ldflags "-s -r ." liteidex
-	go install -v -ldflags -s tools/goastview
-	go install -v -ldflags -s tools/godocview
-	go install -v -ldflags -s tools/goexec
-	go install -v -ldflags -s tools/goapi
-
-	dodoc LICENSE.LGPL LGPL_EXCEPTION.TXT ../README.md
 
 	insinto /opt/${PN}/bin
 	doins "${S}"/bin/*
@@ -65,8 +53,6 @@ src_install() {
 
 	# insinto /opt/${PN}/
 	# doins -r "${S}"/*
-
-	export GOPATH=$(pwd)
 
 	# Go Tools
 	go install -ldflags "-s" -v tools/goastview
