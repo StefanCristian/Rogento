@@ -35,7 +35,7 @@ EOF
 	insinto /usr/share/applications/
 	doins "${FILESDIR}"/RoSeInstaller.desktop
 
-	fperms u+x /usr/bin/RoSeInstaller
+	fperms 755 /usr/bin/RoSeInstaller
 	
 	insinto /etc/skel/Desktop
 	doins "${FILESDIR}"/RoSeInstaller.desktop
