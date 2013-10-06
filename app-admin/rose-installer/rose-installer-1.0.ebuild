@@ -15,7 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-lang/python:2.7
+DEPEND="app-misc/rogentos-skel
+	dev-lang/python:2.7
 	dev-python/PyQt4"
 RDEPEND="${DEPEND}"
 
@@ -35,4 +36,7 @@ EOF
 	doins "${FILESDIR}"/RoSeInstaller.desktop
 
 	fperms u+x /usr/bin/RoSeInstaller
+	
+	insinto /etc/skel/Desktop
+	doins "${FILESDIR}"/RoSeInstaller.desktop
 }
