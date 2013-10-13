@@ -3,7 +3,7 @@
 
 EAPI="1"
 
-inherit git autotools
+inherit git-2 autotools
 
 DESCRIPTION="fuse module for access to iphone and ipod touch without jailbreak"
 HOMEPAGE="http://matt.colyer.name/projects/iphone-linux/"
