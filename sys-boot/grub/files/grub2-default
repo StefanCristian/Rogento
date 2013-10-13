@@ -41,7 +41,7 @@ GRUB_COLOR_NORMAL="white/black"
 GRUB_COLOR_HIGHLIGHT="magenta/black"
 
 if [ -f "/etc/default/rogentos-grub" ]; then
-	# this file is placed by the Sabayon Installer and contains
+	# this file is placed by the RogentOS Installer and contains
 	# custom GRUB_CMDLINE_LINUX parameters created at install
 	# time.
 	source /etc/default/rogentos-grub
