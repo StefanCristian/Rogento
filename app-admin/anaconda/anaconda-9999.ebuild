@@ -22,7 +22,6 @@ DESCRIPTION="Rogentos Redhat Anaconda Installer Port"
 HOMEPAGE="http://rogentos.ro/"
 if [ "${PV}" = "9999" ]; then
 	SRC_URI="${AUDIT_SRC_URI} ${LSELINUX_SRC_URI}"
-	SRC_URI=""
 	KEYWORDS=""
 	S="${WORKDIR}"/${PN}-${PVR}
 else
