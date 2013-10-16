@@ -1,4 +1,4 @@
-# Copyright 2004-2012 Rogentos
+# Copyri:ght 2004-2012 Rogentos
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -173,7 +173,7 @@ src_compile() {
 		pywrap || die
 
         # add compatibility aliases to swig wrapper
-#        cat "${FILESDIR}/compat.py" >> "${LSELINUX_S}/src/selinux.py" || die
+		cat "${FILESDIR}/compat.py" >> "${LSELINUX_S}/src/selinux.py" || die
 
 }
 
