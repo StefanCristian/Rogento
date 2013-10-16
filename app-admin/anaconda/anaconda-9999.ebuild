@@ -20,15 +20,17 @@ LSELINUX_SRC_URI="http://userspace.selinuxproject.org/releases/20100525/devel/li
 
 DESCRIPTION="Rogentos Redhat Anaconda Installer Port"
 HOMEPAGE="http://rogentos.ro/"
-if [ "${PV}" = "9999" ]; then
-	SRC_URI="${AUDIT_SRC_URI} ${LSELINUX_SRC_URI}"
-	KEYWORDS=""
-	S="${WORKDIR}"/${PN}-${PVR}
-else
-	SRC_URI="http://pkg.rogentos.ro/~rogentos/distro/${CATEGORY}/${PN}/${PN}-rogentos-${PVR}.tar.bz2 ${AUDIT_SRC_URI} ${LSELINUX_SRC_URI}"
-	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}"/${PN}-rogentos-${PVR}
-fi
+#if [ "${PV}" = "9999" ]; then
+	#SRC_URI="${AUDIT_SRC_URI} ${LSELINUX_SRC_URI}"
+	#KEYWORDS=""
+	#S="${WORKDIR}"/${PN}-${PVR}
+#else
+	#SRC_URI="http://pkg.rogentos.ro/~rogentos/distro/${CATEGORY}/${PN}/${PN}-rogentos-${PVR}.tar.bz2 ${AUDIT_SRC_URI} ${LSELINUX_SRC_URI}"
+	#KEYWORDS="~amd64 ~x86"
+	#S="${WORKDIR}"/${PN}-rogentos-${PVR}
+#fi
+
+S="${WORKDIR}"/${PN}-${PVR}
 AUDIT_S="${WORKDIR}/audit-${AUDIT_VER}"
 LSELINUX_S="${WORKDIR}/libselinux-${LSELINUX_VER}"
 
