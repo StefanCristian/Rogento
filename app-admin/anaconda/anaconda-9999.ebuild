@@ -7,14 +7,14 @@ EAPI="3"
 if [ "${PV}" = "9999" ]; then
 	EGIT_COMMIT="master"
 	EGIT_REPO_URI="git://github.com/Rogentos/rogentos-anaconda.git"
-	MY_ECLASS="git"
+	MY_ECLASS="git-2"
 fi
 inherit flag-o-matic base python libtool autotools eutils ${MY_ECLASS}
 
 AUDIT_VER="2.1.2"
 AUDIT_SRC_URI="http://people.redhat.com/sgrubb/audit/audit-${AUDIT_VER}.tar.gz"
 
-SEPOL_VER="2.0"
+SEPOL_VER="2.1"
 LSELINUX_VER="2.0.94"
 LSELINUX_SRC_URI="http://userspace.selinuxproject.org/releases/20100525/devel/libselinux-${LSELINUX_VER}.tar.gz"
 
@@ -43,6 +43,7 @@ LSELINUX_RDEPEND="=sys-libs/libsepol-${SEPOL_VER}*"
 LSELINUX_CONFLICT="!sys-libs/libselinux" # due to pythonX.Y/site-packages+/usr/sbin not being handled
 COMMON_DEPEND="app-admin/system-config-keyboard
 	>=app-arch/libarchive-2.8
+	app-crypt/sbsigntool
 	app-cdr/isomd5sum
 	dev-libs/newt
 	nfs? ( net-fs/nfs-utils )
@@ -72,6 +73,11 @@ src_prepare() {
 	# Setup CFLAGS, LDFLAGS
 	append-cppflags "-I${D}/usr/include/anaconda-runtime"
 	append-ldflags "-L${D}/usr/$(get_libdir)/anaconda-runtime"
+	append-cflags "-fexceptions"
+
+		# drop after 0.9.11
+		sed -i "s:-O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -fexceptions::g" \
+				"${S}/configure.ac" || die
 
 	# Setup anaconda
 	cd "${S}"

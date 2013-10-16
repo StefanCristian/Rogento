@@ -7,7 +7,7 @@ EAPI="3"
 if [ "${PV}" = "0.1" ]; then
 	EGIT_COMMIT="master"
 	EGIT_REPO_URI="git://github.com/nightsh/rogentos-anaconda.git"
-	MY_ECLASS="git"
+	MY_ECLASS="git-2"
 fi
 inherit flag-o-matic base python libtool autotools eutils ${MY_ECLASS}
 
