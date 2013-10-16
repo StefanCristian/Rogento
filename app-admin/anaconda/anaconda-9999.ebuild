@@ -5,7 +5,7 @@
 EAPI="3"
 
 if [ "${PV}" = "9999" ]; then
-	EGIT_COMMIT="master"
+	#EGIT_COMMIT="master"
 	EGIT_REPO_URI="git://github.com/Rogentos/rogentos-anaconda.git"
 	MY_ECLASS="git-2"
 fi
@@ -20,17 +20,16 @@ LSELINUX_SRC_URI="http://userspace.selinuxproject.org/releases/20100525/devel/li
 
 DESCRIPTION="Rogentos Redhat Anaconda Installer Port"
 HOMEPAGE="http://rogentos.ro/"
-#if [ "${PV}" = "9999" ]; then
-	#SRC_URI="${AUDIT_SRC_URI} ${LSELINUX_SRC_URI}"
-	#KEYWORDS=""
-	#S="${WORKDIR}"/${PN}-${PVR}
-#else
-	#SRC_URI="http://pkg.rogentos.ro/~rogentos/distro/${CATEGORY}/${PN}/${PN}-rogentos-${PVR}.tar.bz2 ${AUDIT_SRC_URI} ${LSELINUX_SRC_URI}"
-	#KEYWORDS="~amd64 ~x86"
-	#S="${WORKDIR}"/${PN}-rogentos-${PVR}
-#fi
-
-S="${WORKDIR}"/${PN}-${PVR}
+if [ "${PV}" = "9999" ]; then
+	SRC_URI="${AUDIT_SRC_URI} ${LSELINUX_SRC_URI}"
+	SRC_URI=""
+	KEYWORDS=""
+	S="${WORKDIR}"/${PN}-${PVR}
+else
+	SRC_URI="http://pkg.rogentos.ro/~rogentos/distro/${CATEGORY}/${PN}/${PN}-rogentos-${PVR}.tar.bz2 ${AUDIT_SRC_URI} ${LSELINUX_SRC_URI}"
+	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}"/${PN}-rogentos-${PVR}
+fi
 AUDIT_S="${WORKDIR}/audit-${AUDIT_VER}"
 LSELINUX_S="${WORKDIR}/libselinux-${LSELINUX_VER}"
 
@@ -64,7 +63,7 @@ RDEPEND="${COMMON_DEPEND} ${AUDIT_RDEPEND}
 
 src_unpack() {
 	if [ "${PV}" = "9999" ]; then
-		git_src_unpack
+		git-2_src_unpack
 		base_src_unpack
 	else
 		base_src_unpack
