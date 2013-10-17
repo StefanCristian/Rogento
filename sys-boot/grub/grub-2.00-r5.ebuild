@@ -192,7 +192,6 @@ grub_configure() {
 		--disable-werror
 		--program-prefix=
 		--program-transform-name="s,grub,grub2,"
-		--with-grubdir=grub
 		--libdir="${EPREFIX}"/usr/lib
 		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html
 		$(use_enable debug mm-debug)
@@ -211,7 +210,7 @@ grub_configure() {
 	if use multislot; then
 		myeconfargs+=(
 			--program-transform-name="s,grub,grub2,"
-			--with-grubdir=grub2
+			--with-grubdir=grub
 		)
 	fi
 
