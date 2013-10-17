@@ -268,6 +268,10 @@ src_install() {
 	dosym /usr/sbin/grub2-mkconfig /sbin/grub-mkconfig
 	dosym /usr/sbin/grub2-install /sbin/grub2-install
 
+	insinto /boot/grub2/
+	dosym /usr/lib/grub/i386-pc/ /boot/grub2/
+	dosym /usr/share/grub/themes /boot/grub2/
+
 	cd "${ED}" || die
 	pax-mark mpes $(scanelf -BF %F usr/{bin,sbin})
 }
