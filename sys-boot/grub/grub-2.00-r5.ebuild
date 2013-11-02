@@ -72,7 +72,7 @@ REQUIRED_USE="grub_platforms_qemu? ( truetype )
 
 # os-prober: Used on runtime to detect other OSes
 # xorriso (dev-libs/libisoburn): Used on runtime for mkrescue
-# sbsigntool is Sabayon and RogentOS specific
+# sbsigntool is RogentOS specific
 RDEPEND="
 	app-crypt/sbsigntool
 	x11-themes/rogentos-artwork-grub
@@ -207,6 +207,7 @@ grub_configure() {
 		$(usex efiemu '' --disable-efiemu)
 	)
 
+	# Sabayon: keep --with-grubdir=grub to grub for backward compatibility
 	if use multislot; then
 		myeconfargs+=(
 			--program-transform-name="s,grub,grub2,"
@@ -266,10 +267,6 @@ src_install() {
 	# Backward compatibility with Grub 1.99 executables
 	dosym /usr/sbin/grub2-mkconfig /sbin/grub-mkconfig
 	dosym /usr/sbin/grub2-install /sbin/grub2-install
-
-	insinto /boot/grub2/
-	dosym /usr/lib/grub/i386-pc/ /boot/grub2/
-	dosym /usr/share/grub/themes /boot/grub2/
 
 	cd "${ED}" || die
 	pax-mark mpes $(scanelf -BF %F usr/{bin,sbin})
