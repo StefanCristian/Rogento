@@ -57,7 +57,7 @@ src_prepare() {
 	epatch_user
 
 	# RogentOS custom config
-	epatch "${FILESDIR}/${PN}-rogentos-config-2.patch"
+	epatch "${FILESDIR}/${PN}-sabayon-config-2.patch"
 	epatch "${FILESDIR}"/${PN}-0.5.3-disable_warns_until_migrated.patch
 	epatch "${FILESDIR}/${PN}-netmount-fix.patch"
 	epatch "${FILESDIR}/${PN}-0.6.1-fix-clockskew-error-handling.patch"
