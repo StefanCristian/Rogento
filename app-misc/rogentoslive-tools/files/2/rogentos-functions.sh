@@ -231,7 +231,7 @@ rogentos_setup_text_installer() {
 }
 
 rogentos_setup_text_installer_motd() {
-	echo "Welcome to Sabayon Linux Text installation." >> /etc/motd
+	echo "Welcome to RogentOS Linux Text installation." >> /etc/motd
 	echo "to run the installation type: installer <and PRESS ENTER>" >> /etc/motd
 }
 

@@ -22,7 +22,7 @@ if [[ ${PV} != 9999 ]]; then
 		# vga= not yet deprecated for us
 		"${FILESDIR}"/${PN}-2.00-vga-deprecated-not-yet.patch
 		"${FILESDIR}"/${PN}-1.99-disable-floppies.patch
-		# Genkernel doesnt support "single" for rescue mode
+		# Genkernel doesn't support "single" for rescue mode
 		# but rather init_opts=single
 		"${FILESDIR}"/${PN}-2.00-genkernel-initramfs-single.patch
 		# Down with SecureBoot
@@ -72,7 +72,7 @@ REQUIRED_USE="grub_platforms_qemu? ( truetype )
 
 # os-prober: Used on runtime to detect other OSes
 # xorriso (dev-libs/libisoburn): Used on runtime for mkrescue
-# sbsigntool is Sabayon and RogentOS specific
+# sbsigntool is RogentOS specific
 RDEPEND="
 	app-crypt/sbsigntool
 	x11-themes/rogentos-artwork-grub
@@ -187,7 +187,7 @@ grub_configure() {
 		*)	platform=${MULTIBUILD_VARIANT} ;;
 	esac
 
-	# Sabayon: backward compatibility, do not change --with-grubdir
+	# RogentOS: backward compatibility, do not change --with-grubdir
 	local myeconfargs=(
 		--disable-werror
 		--program-prefix=
