@@ -13,9 +13,10 @@ SRC_URI="http://tv-maxe.googlecode.com/files/${PN}-${PV}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="sqlite"
 
 RDEPEND="dev-python/imaging
-	media-video/mplayer
+	media-video/mplayer2
 	media-video/vlc
 	virtual/ffmpeg
 	dev-python/python-virtkey
@@ -23,7 +24,7 @@ RDEPEND="dev-python/imaging
 	dev-lang/python
 	media-tv/sopcast-player
 	media-video/rtmpdump
-	dev-python/sqlite3dbm
+	sqlite? ( dev-python/sqlite3dbm )
 	dev-python/gst-python 
 	media-libs/gst-plugins-good 
 	media-plugins/gst-plugins-meta"
