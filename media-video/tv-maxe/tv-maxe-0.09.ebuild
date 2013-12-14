@@ -21,7 +21,7 @@ RDEPEND="dev-python/imaging
 	virtual/ffmpeg
 	dev-python/python-virtkey
 	dev-python/pygtk
-	dev-lang/python
+	dev-lang/python[sqlite]
 	media-tv/sp-auth
 	media-video/rtmpdump
 	sqlite? ( dev-python/sqlite3dbm )
