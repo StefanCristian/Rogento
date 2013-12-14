@@ -22,7 +22,7 @@ RDEPEND="dev-python/imaging
 	dev-python/python-virtkey
 	dev-python/pygtk
 	dev-lang/python
-	media-tv/sopcast-player
+	media-tv/sp-auth
 	media-video/rtmpdump
 	sqlite? ( dev-python/sqlite3dbm )
 	dev-python/gst-python 
