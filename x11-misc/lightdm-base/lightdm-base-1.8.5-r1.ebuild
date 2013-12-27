@@ -5,12 +5,12 @@
 EAPI=5
 inherit autotools eutils pam readme.gentoo systemd
 
-TRUNK_VERSION="1.4"
+TRUNK_VERSION="1.8"
 REAL_PN="${PN/-base}"
 REAL_P="${P/-base}"
 DESCRIPTION="A lightweight display manager, base libraries and programs"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/LightDM"
-SRC_URI="http://launchpad.net/${REAL_PN}/${TRUNK_VERSION}/${PV}/+download/${REAL_P}.tar.gz
+SRC_URI="http://launchpad.net/${REAL_PN}/${TRUNK_VERSION}/${PV}/+download/${REAL_P}.tar.xz
 	mirror://gentoo/introspection-20110205.m4.tar.bz2"
 
 LICENSE="GPL-3 LGPL-3"
@@ -42,7 +42,7 @@ src_prepare() {
 	sed -i -e 's:getgroups:lightdm_&:' tests/src/libsystem.c || die #412369
 	sed -i -e '/minimum-uid/s:500:1000:' data/users.conf || die
 
-	epatch "${FILESDIR}"/session-wrapper-${REAL_PN}.patch
+	epatch "${FILESDIR}"/lightdm-1.7.7-session-wrapper.patch
 	epatch_user
 
 	# Remove bogus Makefile statement. This needs to go upstream
@@ -74,6 +74,13 @@ src_configure() {
 src_install() {
 	default
 
+	# Delete apparmor profiles because they only work with Ubuntu's
+	# apparmor package. Bug #494426
+	if [[ -d ${D}/etc/apparmor.d ]]; then
+		rm -r "${D}/etc/apparmor.d" || die \
+			"Failed to remove apparmor profiles"
+	fi
+
 	insinto /etc/${REAL_PN}
 	doins data/{${REAL_PN},keys}.conf
 	doins "${FILESDIR}"/Xsession
@@ -87,5 +94,5 @@ src_install() {
 
 	readme.gentoo_create_doc
 
-	systemd_dounit "${FILESDIR}/lightdm.service"
+	systemd_dounit "${FILESDIR}/${REAL_PN}.service"
 }
