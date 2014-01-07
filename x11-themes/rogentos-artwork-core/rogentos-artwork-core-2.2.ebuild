@@ -17,6 +17,7 @@ SLOT="0"
 KEYWORDS="~arm ~x86 ~amd64"
 IUSE=""
 RDEPEND="sys-apps/findutils
+	!x11-themess/sabayon-artwork-core
 	!<sys-boot/grub-0.97-r22
 "
 

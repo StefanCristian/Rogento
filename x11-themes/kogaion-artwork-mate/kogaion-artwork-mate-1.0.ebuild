@@ -16,7 +16,8 @@ IUSE=""
 RDEPEND=">=x11-themes/rogentos-artwork-core-2
 	x11-themes/kogaion-light-theme
 	x11-themes/kogaion-dark-theme
-	x11-themes/faenza-kupertino-icons"
+	x11-themes/faenza-kupertino-icons
+	!x11-themes/sabayon-artwork-mate"
 
 S="${WORKDIR}/"
 
