@@ -13,12 +13,14 @@ PATCH_ARCHIVE="linux-${PV}-kogaion.tar.gz"
 RESTRICT="binchecks strip mirror"
 LICENSE="GPL-2"
 KEYWORDS="amd64 x86"
+
 IUSE=""
 DEPEND=""
 RDEPEND=""
 DESCRIPTION="Kogaion Linux Kernel Sources"
 HOMEPAGE="http://www.debian.org"
-SRC_URI="https://www.kernel.org/pub/linux/kernel/v3.x/${KERNEL_ARCHIVE} https://dl.dropboxusercontent.com/u/6539285/SRC/${PATCH_ARCHIVE}"
+SRC_URI="https://www.kernel.org/pub/linux/kernel/v3.x/${KERNEL_ARCHIVE}"
+
 S="$WORKDIR/linux-${CKV}"
 
 pkg_setup() {
@@ -28,17 +30,17 @@ pkg_setup() {
 
 src_prepare() {
 
-	cd ${S}
-	for p in $(ls ${WORKDIR}/linux-${PV}-kogaion/patches/debian); do
-		epatch -p1 "${WORKDIR}/linux-${PV}-kogaion/patches/debian/$p"
+	cd ${S} || die
+	for p in $(ls "${WORKDIR}"); do
+		epatch -p1 "${WORKDIR}/$p" || die
 	done
 
-	for p in $(ls ${WORKDIR}/linux-${PV}-kogaion/patches/desktop); do
-		epatch -p1 "${WORKDIR}/linux-${PV}-kogaion/patches/desktop/$p"
+	for p in $(ls "${FILESDIR}"); do
+		epatch -p1 "${FILESDIR}/$p" || die
 	done
 
-	rm -f .config >/dev/null
-	cp -a "${WORKDIR}"/linux-${PV}-kogaion "${T}"
+	rm -f .config || die
+	# doins -a "${FILESDIR}"/linux-${PV}-kogaion "${T}" # doins here
 }
 
 src_compile() {
@@ -48,7 +50,7 @@ src_compile() {
 
 src_install() {
 	dodir /usr/src
-	cp -a ${S} ${D}/usr/src/linux-${PV}-kogaion || die
+	# cp -a ${S} ${D}/usr/src/linux-${PV}-kogaion || die # doins in  loc de cp
 	cd ${D}/usr/src/linux-${PV}-kogaion
 	make mrproper || die
 }
