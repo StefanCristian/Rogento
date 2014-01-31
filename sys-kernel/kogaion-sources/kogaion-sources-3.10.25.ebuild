@@ -1,6 +1,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=5
 
 inherit eutils
 
@@ -30,17 +30,11 @@ pkg_setup() {
 
 src_prepare() {
 
-	cd ${S} || die
-	for p in $(ls "${WORKDIR}"); do
-		epatch -p1 "${WORKDIR}/$p" || die
-	done
-
-	for p in $(ls "${FILESDIR}"); do
-		epatch -p1 "${FILESDIR}/$p" || die
+	for p in $(ls ${FILESDIR}/desktop) ; do
+		epatch -p1 "${FILESDIR}/desktop/$p" || die
 	done
 
 	rm -f .config || die
-	# doins -a "${FILESDIR}"/linux-${PV}-kogaion "${T}" # doins here
 }
 
 src_compile() {
@@ -49,8 +43,9 @@ src_compile() {
 }
 
 src_install() {
-	dodir /usr/src
-	# cp -a ${S} ${D}/usr/src/linux-${PV}-kogaion || die # doins in  loc de cp
-	cd ${D}/usr/src/linux-${PV}-kogaion
+	dodir /usr/src/linux-${PV}-kogaion || die
+	insinto /usr/src/linux-${PV}-kogaion || die
+	doins -r "${S}"/* || die
+	cd ${D}/usr/src/linux-${PV}-kogaion || die
 	make mrproper || die
 }
