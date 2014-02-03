@@ -30,6 +30,10 @@ pkg_setup() {
 
 src_prepare() {
 
+	for p in $(ls ${FILESDIR}/security); do
+		epatch -p1 "${FILESDIR}/security/$p" || die
+	done
+	
 	for p in $(ls ${FILESDIR}/desktop) ; do
 		epatch -p1 "${FILESDIR}/desktop/$p" || die
 	done
