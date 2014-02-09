@@ -295,7 +295,7 @@ fi
 if [ -n "${K_SABKERNEL_SELF_TARBALL_NAME}" ]; then
 	HOMEPAGE="https://github.com/Rogentos/kernel"
 else
-	HOMEPAGE="http://www.rogentos.org"
+	HOMEPAGE="http://www.rogentos.ro"
 fi
 
 # Returns success if _set_config_file_vars was called.
@@ -907,7 +907,7 @@ rogentos-kernel_pkg_postinst() {
 		_update_depmod "${depmod_r}"
 
 		elog "Please report kernel bugs at:"
-		elog "http://bugs.rogentos.org"
+		elog "http://bugs.rogentos.ro"
 
 		elog "The source code of this kernel is located at"
 		elog "=${K_KERNEL_SOURCES_PKG}."
