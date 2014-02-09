@@ -3,7 +3,7 @@
 
 EAPI=5
 
-EGIT_REPO_URI="git://github.com/RogentOS/sabayon-live.git"
+EGIT_REPO_URI="git://github.com/RogentOS/rogentos-live.git"
 EGIT_COMMIT="v${PV}"
 
 inherit eutils systemd git-2
