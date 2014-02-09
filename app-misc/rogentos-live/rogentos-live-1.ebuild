@@ -1,14 +1,14 @@
-# Copyright 2004-2013 Sabayon
+# Copyright 2004-2013 RogentOS
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-EGIT_REPO_URI="git://github.com/Sabayon/sabayon-live.git"
+EGIT_REPO_URI="git://github.com/RogentOS/sabayon-live.git"
 EGIT_COMMIT="v${PV}"
 
 inherit eutils systemd git-2
 
-DESCRIPTION="Sabayon live image scripts and tools"
+DESCRIPTION="RogentOS live image scripts and tools"
 HOMEPAGE="http://www.sabayon.org"
 
 SLOT="0"
