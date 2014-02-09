@@ -2,46 +2,46 @@
 # Distributed under the terms of the GNU General Public License v2
 # $
 
-# @ECLASS-VARIABLE: K_SABKERNEL_NAME
+# @ECLASS-VARIABLE: K_ROGKERNEL_NAME
 # @DESCRIPTION:
 # The kernel name used by the ebuild, it should be the ending ${PN} part
 # for example, of linux-rogentos it is "${PN/${PN/-*}-}" (rogentos)
-K_SABKERNEL_NAME="${K_SABKERNEL_NAME:-${PN/${PN/-*}-}}"
+K_ROGKERNEL_NAME="${K_ROGKERNEL_NAME:-${PN/${PN/-*}-}}"
 
-# @ECLASS-VARIABLE: K_SABKERNEL_SELF_TARBALL_NAME
+# @ECLASS-VARIABLE: K_ROGKERNEL_SELF_TARBALL_NAME
 # @DESCRIPTION:
 # If the main kernel sources tarball is generated in-house and available
 # on the "rogentos" mirror, set this variable to the extension name (see example
 # below). This will disable ALL the extra/local patches (since they have to
-# be applied inside the tarball). Moreover, K_SABKERNEL_NAME,
+# be applied inside the tarball). Moreover, K_ROGKERNEL_NAME,
 # K_KERNEL_PATCH_VER will be ignored.
 # Example:
-#   K_SABKERNEL_SELF_TARBALL_NAME="rogentos"
+#   K_ROGKERNEL_SELF_TARBALL_NAME="rogentos"
 #   This would generate:
 #   SRC_URI="mirror://rogentos/sys-kernel/linux-${PV}+rogentos.tar.${K_TARBALL_EXT}"
-K_SABKERNEL_SELF_TARBALL_NAME="${K_SABKERNEL_SELF_TARBALL_NAME:-}"
+K_ROGKERNEL_SELF_TARBALL_NAME="${K_ROGKERNEL_SELF_TARBALL_NAME:-}"
 
-# @ECLASS-VARIABLE: K_SABKERNEL_PATCH_UPSTREAM_TARBALL
+# @ECLASS-VARIABLE: K_ROGKERNEL_PATCH_UPSTREAM_TARBALL
 # @DESCRIPTION:
 # If set to 1, the ebuild will fetch the upstream kernel tarball and
 # apply the RogentOS patch against it. This strategy avoids the need of
 # creating complete kernel source tarballs. The default value is 0.
-K_SABKERNEL_PATCH_UPSTREAM_TARBALL="${K_SABKERNEL_PATCH_UPSTREAM_TARBALL:-0}"
+K_ROGKERNEL_PATCH_UPSTREAM_TARBALL="${K_ROGKERNEL_PATCH_UPSTREAM_TARBALL:-0}"
 
-# @ECLASS-VARIABLE: K_SABKERNEL_FORCE_SUBLEVEL
+# @ECLASS-VARIABLE: K_ROGKERNEL_FORCE_SUBLEVEL
 # @DESCRIPTION:
 # Force the rewrite of SUBLEVEL in kernel sources Makefile
-K_SABKERNEL_FORCE_SUBLEVEL="${K_SABKERNEL_FORCE_SUBLEVEL:-}"
+K_ROGKERNEL_FORCE_SUBLEVEL="${K_ROGKERNEL_FORCE_SUBLEVEL:-}"
 
-# @ECLASS-VARIABLE: K_SABKERNEL_RESET_EXTRAVERSION
+# @ECLASS-VARIABLE: K_ROGKERNEL_RESET_EXTRAVERSION
 # @DESCRIPTION:
 # Force the rewrite of EXTRAVERSION in kernel sources Makefile (setting it to "")
-K_SABKERNEL_RESET_EXTRAVERSION="${K_SABKERNEL_RESET_EXTRAVERSION:-}"
+K_ROGKERNEL_RESET_EXTRAVERSION="${K_ROGKERNEL_RESET_EXTRAVERSION:-}"
 
-# @ECLASS-VARIABLE: K_SABKERNEL_LONGTERM
+# @ECLASS-VARIABLE: K_ROGKERNEL_LONGTERM
 # @DESCRIPTION:
 # Consider Kernel stable patchset as longterm (changing URL)
-K_SABKERNEL_LONGTERM="${K_SABKERNEL_LONGTERM:-}"
+K_ROGKERNEL_LONGTERM="${K_ROGKERNEL_LONGTERM:-}"
 
 # @ECLASS-VARIABLE: K_KERNEL_SOURCES_PKG
 # @DESCRIPTION:
@@ -82,7 +82,7 @@ K_KERNEL_SLOT_USEPVR="${K_KERNEL_SLOT_USEPVR:-0}"
 # Set this to "1" if your kernel ebuild uses the new Linux kernel upstream
 # versioning and ${PV} contains the stable revision, like 3.7.1.
 # In the example above, this makes the SLOT variable contain only "3.7".
-# The sublevel version can be forced using K_SABKERNEL_FORCE_SUBLEVEL
+# The sublevel version can be forced using K_ROGKERNEL_FORCE_SUBLEVEL
 K_KERNEL_NEW_VERSIONING="${K_KERNEL_NEW_VERSIONING:-0}"
 
 # @ECLASS-VARIABLE: K_KERNEL_IMAGE_NAME
@@ -105,7 +105,7 @@ K_KERNEL_LTS="${K_KERNEL_LTS:-}"
 # --kernel-binary= flag.
 K_KERNEL_IMAGE_PATH="${K_KERNEL_IMAGE_PATH:-}"
 
-# @ECLASS-VARIABLE: K_SABKERNEL_FIRMWARE
+# @ECLASS-VARIABLE: K_ROGKERNEL_FIRMWARE
 # @DESCRIPTION:
 # Set this to "1" if your ebuild is a kernel firmware package
 K_FIRMWARE_PACKAGE="${K_FIRMWARE_PACKAGE:-}"
@@ -135,10 +135,10 @@ K_WORKAROUND_SOURCES_COLLISION="${K_WORKAROUND_SOURCES_COLLISION:-}"
 # this variable and depmod will work correctly.
 K_WORKAROUND_USE_REAL_EXTRAVERSION="${K_WORKAROUND_USE_REAL_EXTRAVERSION:-}"
 
-# @ECLASS-VARIABLE: K_SABKERNEL_ZFS
+# @ECLASS-VARIABLE: K_ROGKERNEL_ZFS
 # @DESCRIPTION:
 # If set, this kernel features ZFS.
-K_SABKERNEL_ZFS="${K_SABKERNEL_ZFS:-}"
+K_ROGKERNEL_ZFS="${K_ROGKERNEL_ZFS:-}"
 
 # @ECLASS-VARIABLE: K_GENKERNEL_ARGS
 # @DESCRIPTION:
@@ -165,7 +165,7 @@ K_MKIMAGE_WRAP_INITRAMFS="${K_MKIMAGE_WRAP_INITRAMFS:-1}"
 # [ARM ONLY] Provide the kernel load address to be used with mkimage
 K_MKIMAGE_KERNEL_ADDRESS="${K_MKIMAGE_KERNEL_ADDRESS:-}"
 
-KERN_INITRAMFS_SEARCH_NAME="${KERN_INITRAMFS_SEARCH_NAME:-initramfs-genkernel*${K_SABKERNEL_NAME}}"
+KERN_INITRAMFS_SEARCH_NAME="${KERN_INITRAMFS_SEARCH_NAME:-initramfs-genkernel*${K_ROGKERNEL_NAME}}"
 
 # Disable deblobbing feature
 K_DEBLOB_AVAILABLE=0
@@ -187,25 +187,25 @@ DESCRIPTION="Kogaion, Argent and ArgOS linux kernel functions and phases"
 
 
 K_LONGTERM_URL_STR=""
-if [ -n "${K_SABKERNEL_LONGTERM}" ]; then
+if [ -n "${K_ROGKERNEL_LONGTERM}" ]; then
 	K_LONGTERM_URL_STR="/longterm/v${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}"
 fi
 
 ## kernel-2 eclass settings
-if [ "${K_SABKERNEL_PATCH_UPSTREAM_TARBALL}" = "1" ]; then
-	_patch_name="$(get_version_component_range 1-2)-${K_SABKERNEL_SELF_TARBALL_NAME}-${PVR}.patch.xz"
+if [ "${K_ROGKERNEL_PATCH_UPSTREAM_TARBALL}" = "1" ]; then
+	_patch_name="$(get_version_component_range 1-2)-${K_ROGKERNEL_SELF_TARBALL_NAME}-${PVR}.patch.xz"
 	SRC_URI="${KERNEL_URI}
 		mirror://rogentos/${CATEGORY}/${_patch_name}
 	"
 	UNIPATCH_LIST="${UNIPATCH_LIST} ${DISTDIR}/${_patch_name}"
 	unset _patch_name
-elif [ -n "${K_SABKERNEL_SELF_TARBALL_NAME}" ]; then
-	SRC_URI="mirror://rogentos/${CATEGORY}/linux-${PVR}+${K_SABKERNEL_SELF_TARBALL_NAME}.tar.${K_TARBALL_EXT}"
+elif [ -n "${K_ROGKERNEL_SELF_TARBALL_NAME}" ]; then
+	SRC_URI="mirror://rogentos/${CATEGORY}/linux-${PVR}+${K_ROGKERNEL_SELF_TARBALL_NAME}.tar.${K_TARBALL_EXT}"
 else
 	SRC_URI="${KERNEL_URI}"
 fi
 
-if [ -z "${K_SABKERNEL_SELF_TARBALL_NAME}" ]; then
+if [ -z "${K_ROGKERNEL_SELF_TARBALL_NAME}" ]; then
 	if [ -n "${K_KERNEL_PATCH_VER}" ]; then
 		K_PATCH_NAME="patch-${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}.${K_KERNEL_PATCH_VER}.${K_TARBALL_EXT}"
 		SRC_URI="${SRC_URI}
@@ -230,10 +230,10 @@ _get_real_kv_full() {
 	fi
 }
 
-# replace "linux" with K_SABKERNEL_NAME, usually replaces
+# replace "linux" with K_ROGKERNEL_NAME, usually replaces
 # "linux" with "rogentos" or "server" or "openvz"
-KV_FULL="${KV_FULL/${PN/-*}/${K_SABKERNEL_NAME}}"
-EXTRAVERSION="${EXTRAVERSION/${PN/-*}/${K_SABKERNEL_NAME}}"
+KV_FULL="${KV_FULL/${PN/-*}/${K_ROGKERNEL_NAME}}"
+EXTRAVERSION="${EXTRAVERSION/${PN/-*}/${K_ROGKERNEL_NAME}}"
 # drop -rX if exists
 if [[ -n "${PR//r0}" ]] && [[ "${K_KERNEL_DISABLE_PR_EXTRAVERSION}" = "1" ]] \
 		&& [[ -z "${K_NOSETEXTRAVERSION}" ]]; then
@@ -292,7 +292,7 @@ if _is_kernel_binary; then
 	fi
 fi
 
-if [ -n "${K_SABKERNEL_SELF_TARBALL_NAME}" ]; then
+if [ -n "${K_ROGKERNEL_SELF_TARBALL_NAME}" ]; then
 	HOMEPAGE="https://github.com/Rogentos/kernel"
 else
 	HOMEPAGE="http://www.rogentos.ro"
@@ -338,10 +338,10 @@ _set_config_file_vars() {
 		fi
 	fi
 
-	K_SABKERNEL_CONFIG_FILES=()
-	K_SABKERNEL_CONFIG_FILES+=( "${K_SABKERNEL_NAME}-${pvr}-$(_get_arch).config" )
-	K_SABKERNEL_CONFIG_FILES+=( "${K_SABKERNEL_NAME}-${pv}-$(_get_arch).config" )
-	K_SABKERNEL_CONFIG_FILES+=( "${K_SABKERNEL_NAME}-$(_get_arch).config" )
+	K_ROGKERNEL_CONFIG_FILES=()
+	K_ROGKERNEL_CONFIG_FILES+=( "${K_ROGKERNEL_NAME}-${pvr}-$(_get_arch).config" )
+	K_ROGKERNEL_CONFIG_FILES+=( "${K_ROGKERNEL_NAME}-${pv}-$(_get_arch).config" )
+	K_ROGKERNEL_CONFIG_FILES+=( "${K_ROGKERNEL_NAME}-$(_get_arch).config" )
 
 	_config_file_set=1
 }
@@ -352,7 +352,7 @@ if [ -n "${K_ONLY_SOURCES}" ] || [ -n "${K_FIRMWARE_PACKAGE}" ]; then
 	RDEPEND="${RDEPEND}"
 else
 	IUSE="dmraid dracut iscsi luks lvm mdadm plymouth splash"
-	if [ -n "${K_SABKERNEL_ZFS}" ]; then
+	if [ -n "${K_ROGKERNEL_ZFS}" ]; then
 		IUSE="${IUSE} zfs"
 	fi
 	DEPEND="app-arch/xz-utils
@@ -413,8 +413,8 @@ rogentos-kernel_pkg_setup() {
 
 rogentos-kernel_src_unpack() {
 	local okv="${OKV}"
-	if [ -n "${K_SABKERNEL_SELF_TARBALL_NAME}" ] && [ "${K_SABKERNEL_PATCH_UPSTREAM_TARBALL}" != "1" ]; then
-		OKV="${PVR}+${K_SABKERNEL_SELF_TARBALL_NAME}"
+	if [ -n "${K_ROGKERNEL_SELF_TARBALL_NAME}" ] && [ "${K_ROGKERNEL_PATCH_UPSTREAM_TARBALL}" != "1" ]; then
+		OKV="${PVR}+${K_ROGKERNEL_SELF_TARBALL_NAME}"
 	fi
 	if [ "${K_KERNEL_NEW_VERSIONING}" = "1" ]; then
 		# workaround for kernel-2's universal_unpack assumptions
@@ -422,12 +422,12 @@ rogentos-kernel_src_unpack() {
 	else
 		kernel-2_src_unpack
 	fi
-	if [ -n "${K_SABKERNEL_FORCE_SUBLEVEL}" ]; then
+	if [ -n "${K_ROGKERNEL_FORCE_SUBLEVEL}" ]; then
 		# patch out Makefile with proper sublevel
-		sed -i "s:^SUBLEVEL = .*:SUBLEVEL = ${K_SABKERNEL_FORCE_SUBLEVEL}:" \
+		sed -i "s:^SUBLEVEL = .*:SUBLEVEL = ${K_ROGKERNEL_FORCE_SUBLEVEL}:" \
 			"${S}/Makefile" || die
 	fi
-	if [ -n "${K_SABKERNEL_RESET_EXTRAVERSION}" ]; then
+	if [ -n "${K_ROGKERNEL_RESET_EXTRAVERSION}" ]; then
 		sed -i "s:^EXTRAVERSION =.*:EXTRAVERSION = :" "${S}/Makefile" || die
 		# some sources could have multiple append-based EXTRAVERSIONs
 		sed -i "s/^EXTRAVERSION :=.*//" "${S}/Makefile" || die
@@ -471,12 +471,12 @@ _kernel_copy_config() {
 		|| die "Kernel configuration file not set. Was rogentos-kernel_src_prepare() called?"
 
 	local base_path="${DISTDIR}"
-	if [ -n "${K_SABKERNEL_SELF_TARBALL_NAME}" ]; then
+	if [ -n "${K_ROGKERNEL_SELF_TARBALL_NAME}" ]; then
 		base_path="${S}/rogentos/config"
 	fi
 
 	local found= cfg=
-	for cfg in "${K_SABKERNEL_CONFIG_FILES[@]}"; do
+	for cfg in "${K_ROGKERNEL_CONFIG_FILES[@]}"; do
 		cfg="${base_path}/${cfg}"
 		if [ -f "${cfg}" ]; then
 			cp "${cfg}" "${1}" || die "cannot copy kernel config ${cfg} -> ${1}"
@@ -485,7 +485,7 @@ _kernel_copy_config() {
 			break
 		fi
 	done
-	[[ -z "${found}" ]] && die "cannot find kernel configs among: ${K_SABKERNEL_CONFIG_FILES[*]}"
+	[[ -z "${found}" ]] && die "cannot find kernel configs among: ${K_ROGKERNEL_CONFIG_FILES[*]}"
 }
 
 _kernel_src_compile() {
@@ -523,7 +523,7 @@ _kernel_src_compile() {
 	use mdadm && GKARGS+=( "--mdadm" )
 	use luks && GKARGS+=( "--luks" )
 	use lvm && GKARGS+=( "--lvm" )
-	if [ -n "${K_SABKERNEL_ZFS}" ]; then
+	if [ -n "${K_ROGKERNEL_ZFS}" ]; then
 		use zfs && GKARGS+=( "--zfs" )
 	fi
 
