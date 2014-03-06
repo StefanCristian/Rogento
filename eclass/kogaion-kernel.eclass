@@ -177,7 +177,7 @@ if [ "${K_KERNEL_NEW_VERSIONING}" = "1" ]; then
 	CKV="$(get_version_component_range 1-2)"
 fi
 
-inherit eutils multilib kernel-2 kogaion-artwork mount-boot linux-info
+inherit eutils multilib kernel-2 rogentos-artwork mount-boot linux-info
 
 # from kernel-2 eclass
 detect_version
@@ -362,7 +362,7 @@ else
 		arm? ( dev-embedded/u-boot-tools )
 		amd64? ( sys-apps/v86d )
 		x86? ( sys-apps/v86d )
-		splash? ( x11-themes/kogaion-artwork-core )
+		splash? ( x11-themes/rogentos-artwork-core )
 		lvm? ( sys-fs/lvm2 sys-block/thin-provisioning-tools )
 		plymouth? (
 			|| ( >=sys-kernel/genkernel-next-5 >=sys-kernel/genkernel-5 )
