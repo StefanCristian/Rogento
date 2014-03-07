@@ -16,7 +16,7 @@ KERN_INITRAMFS_SEARCH_NAME="${KERN_INITRAMFS_SEARCH_NAME:-initramfs-genkernel*}"
 # @ECLASS-VARIABLE: GFX_SPLASH_NAME
 # @DESCRIPTION:
 # Default splash theme name to use
-GFX_SPLASH_NAME="${GFX_SPLASH_NAME:-kogaion}"
+GFX_SPLASH_NAME="${GFX_SPLASH_NAME:-rogentos}"
 
 # @FUNCTION: update_kernel_initramfs_splash
 # @USAGE: update_kernel_initramfs_splash [splash_theme] [splash_file]
@@ -39,16 +39,16 @@ update_kernel_initramfs_splash() {
 
 }
 
-# @FUNCTION: update_sabayon_kernel_initramfs_splash
-# @USAGE: update_sabayon_kernel_initramfs_splash
+# @FUNCTION: update_kogaion_kernel_initramfs_splash
+# @USAGE: update_kogaion_kernel_initramfs_splash
 #
 # @AUTHOR:
 # Fabio Erculiani
 # @MAINTAINER:
 # Brindusa Stefan Cristian
-update_sabayon_kernel_initramfs_splash() {
+update_kogaion_kernel_initramfs_splash() {
 	local splash_name="${GFX_SPLASH_NAME}"
-	local override_splash_file="${ROOT}etc/splash_name"
+	local override_splash_file="${ROOT}etc/${splash_name}"
 	if [ -f "${override_splash_file}" ]; then
 		found_splash_name=$(cat "${override_splash_file}" | cut -d" " -f 1)
 		if [ -d "/etc/splash/${found_splash_name}" ]; then
