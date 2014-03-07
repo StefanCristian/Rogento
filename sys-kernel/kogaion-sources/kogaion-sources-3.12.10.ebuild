@@ -10,7 +10,7 @@ K_ONLY_SOURCES="1"
 K_ROGKERNEL_FORCE_SUBLEVEL="0"
 K_KERNEL_NEW_VERSIONING="1"
 
-inherit rogentos-kernel
+inherit kogaion-kernel
 
 KEYWORDS="~amd64 ~arm ~x86"
 DESCRIPTION="Official Kogaion Linux Standard kernel sources"
