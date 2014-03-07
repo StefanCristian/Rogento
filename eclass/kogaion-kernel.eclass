@@ -515,8 +515,8 @@ _kernel_src_compile() {
 	cd "${S}" || die
 	local GKARGS=()
 	GKARGS+=( "--no-save-config" "--e2fsprogs" "--udev" )
-	use splash && GKARGS+=( "--splash=kogaion" )
-	use plymouth && GKARGS+=( "--plymouth" "--plymouth-theme=${PLYMOUTH_THEME}" )
+	use splash && GKARGS+=( "--splash=rogentos" )
+	use plymouth && GKARGS+=( "--plymouth" "--plymouth-theme=rogentos" )
 	use dmraid && GKARGS+=( "--dmraid" )
 	use iscsi && GKARGS+=( "--iscsi" )
 	use mdadm && GKARGS+=( "--mdadm" )
