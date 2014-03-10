@@ -8,7 +8,7 @@ inherit eutils
 
 DESCRIPTION="Pymaxe is an easy to use and open-source application which lets you download music or videos from some media-sharing websites, such as YouTube, Trilulilu or 4shared"
 HOMEPAGE="http://pymaxe.com"
-SRC_URI="http://pymaxe.com/files/latest/pymaxe.tar.gz"
+SRC_URI="http://pymaxe.com/files/latest/${PN}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
