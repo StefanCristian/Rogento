@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI=5
 
 inherit eutils unpacker portability versionator linux-mod flag-o-matic nvidia-driver
 
@@ -23,7 +23,8 @@ IUSE="acpi custom-cflags multilib kernel_linux"
 RESTRICT="strip"
 
 DEPEND="kernel_linux? ( virtual/linux-sources )"
-RDEPEND="~x11-drivers/nvidia-userspace-${PV}
+RDEPEND="<x11-base/xorg-server-1.15.99
+	~x11-drivers/nvidia-userspace-${PV}
 	multilib? ( ~x11-drivers/nvidia-userspace-${PV}[multilib] )
 	acpi? ( sys-power/acpid )"
 PDEPEND=""
@@ -78,6 +79,11 @@ pkg_setup() {
 		MODULE_NAMES="nvidia(video:${S}/usr/src/nv)"
 		BUILD_PARAMS="IGNORE_CC_MISMATCH=yes V=1 SYSSRC=${KV_DIR} \
 		SYSOUT=${KV_OUT_DIR} HOST_CC=$(tc-getBUILD_CC)"
+		# linux-mod_src_compile calls set_arch_to_kernel, which
+		# sets the ARCH to x86 but NVIDIA's wrapping Makefile
+		# expects x86_64 or i386 and then converts it to x86
+		# later on in the build process
+		BUILD_FIXES="ARCH=$(uname -m | sed -e 's/i.86/i386/')"
 		mtrr_check
 		lockdep_check
 	fi
@@ -140,6 +146,9 @@ src_prepare() {
 		# If greater than 2.6.5 use M= instead of SUBDIR=
 		convert_to_m "${NV_SRC}"/Makefile.kbuild
 	fi
+
+	# Linux 3.13 support
+	epatch "${FILESDIR}/nvidia-drivers-173-3.13.patch"
 }
 
 src_compile() {
