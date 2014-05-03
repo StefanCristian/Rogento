@@ -4,11 +4,15 @@
 
 EAPI=3
 
-inherit eutils
+inherit eutils git-2
+
+EGIT_BRANCH=master
+EGIT_REPO_URI="https://code.google.com/p/tv-maxe"
+
 
 DESCRIPTION="Program to view free channels"
 HOMEPAGE="http://code.google.com/p/tv-maxe"
-SRC_URI="http://tv-maxe.googlecode.com/files/${PN}-${PV}.tar.gz"
+SRC_URI=""
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -16,7 +20,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+sqlite"
 
 DEPEND="dev-lang/python[sqlite]"
-RDEPEND="dev-python/imaging
+RDEPEND="dev-python/pillow
 	media-video/mplayer2
 	media-video/vlc
 	virtual/ffmpeg
@@ -33,14 +37,14 @@ DEPEND=""
 S="${WORKDIR}"
 
 src_prepare() {
-	sed -i "s|python|python2|g" ${S}/${PN}-${PV}/${PN} || die "Cannot sed file"
+	sed -i "s|python|python2|g" ${S}/${PN} || die "Cannot sed file"
 }
 
 src_install() {
 	cd "${S}"
 	dodir /usr/share/${PN} || die
 	insinto /usr/share/${PN} || die
-	doins -r "${S}"/${PN}-${PV}/* || die
+	doins -r "${S}"/* || die
 	fperms 755 /usr/share/${PN}/${PN} || die "Errors on permission giving"
 	fperms 755 /usr/share/${PN} || die "Errors on permission folder giving"
 	dosym /usr/share/${PN}/${PN} /usr/bin/${PN} || die "Not too many symbolic links"

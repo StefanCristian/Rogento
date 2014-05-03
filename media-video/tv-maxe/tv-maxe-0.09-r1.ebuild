@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+sqlite"
 
 DEPEND="dev-lang/python[sqlite]"
-RDEPEND="dev-python/imaging
+RDEPEND="dev-python/pillow
 	media-video/mplayer2
 	media-video/vlc
 	virtual/ffmpeg
@@ -34,6 +34,7 @@ S="${WORKDIR}"
 
 src_prepare() {
 	sed -i "s|python|python2|g" ${S}/${PN}-${PV}/${PN} || die "Cannot sed file"
+	epatch -p0 "${FILESDIR}/tv-maxe-0.09-pillow-support.patch"
 }
 
 src_install() {
