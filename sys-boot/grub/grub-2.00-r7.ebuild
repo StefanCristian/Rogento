@@ -40,6 +40,8 @@ if [[ ${PV} != 9999 ]]; then
 		"${FILESDIR}/${P}-dmraid.patch" #430748
 		"${FILESDIR}/${P}-texinfo.patch"
 		"${FILESDIR}/${P}-os-prober-efi-system.patch" #477314
+		"${FILESDIR}/${P}-fix-locale-en.mo.gz-not-found-error-message.patch" #408599
+		"${FILESDIR}/101-freetype2_fix_mkfont.patch"
 	)
 else
 	inherit bzr
@@ -72,7 +74,7 @@ REQUIRED_USE="grub_platforms_qemu? ( truetype )
 
 # os-prober: Used on runtime to detect other OSes
 # xorriso (dev-libs/libisoburn): Used on runtime for mkrescue
-# sbsigntool is RogentOS specific
+# sbsigntool is Sabayon and Kogaion specific
 RDEPEND="
 	app-crypt/sbsigntool
 	x11-themes/rogentos-artwork-grub
@@ -187,12 +189,11 @@ grub_configure() {
 		*)	platform=${MULTIBUILD_VARIANT} ;;
 	esac
 
-	# RogentOS: backward compatibility, do not change --with-grubdir
+	# Kogaion: backward compatibility, do not change --with-grubdir
 	local myeconfargs=(
 		--disable-werror
 		--program-prefix=
 		--program-transform-name="s,grub,grub2,"
-		--with-grubdir=grub
 		--libdir="${EPREFIX}"/usr/lib
 		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html
 		$(use_enable debug mm-debug)
@@ -208,10 +209,11 @@ grub_configure() {
 		$(usex efiemu '' --disable-efiemu)
 	)
 
+	# Kogaion: keep --with-grubdir=grub to grub for backward compatibility
 	if use multislot; then
 		myeconfargs+=(
 			--program-transform-name="s,grub,grub2,"
-			--with-grubdir=grub2
+			--with-grubdir=grub
 		)
 	fi
 
