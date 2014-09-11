@@ -25,7 +25,8 @@ src_install() {
         doins "${FILESDIR}"/entropy* || die
 		insinto /opt/reupdate/
 		doins "${FILESDIR}"/reupdate
-		dosym /opt/reupdate/reupdate ../../usr/bin/reupdate
+		fperms u+x "${FILESDIR}"/reupdate
+		dosym /opt/reupdate/reupdate /usr/bin/reupdate
 }
 
 pkg_postinst() {
