@@ -26,6 +26,7 @@ src_install() {
 		insinto /opt/reupdate/
 		doins "${FILESDIR}"/reupdate
 		dosym ../../usr/bin/reupdate /opt/reupdate/reupdate
+		dosym /opt/reupdate/reupdate ../../usr/bin/reupdate
 }
 
 pkg_postinst() {
