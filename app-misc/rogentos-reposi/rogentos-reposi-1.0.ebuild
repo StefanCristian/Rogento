@@ -21,7 +21,7 @@ S="${WORKDIR}"
 
 src_install() {
         ewarn "This is available for only Entropy package manager" || die
-        insinto /etc/entropy/packages/repositories.conf.d/
+        insinto /etc/entropy/repositories.conf.d/
         doins "${FILESDIR}"/entropy* || die
 		insinto /opt/reupdate/
 		doins "${FILESDIR}"/reupdate
