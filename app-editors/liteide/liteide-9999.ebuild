@@ -17,10 +17,6 @@ IUSE="ordered release"
 DEPEND="dev-lang/go
 	dev-qt/qtgui
 	dev-qt/qtdbus
-	dev-qt/qtwebkit
-	dev-lang/go
-	dev-qt/qtgui
-	dev-qt/qtdbus
 	dev-qt/qtwebkit"
 RDEPEND="${DEPEND}"
 
