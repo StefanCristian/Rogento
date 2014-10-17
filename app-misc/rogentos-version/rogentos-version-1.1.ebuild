@@ -37,7 +37,7 @@ src_unpack () {
 src_install () {
 	insinto /etc
 	doins "${T}"/rogentos-release
-	dosym /etc/rogentos-release /etc/rogentos-release
+	dosym /etc/rogentos-release /etc/system-release
 	# Bug 3459 - reduce the risk of fork bombs
 	insinto /etc/security/limits.d
 	doins "${FILESDIR}/00-sabayon-anti-fork-bomb.conf"
