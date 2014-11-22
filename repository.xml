@@ -1,17 +1,17 @@
 <repositories xmlns="" version="1.0">
 <repo quality="experimental" status="unofficial">
-<name>kogaion-desktop</name>
-<description>romanian Kogaion distro desktop-oriented ebuilds</description>
+<name>rogento</name>
+<description>experimental romanian enterprise-oriented ebuilds</description>
 <homepage>
-https://github.com/Rogentos/kogaion-desktop/wiki/
+https://github.com/BlackNoxis/Rogento/wiki/
 </homepage>
 <owner type="project">
-<email>stefan.cristian@rogentos.ro</email>
+<email>stefan.cristian@best.eu.org</email>
 <name>Steven Cristian</name>
 </owner>
-<source type="git">git://github.com/Rogentos/kogaion-desktop.git</source>
+<source type="git">git://github.com/BlackNoxis/Rogento.git</source>
 <source type="git">
-https://BlackNoxis@github.com/Rogentos/kogaion-desktop.git
+https://BlackNoxis@github.com/BlackNoxis/Rogento.git
 </source>
 <feed>
 </feed>
