@@ -8,12 +8,11 @@ inherit gnome2-utils
 
 DESCRIPTION="Kogaion Linux Official MATE artwork"
 HOMEPAGE="http://www.rogentos.ro/"
-SRC_URI="http://pkg.rogentos.ro/~rogentos/distro/${CATEGORY}/${PN}/"${PN}"-${PVR}.tar.gz"
 LICENSE="GPL"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
-RDEPEND=">=x11-themes/rogentos-artwork-core-2
+RDEPEND=">=x11-themes/kogaion-artwork-core-2
 	x11-themes/kogaion-light-theme
 	x11-themes/kogaion-dark-theme
 	x11-themes/faenza-kupertino-icons

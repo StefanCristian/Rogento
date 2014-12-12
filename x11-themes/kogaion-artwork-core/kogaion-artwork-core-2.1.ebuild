@@ -18,10 +18,10 @@ KEYWORDS="~arm ~x86 ~amd64"
 IUSE=""
 RDEPEND="sys-apps/findutils
 	!<sys-boot/grub-0.97-r22
-	!x11-themes/sabayon-artwork-core
-"
+	!x11-themes/rogentos-artwork-core
+	!x11-themes/sabayon-artwork-core"
 
-S="${WORKDIR}/"
+S="${WORKDIR}"/"${PN}"
 
 src_install() {
 	# Fbsplash theme - dropped!!!
@@ -31,25 +31,28 @@ src_install() {
 	# doins -r "${S}"/fbsplash/kogaion/*
 
 	# Cursors
-	cd "${S}"/mouse/RezoBlue
-	dodir /usr/share/cursors/xorg-x11/RezoBlue
-	insinto /usr/share/cursors/xorg-x11/RezoBlue || die "Cannot make target dir for cursors!"
-	doins -r ./
-	# Linking to our liked theme, instead of Adwaita (or whatever akward defaults)
 	insinto /usr/share/cursors/xorg-x11/
-	rm -f default
-	dosym RezoBlue default || die "Target cursors not found!"
+	doins -r "${S}"/mouse/RezoBlue
 
 	# Wallpapers
-	cd "${S}"/background
-	insinto /usr/share/backgrounds
-	doins *.png *.jpg
+	insinto /usr/share/backgrounds/
+	doins "${S}"/background/*.png 
+	doins "${S}"/background/*.jpg
 	#newins rogentoslinux.png rogentos-nvidia.png
 
 	# Backdrop functionality for Xfce
-	dodir /usr/share/xfce4/backdrops
-	insinto /usr/share/xfce4/backdrops
-	doins *.png *.jpg
+	insinto /usr/share/xfce4/backdrops/
+	doins "${S}"/background/*.png 
+	doins "${S}"/background/*.jpg
+
+	# Plymouth theme
+	insinto /usr/share/plymouth
+	doins "${S}"/plymouth/bizcom.png
+	insinto /usr/share/plymouth/themes
+	doins -r "${S}"/plymouth/themes/kogaion
+
+	insinto /usr/share/cursors/xorg-x11
+	dosym RezoBlue /usr/share/cursors/xorg-x11/default || "RezoBlue not found"
 }
 
 pkg_postinst() {

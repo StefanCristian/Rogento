@@ -1,5 +1,5 @@
 # Copyright 2004-2012 Sabayon
-# Copyright 2014 Kogaion
+# Copyright 2012 Rogentos
 # Distributed under the terms of the GNU General Public License v2
 # Maintainer BlackNoxis <stefan.cristian at rogentos.ro>
 
@@ -7,16 +7,16 @@ EAPI=4
 
 inherit base mount-boot
 
-DESCRIPTION="Kogaion GRUB2 Images"
+DESCRIPTION="Kogaion-Linux GRUB2 Images"
 HOMEPAGE="http://www.rogentos.ro"
-SRC_URI="http://pkg.rogentos.ro/~rogentos/distro/${CATEGORY}/${PN}/${PN}-${PV}.tar.gz
-	http://pkg.rogentos.ro/~rogentos/distro/${CATEGORY}/rogentos-artwork-grub/rogentos-artwork-grub-"${PV}".tar.gz"
+SRC_URI="http://pkg.rogentos.ro/~rogentos/distro/${CATEGORY}/${PN}/"${PN}"-${PV}.tar.gz"
 LICENSE="CCPL-Attribution-ShareAlike-3.0"
 SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-RDEPEND="!x11-themes/sabayon-artwork-grub"
+RDEPEND="!x11-themes/sabayon-artwork-grub
+	!x11-themes/rogentos-artwork-grub" #avoid file colision
 
 S="${WORKDIR}"
 
