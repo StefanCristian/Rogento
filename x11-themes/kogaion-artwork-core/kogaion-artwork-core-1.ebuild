@@ -1,5 +1,5 @@
 # Copyright 1999-2012 Sabayon Promotion
-# Copyright 2012 Rogentos Linux
+# Copyright 2012 Kogaion Linux
 # Distributed under the terms of the GNU General Public License v2
 # Original Authors Sabayon Team
 # Maintainer BlackNoxis <stefan.cristian at rogentos.ro>
@@ -52,7 +52,7 @@ pkg_postinst() {
 	mount-boot_mount_boot_partition
 
 	# Update Sabayon initramfs images
-	update_sabayon_kernel_initramfs_splash
+	update_kogaion_kernel_initramfs_splash
 
 	einfo "Please report bugs or glitches to"
 	einfo "BlackNoxis"
