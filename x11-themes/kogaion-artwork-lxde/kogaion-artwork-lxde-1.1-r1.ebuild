@@ -1,5 +1,5 @@
 # Copyright 2004-2011 Sabayon Promotion
-# Copyright 2012 Rogentos
+# Copyright 2012 Kogaion
 # Distributed under the terms of the GNU General Public License v2
 # Original Authors Sabayon Team
 #
@@ -23,14 +23,13 @@ RDEPEND="x11-themes/rogentos-artwork-core
 S="${WORKDIR}/lxdm"
 
 src_install () {
-	cd "${S}" || die "Cannot cd into folder"
 	dodir /usr/share/lxdm/themes/Kogaion || die "Cannot dodir"
 	insinto /usr/share/lxdm/themes/Kogaion || die "Cannot insinto"
 	doins Kogaion/* || die "Cannot doins"
 
 	#No longer needed, fixed in sources
-        #dosym /usr/share/lxdm/themes/kogaion.png \
-        #        /usr/share/lxdm/themes/Kogaion/kgdm.png
+	#dosym /usr/share/lxdm/themes/kogaion.png \
+	#/usr/share/lxdm/themes/Kogaion/kgdm.png
 
 	dodir /etc/lxdm
 	insinto /etc/lxdm/ || die "Cannot insinto folder"

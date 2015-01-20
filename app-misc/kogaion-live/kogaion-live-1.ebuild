@@ -1,9 +1,10 @@
-# Copyright 2004-2013 RogentOS
+# Copyright 2004-2014 Sabayon
+# Copyright 2012-2014 RogentOS
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-EGIT_REPO_URI="git://github.com/RogentOS/rogentos-live.git"
+EGIT_REPO_URI="git://github.com/RogentOS/kogaion-live.git"
 EGIT_COMMIT="v${PV}"
 
 inherit eutils systemd git-2

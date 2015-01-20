@@ -199,7 +199,7 @@ src_install() {
 	echo 'XDG_DATA_DIRS="/usr/share/gdm"' > 99xdg-gdm
 	doenvd 99xdg-gdm
 
-	# Sabayon: install our own script to set the gdm session via dbus
+	# Kogaion: install our own script to set the gdm session via dbus
 	# AccountServices interface. This is useful for live booting to select
 	# xbmc or fluxbox.
 	exeinto /usr/libexec
