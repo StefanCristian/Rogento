@@ -1,4 +1,5 @@
 # Copyright 1999-2012 Sabayon
+# Copyright 2015 Kogaion
 # Distributed under the terms of the GNU General Public License v2
 # Header: $
 
@@ -16,8 +17,7 @@ IUSE=""
 RDEPEND=">=x11-themes/kogaion-artwork-core-2
 	x11-themes/kogaion-light-theme
 	x11-themes/kogaion-dark-theme
-	x11-themes/faenza-kupertino-icons
-	!x11-themes/sabayon-artwork-gnome"
+	x11-themes/faenza-kupertino-icons"
 
 S="${WORKDIR}/"
 
