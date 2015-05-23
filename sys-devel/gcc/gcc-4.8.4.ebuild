@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-PATCH_VER="1.1"
+PATCH_VER="1.5"
 UCLIBC_VER="1.0"
 
 # Hardened gcc 4 stuff
@@ -85,6 +85,9 @@ src_prepare() {
 
 	#Use -r1 for newer piepatchet that use DRIVER_SELF_SPECS for the hardened specs.
 	[[ ${CHOST} == ${CTARGET} ]] && epatch "${FILESDIR}"/gcc-spec-env-r1.patch
+
+	#virtualbox-guest-addition fix https://gcc.gnu.org/bugzilla/show_bug.cgi?id=49718
+	epatch "${FILESDIR}/${P}-no_instrument_function.patch"
 }
 
 ## Just install libgcc stuff

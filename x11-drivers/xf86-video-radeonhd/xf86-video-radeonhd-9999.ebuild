@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit git-r3 x-modular
+inherit git-2 x-modular
 
 DESCRIPTION="Experimental Radeon HD video driver."
 HOMEPAGE="http://wiki.x.org/wiki/radeonhd"
@@ -12,7 +12,7 @@ EGIT_REPO_URI="git://anongit.freedesktop.org/git/xorg/driver/xf86-video-radeonhd
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="dri"
 
 RDEPEND=">=x11-base/xorg-server-1.3.0

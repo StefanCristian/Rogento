@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc-config/gcc-config-1.8.ebuild,v 1.2 2014/01/18 03:08:29 vapier Exp $
 
-inherit unpacker toolchain-funcs multilib
+EAPI=5
+
+inherit eutils unpacker toolchain-funcs multilib
 
 DESCRIPTION="utility to manage compilers"
 HOMEPAGE="http://git.overlays.gentoo.org/gitweb/?p=proj/gcc-config.git"
@@ -11,8 +12,20 @@ SRC_URI="mirror://gentoo/${P}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
-IUSE=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+IUSE="+systemd"
+DEPEND="
+	systemd? ( >=sys-apps/gentoo-functions-0.7 )"
+
+src_unpack() {
+	unpacker_src_unpack
+	cd "${S}" || die
+	epatch "${FILESDIR}/${PN}-kogaion-base-gcc-support-2.patch"
+	# systemd-only systems (Kogaion/Sabayon) support
+	if use systemd; then
+		epatch "${FILESDIR}/${PN}-systemd.patch"
+	fi
+}
 
 src_compile() {
 	emake CC="$(tc-getCC)" || die
